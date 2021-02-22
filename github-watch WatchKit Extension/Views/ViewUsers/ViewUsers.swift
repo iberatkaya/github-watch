@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct ViewUser: View {
+struct ViewUsers: View {
     @EnvironmentObject var profileInteractor: RealProfileInteractor
     @EnvironmentObject var appState: AppState
-    @State private var username: String = "metsey99"
+    @State private var username: String = ""
     
     var body: some View {
         ScrollView {
@@ -15,8 +15,8 @@ struct ViewUser: View {
     }
 }
 
-struct ViewUser_Previews: PreviewProvider {
+struct ViewUsers_Previews: PreviewProvider {
     static var previews: some View {
-        ViewUser()
+        ViewUsers()
     }
 }

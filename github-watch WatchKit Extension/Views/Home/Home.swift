@@ -15,8 +15,8 @@ struct Home: View {
             }
             else {
                 Text(appState.user.username ?? "User").padding()
-                NavigationLink(destination: ViewUser().environmentObject(appState).environmentObject(profileInteractor)){
-                    Text("View User")
+                NavigationLink(destination: ViewUsers().environmentObject(appState).environmentObject(profileInteractor)){
+                    Text("View Users")
                 }
                 Button("Sign Out", action: {
                     authInteractor.signOut()

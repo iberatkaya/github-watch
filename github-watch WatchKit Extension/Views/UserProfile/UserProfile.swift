@@ -4,7 +4,7 @@ struct UserProfile: View {
     @EnvironmentObject var profileInteractor: RealProfileInteractor
     @EnvironmentObject var appState: AppState
     @State var profileUser: ProfileUser?
-    @State var loading = false
+    @State var loading = true
     var username: String = ""
     
     init(username: String) {
@@ -16,14 +16,19 @@ struct UserProfile: View {
             if(loading){
                 ProgressView()
             }
-            UserView(profileUser: profileUser)
+            if let profileUser = profileUser {
+                UserView(profileUser: profileUser)
+            } else if(!loading){
+                Text("User \(username) cound not be found!")
+            }
         }
         .onAppear(perform: {
             profileInteractor.requestProfile(username: username, completed: { pUser in
-                loading = false
                 if let pUser = pUser {
+                    print(pUser)
                     profileUser = pUser
                 }
+                loading = false
             })
         })
     }
@@ -32,5 +37,7 @@ struct UserProfile: View {
 struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
         UserProfile(username: "test")
+            .environmentObject(AppState())
+            .environmentObject(RealProfileInteractor(appState: AppState()))
     }
 }
