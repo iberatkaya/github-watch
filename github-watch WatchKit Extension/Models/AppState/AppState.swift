@@ -7,13 +7,13 @@ class AppState: ObservableObject, Equatable, Encodable, Decodable {
     
     init() {
         if let userData = UserDefaults.standard.object(forKey:  "user") {
-            if let myData = try? JSONDecoder().decode(User.self, from: userData as! Data) {
+            if let myData = try? JSONDecoder().decode(AuthUser.self, from: userData as! Data) {
                 self.user = myData
             }
         }
     }
     
-    @Published var user = User() {
+    @Published var user = AuthUser() {
         didSet {
             if let encodedUser = try? JSONEncoder().encode(user) {
                 UserDefaults.standard.set(encodedUser, forKey: "user")
@@ -24,7 +24,7 @@ class AppState: ObservableObject, Equatable, Encodable, Decodable {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        user = try values.decode(User.self, forKey: .user)
+        user = try values.decode(AuthUser.self, forKey: .user)
     }
     
     enum CodingKeys: String, CodingKey {

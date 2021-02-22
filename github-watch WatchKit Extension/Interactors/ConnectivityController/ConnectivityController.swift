@@ -4,6 +4,7 @@ import WatchConnectivity
 class ConnectivityController: NSObject,  WCSessionDelegate, ObservableObject {
     var session: WCSession?
     var appState: AppState
+    var profileRepository = RealProfileRepository()
     
     init(appState: AppState){
         self.appState = appState
@@ -31,6 +32,14 @@ class ConnectivityController: NSObject,  WCSessionDelegate, ObservableObject {
             DispatchQueue.main.async {
                 self.appState.user.accessToken = token
             }
+            profileRepository.requestMyProfile(accessToken: token, completed: { profileUser in
+                DispatchQueue.main.async {
+                    if let name = profileUser?.login {
+                        self.appState.user.username = name
+                    }
+                }
+            })
+            
         }
     }
 }

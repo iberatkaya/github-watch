@@ -6,24 +6,21 @@ struct Home: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                if(appState.user.accessToken == nil){
-                    Text("Please sign in to your GitHub account from your iPhone!")
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
-                    ProgressView()
+        ScrollView {
+            if(appState.user.accessToken == nil){
+                Text("Please sign in to your GitHub account from your iPhone!")
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                ProgressView()
+            }
+            else {
+                Text(appState.user.username ?? "User").padding()
+                NavigationLink(destination: ViewUser().environmentObject(appState).environmentObject(profileInteractor)){
+                    Text("View User")
                 }
-                else {
-                    Text("User has access token: " + (appState.user.accessToken ?? "false"))
-                    .padding()
-                    Button("Get Profile", action: {
-                        profileInteractor.requestProfile(username: "arasgungore", completed: {})
-                    })
-                    Button("Sign Out", action: {
-                        authInteractor.signOut()
-                    })
-                }
+                Button("Sign Out", action: {
+                    authInteractor.signOut()
+                })
             }
         }
     }

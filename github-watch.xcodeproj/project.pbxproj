@@ -37,12 +37,17 @@
 		F48F4C1825E40781003E6C2A /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4B7D25E3C152003E6C2A /* keys.swift */; };
 		F48F4C2C25E407C3003E6C2A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C2B25E407C3003E6C2A /* Home.swift */; };
 		F48F4C3C25E40837003E6C2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C3B25E40837003E6C2A /* AppState.swift */; };
-		F48F4C4425E40862003E6C2A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C4325E40862003E6C2A /* User.swift */; };
+		F48F4C4425E40862003E6C2A /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C4325E40862003E6C2A /* AuthUser.swift */; };
 		F48F4C4C25E4088E003E6C2A /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C4B25E4088E003E6C2A /* ProfileInteractor.swift */; };
 		F48F4C5925E408C1003E6C2A /* ConnectivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C5825E408C1003E6C2A /* ConnectivityController.swift */; };
 		F48F4C6125E40DC5003E6C2A /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C6025E40DC5003E6C2A /* ProfileRepository.swift */; };
 		F48F4C6E25E40EE3003E6C2A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4C6D25E40EE3003E6C2A /* SwiftyJSON */; };
 		F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */; };
+		F48F4C9225E42DAD003E6C2A /* ProfileUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C9125E42DAD003E6C2A /* ProfileUser.swift */; };
+		F48F4C9A25E432C8003E6C2A /* ViewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C9925E432C8003E6C2A /* ViewUser.swift */; };
+		F48F4CA725E43519003E6C2A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4CA625E43519003E6C2A /* UserProfile.swift */; };
+		F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4CB325E43AEE003E6C2A /* UserView.swift */; };
+		F48F4CC125E43DC6003E6C2A /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4CC025E43DC6003E6C2A /* URLImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,11 +143,15 @@
 		F48F4C1125E4065A003E6C2A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F48F4C2B25E407C3003E6C2A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F48F4C3B25E40837003E6C2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		F48F4C4325E40862003E6C2A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F48F4C4325E40862003E6C2A /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
 		F48F4C4B25E4088E003E6C2A /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		F48F4C5825E408C1003E6C2A /* ConnectivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityController.swift; sourceTree = "<group>"; };
 		F48F4C6025E40DC5003E6C2A /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		F48F4C9125E42DAD003E6C2A /* ProfileUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUser.swift; sourceTree = "<group>"; };
+		F48F4C9925E432C8003E6C2A /* ViewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUser.swift; sourceTree = "<group>"; };
+		F48F4CA625E43519003E6C2A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F48F4CB325E43AEE003E6C2A /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48F4CC125E43DC6003E6C2A /* URLImage in Frameworks */,
 				F48F4C6E25E40EE3003E6C2A /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +406,8 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F48F4CA525E43510003E6C2A /* UserProfile */,
+				F48F4C9825E432BB003E6C2A /* ViewUser */,
 				F48F4C2A25E407BB003E6C2A /* Home */,
 			);
 			path = Views;
@@ -430,7 +442,8 @@
 		F48F4C3925E407D8003E6C2A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F48F4C4225E40845003E6C2A /* User */,
+				F48F4C8625E42D86003E6C2A /* ProfileUser */,
+				F48F4C4225E40845003E6C2A /* AuthUser */,
 				F48F4C3A25E4082D003E6C2A /* AppState */,
 			);
 			path = Models;
@@ -444,12 +457,12 @@
 			path = AppState;
 			sourceTree = "<group>";
 		};
-		F48F4C4225E40845003E6C2A /* User */ = {
+		F48F4C4225E40845003E6C2A /* AuthUser */ = {
 			isa = PBXGroup;
 			children = (
-				F48F4C4325E40862003E6C2A /* User.swift */,
+				F48F4C4325E40862003E6C2A /* AuthUser.swift */,
 			);
-			path = User;
+			path = AuthUser;
 			sourceTree = "<group>";
 		};
 		F48F4C4A25E4087D003E6C2A /* ProfileInteractor */ = {
@@ -489,6 +502,39 @@
 				F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */,
 			);
 			path = AuthInteractor;
+			sourceTree = "<group>";
+		};
+		F48F4C8625E42D86003E6C2A /* ProfileUser */ = {
+			isa = PBXGroup;
+			children = (
+				F48F4C9125E42DAD003E6C2A /* ProfileUser.swift */,
+			);
+			path = ProfileUser;
+			sourceTree = "<group>";
+		};
+		F48F4C9825E432BB003E6C2A /* ViewUser */ = {
+			isa = PBXGroup;
+			children = (
+				F48F4C9925E432C8003E6C2A /* ViewUser.swift */,
+			);
+			path = ViewUser;
+			sourceTree = "<group>";
+		};
+		F48F4CA525E43510003E6C2A /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				F48F4CB225E43AE5003E6C2A /* UserView */,
+				F48F4CA625E43519003E6C2A /* UserProfile.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		F48F4CB225E43AE5003E6C2A /* UserView */ = {
+			isa = PBXGroup;
+			children = (
+				F48F4CB325E43AEE003E6C2A /* UserView.swift */,
+			);
+			path = UserView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -585,6 +631,7 @@
 			name = "github-watch WatchKit Extension";
 			packageProductDependencies = (
 				F48F4C6D25E40EE3003E6C2A /* SwiftyJSON */,
+				F48F4CC025E43DC6003E6C2A /* URLImage */,
 			);
 			productName = "github-watch WatchKit Extension";
 			productReference = F48F4B4E25E3BD70003E6C2A /* github-watch WatchKit Extension.appex */;
@@ -630,6 +677,7 @@
 			packageReferences = (
 				F48F4BDA25E3C37D003E6C2A /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 				F48F4BE225E3C3A5003E6C2A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				F48F4CBF25E43DC6003E6C2A /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = F48F4B1E25E3BD6B003E6C2A /* Products */;
 			projectDirPath = "";
@@ -730,12 +778,16 @@
 				F48F4C5925E408C1003E6C2A /* ConnectivityController.swift in Sources */,
 				F48F4B5625E3BD70003E6C2A /* ContentView.swift in Sources */,
 				F48F4C6125E40DC5003E6C2A /* ProfileRepository.swift in Sources */,
+				F48F4C9225E42DAD003E6C2A /* ProfileUser.swift in Sources */,
 				F48F4C4C25E4088E003E6C2A /* ProfileInteractor.swift in Sources */,
 				F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */,
 				F48F4B5C25E3BD70003E6C2A /* ComplicationController.swift in Sources */,
 				F48F4C3C25E40837003E6C2A /* AppState.swift in Sources */,
 				F48F4C1825E40781003E6C2A /* keys.swift in Sources */,
-				F48F4C4425E40862003E6C2A /* User.swift in Sources */,
+				F48F4C9A25E432C8003E6C2A /* ViewUser.swift in Sources */,
+				F48F4C4425E40862003E6C2A /* AuthUser.swift in Sources */,
+				F48F4CA725E43519003E6C2A /* UserProfile.swift in Sources */,
+				F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */,
 				F48F4B5425E3BD70003E6C2A /* github_watchApp.swift in Sources */,
 				F48F4B5A25E3BD70003E6C2A /* NotificationView.swift in Sources */,
 				F48F4C2C25E407C3003E6C2A /* Home.swift in Sources */,
@@ -1184,6 +1236,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F48F4CBF25E43DC6003E6C2A /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1201,6 +1261,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F48F4BE225E3C3A5003E6C2A /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		F48F4CC025E43DC6003E6C2A /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F48F4CBF25E43DC6003E6C2A /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

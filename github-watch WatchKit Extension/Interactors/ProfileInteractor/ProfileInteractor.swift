@@ -1,7 +1,8 @@
 import SwiftUI
 
 protocol ProfileInteractor {
-    func requestProfile(username: String, completed: @escaping () -> Void) -> Void
+    func requestProfile(username: String, completed: @escaping (ProfileUser?) -> Void) -> Void
+    func requestMyProfile(completed: @escaping (ProfileUser?) -> Void) -> Void
 }
 
 class RealProfileInteractor: ObservableObject, ProfileInteractor {
@@ -12,8 +13,15 @@ class RealProfileInteractor: ObservableObject, ProfileInteractor {
         self.appState = appState
     }
     
+    func requestMyProfile(completed: @escaping (ProfileUser?) -> Void) {
+        print(appState.user)
+        if let accessToken = appState.user.accessToken {
+            profileAuthRepository.requestMyProfile(accessToken: accessToken, completed: completed)
+        }
+    }
     
-    func requestProfile(username: String, completed: @escaping () -> Void) {
+    
+    func requestProfile(username: String, completed: @escaping (ProfileUser?) -> Void) {
         if let accessToken = appState.user.accessToken {
             profileAuthRepository.requestProfile(username: username, accessToken: accessToken, completed: completed)
         }

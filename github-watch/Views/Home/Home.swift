@@ -5,19 +5,17 @@ struct Home: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                Text("User has access token: " + (appState.user.accessToken ?? "false"))
-                    .padding()
-                if(appState.user.accessToken == nil){
-                    NavigationLink(destination: GitHubAuth().environmentObject(authInteractor)){
-                        Text("Click me!")
-                    }
-                } else {
-                    Button("Sign Out", action: {
-                        authInteractor.signOut()
-                    })
+        ScrollView {
+            Text("User has access token: " + (appState.user.accessToken ?? "false"))
+                .padding()
+            if(appState.user.accessToken == nil){
+                NavigationLink(destination: GitHubAuth().environmentObject(authInteractor)){
+                    Text("Click me!")
                 }
+            } else {
+                Button("Sign Out", action: {
+                    authInteractor.signOut()
+                })
             }
         }
     }
