@@ -12,7 +12,9 @@ struct ContentView: View {
     }
     
     var body: some View {
-        Home().environmentObject(authInteractor).environmentObject(connectivityController)
+        NavigationView {
+            Home().environmentObject(authInteractor).environmentObject(connectivityController)
+        }
     }
 }
 
