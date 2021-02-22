@@ -1,17 +1,12 @@
-//
-//  github_watchApp.swift
-//  github-watch
-//
-//  Created by Ibrahim Berat Kaya on 22.02.2021.
-//
-
 import SwiftUI
 
 @main
 struct github_watchApp: App {
+    @ObservedObject var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(appState: appState).environmentObject(appState)
         }
     }
 }

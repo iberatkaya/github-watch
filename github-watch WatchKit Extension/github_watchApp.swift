@@ -1,18 +1,13 @@
-//
-//  github_watchApp.swift
-//  github-watch WatchKit Extension
-//
-//  Created by Ibrahim Berat Kaya on 22.02.2021.
-//
-
 import SwiftUI
 
 @main
 struct github_watchApp: App {
+    @ObservedObject var appState = AppState()
+     
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                ContentView(appState: appState).environmentObject(appState)
             }
         }
 
