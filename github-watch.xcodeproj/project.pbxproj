@@ -44,7 +44,7 @@
 		F48F4C6E25E40EE3003E6C2A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4C6D25E40EE3003E6C2A /* SwiftyJSON */; };
 		F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */; };
 		F48F4C9225E42DAD003E6C2A /* ProfileUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C9125E42DAD003E6C2A /* ProfileUser.swift */; };
-		F48F4C9A25E432C8003E6C2A /* ViewUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C9925E432C8003E6C2A /* ViewUsers.swift */; };
+		F48F4C9A25E432C8003E6C2A /* ViewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C9925E432C8003E6C2A /* ViewUser.swift */; };
 		F48F4CA725E43519003E6C2A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4CA625E43519003E6C2A /* UserProfile.swift */; };
 		F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4CB325E43AEE003E6C2A /* UserView.swift */; };
 		F48F4CC125E43DC6003E6C2A /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4CC025E43DC6003E6C2A /* URLImage */; };
@@ -59,6 +59,12 @@
 		F49A66C925E5397100F7893C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66C825E5397100F7893C /* String.swift */; };
 		F49A66D625E53B0800F7893C /* MarkdownInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */; };
 		F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66E225E53B6000F7893C /* MarkdownRepository.swift */; };
+		F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA954D25E5A43500F702ED /* BottomNavRow.swift */; };
+		F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA955F25E5AFA600F702ED /* SearchRepos.swift */; };
+		F4EA956D25E5B00D00F702ED /* SearchReposList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA956C25E5B00D00F702ED /* SearchReposList.swift */; };
+		F4EA957B25E5B2C000F702ED /* MiniRepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA957A25E5B2C000F702ED /* MiniRepoView.swift */; };
+		F4EA958225E5B3D000F702ED /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA958125E5B3D000F702ED /* Int.swift */; };
+		F4EA958A25E5BBCF00F702ED /* FollowStatViwe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA958925E5BBCF00F702ED /* FollowStatViwe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,7 +166,7 @@
 		F48F4C6025E40DC5003E6C2A /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
 		F48F4C9125E42DAD003E6C2A /* ProfileUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUser.swift; sourceTree = "<group>"; };
-		F48F4C9925E432C8003E6C2A /* ViewUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUsers.swift; sourceTree = "<group>"; };
+		F48F4C9925E432C8003E6C2A /* ViewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUser.swift; sourceTree = "<group>"; };
 		F48F4CA625E43519003E6C2A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F48F4CB325E43AEE003E6C2A /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		F49A657D25E4E62B00F7893C /* RepoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoRepository.swift; sourceTree = "<group>"; };
@@ -173,6 +179,12 @@
 		F49A66C825E5397100F7893C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownInteractor.swift; sourceTree = "<group>"; };
 		F49A66E225E53B6000F7893C /* MarkdownRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRepository.swift; sourceTree = "<group>"; };
+		F4EA954D25E5A43500F702ED /* BottomNavRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavRow.swift; sourceTree = "<group>"; };
+		F4EA955F25E5AFA600F702ED /* SearchRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepos.swift; sourceTree = "<group>"; };
+		F4EA956C25E5B00D00F702ED /* SearchReposList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReposList.swift; sourceTree = "<group>"; };
+		F4EA957A25E5B2C000F702ED /* MiniRepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniRepoView.swift; sourceTree = "<group>"; };
+		F4EA958125E5B3D000F702ED /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		F4EA958925E5BBCF00F702ED /* FollowStatViwe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowStatViwe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,11 +442,14 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4EA957325E5B01E00F702ED /* UtilityViews */,
+				F4EA956B25E5AFFA00F702ED /* SearchReposList */,
+				F4EA955E25E5AF9700F702ED /* SearchRepos */,
 				F49A66AB25E52EBE00F7893C /* RepoView */,
 				F49A65DA25E50CCE00F7893C /* Markdown */,
 				F49A658E25E4E6CE00F7893C /* UserRepos */,
 				F48F4CA525E43510003E6C2A /* UserProfile */,
-				F48F4C9825E432BB003E6C2A /* ViewUsers */,
+				F48F4C9825E432BB003E6C2A /* ViewUser */,
 				F48F4C2A25E407BB003E6C2A /* Home */,
 			);
 			path = Views;
@@ -544,18 +559,18 @@
 			path = ProfileUser;
 			sourceTree = "<group>";
 		};
-		F48F4C9825E432BB003E6C2A /* ViewUsers */ = {
+		F48F4C9825E432BB003E6C2A /* ViewUser */ = {
 			isa = PBXGroup;
 			children = (
-				F48F4C9925E432C8003E6C2A /* ViewUsers.swift */,
+				F48F4C9925E432C8003E6C2A /* ViewUser.swift */,
 			);
-			path = ViewUsers;
+			path = ViewUser;
 			sourceTree = "<group>";
 		};
 		F48F4CA525E43510003E6C2A /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
-				F48F4CB225E43AE5003E6C2A /* UserView */,
+				F4EA954B25E5A41D00F702ED /* Views */,
 				F48F4CA625E43519003E6C2A /* UserProfile.swift */,
 			);
 			path = UserProfile;
@@ -629,6 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				F49A66C825E5397100F7893C /* String.swift */,
+				F4EA958125E5B3D000F702ED /* Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -647,6 +663,64 @@
 				F49A66E225E53B6000F7893C /* MarkdownRepository.swift */,
 			);
 			path = MarkdownRepository;
+			sourceTree = "<group>";
+		};
+		F4EA954B25E5A41D00F702ED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA958825E5BBBC00F702ED /* FollowStatView */,
+				F48F4CB225E43AE5003E6C2A /* UserView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F4EA954C25E5A42700F702ED /* BottomNavRow */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA954D25E5A43500F702ED /* BottomNavRow.swift */,
+			);
+			path = BottomNavRow;
+			sourceTree = "<group>";
+		};
+		F4EA955E25E5AF9700F702ED /* SearchRepos */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA955F25E5AFA600F702ED /* SearchRepos.swift */,
+			);
+			path = SearchRepos;
+			sourceTree = "<group>";
+		};
+		F4EA956B25E5AFFA00F702ED /* SearchReposList */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA956C25E5B00D00F702ED /* SearchReposList.swift */,
+			);
+			path = SearchReposList;
+			sourceTree = "<group>";
+		};
+		F4EA957325E5B01E00F702ED /* UtilityViews */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA957925E5B2B300F702ED /* MiniRepoView */,
+				F4EA954C25E5A42700F702ED /* BottomNavRow */,
+			);
+			path = UtilityViews;
+			sourceTree = "<group>";
+		};
+		F4EA957925E5B2B300F702ED /* MiniRepoView */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA957A25E5B2C000F702ED /* MiniRepoView.swift */,
+			);
+			path = MiniRepoView;
+			sourceTree = "<group>";
+		};
+		F4EA958825E5BBBC00F702ED /* FollowStatView */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA958925E5BBCF00F702ED /* FollowStatViwe.swift */,
+			);
+			path = FollowStatView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -897,19 +971,25 @@
 				F48F4C9225E42DAD003E6C2A /* ProfileUser.swift in Sources */,
 				F48F4C4C25E4088E003E6C2A /* ProfileInteractor.swift in Sources */,
 				F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */,
+				F4EA956D25E5B00D00F702ED /* SearchReposList.swift in Sources */,
 				F49A657E25E4E62B00F7893C /* RepoRepository.swift in Sources */,
 				F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */,
+				F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */,
 				F48F4B5C25E3BD70003E6C2A /* ComplicationController.swift in Sources */,
 				F48F4C3C25E40837003E6C2A /* AppState.swift in Sources */,
+				F4EA958225E5B3D000F702ED /* Int.swift in Sources */,
 				F48F4C1825E40781003E6C2A /* keys.swift in Sources */,
-				F48F4C9A25E432C8003E6C2A /* ViewUsers.swift in Sources */,
+				F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */,
+				F48F4C9A25E432C8003E6C2A /* ViewUser.swift in Sources */,
 				F49A66D625E53B0800F7893C /* MarkdownInteractor.swift in Sources */,
 				F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */,
+				F4EA958A25E5BBCF00F702ED /* FollowStatViwe.swift in Sources */,
 				F48F4C4425E40862003E6C2A /* AuthUser.swift in Sources */,
 				F49A65A125E4E6E600F7893C /* UserRepos.swift in Sources */,
 				F49A66C925E5397100F7893C /* String.swift in Sources */,
 				F48F4CA725E43519003E6C2A /* UserProfile.swift in Sources */,
 				F49A65DC25E50CE500F7893C /* Markdown.swift in Sources */,
+				F4EA957B25E5B2C000F702ED /* MiniRepoView.swift in Sources */,
 				F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */,
 				F49A65BA25E4F71200F7893C /* FileDownloader.swift in Sources */,
 				F48F4B5425E3BD70003E6C2A /* github_watchApp.swift in Sources */,

@@ -1,20 +1,19 @@
 import SwiftUI
 
-struct UserRepos: View {
+struct SearchReposList: View {
     @EnvironmentObject var repoInteractor: RealRepoInteractor
-    let username: String
+    let name: String
     @State var loading = false
     @State var repos: [Repo] = []
     @State var canFetchMore = true
 
-    init(username: String) {
-        self.username = username
-        
+    init(name: String) {
+        self.name = name
     }
-    
-    func fetchUserRepos(){
+
+    func fetchReposByName() {
         loading = true
-        repoInteractor.requestReposOfUser(username: username, completed: { myRepos in
+        repoInteractor.requestReposByName(name: name, completed: { myRepos in
             if let myRepos = myRepos {
                 DispatchQueue.main.async {
                     repos += myRepos
@@ -33,27 +32,29 @@ struct UserRepos: View {
 
     var body: some View {
         ScrollView {
-            Text("\(username)").bold()
+            Text("\(name)").bold()
             Divider().padding(.vertical, 4)
             ForEach(repos, id: \.id) { repo in
                 NavigationLink(destination: RepoView(repo: repo)) {
-                    MiniRepoView(repo: repo)
+                    VStack {
+                        MiniRepoView(repo: repo)
+                    }
                 }
             }
-            if repos.count > 0 && canFetchMore{
-                BottomNavRow(buttonClick: fetchUserRepos, loading: $loading)
+            if repos.count > 0 && canFetchMore {
+                BottomNavRow(buttonClick: fetchReposByName, loading: $loading)
             }
         }
         .padding(.horizontal, 2)
         .onAppear(perform: {
             repoInteractor.resetPage()
-            fetchUserRepos()
+            fetchReposByName()
         })
     }
 }
 
-struct UserRepos_Previews: PreviewProvider {
+struct SearchReposList_Previews: PreviewProvider {
     static var previews: some View {
-        UserRepos(username: "iberatkaya")
+        SearchReposList(name: "playify")
     }
 }

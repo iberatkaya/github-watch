@@ -7,7 +7,7 @@ protocol ProfileInteractor {
 
 class RealProfileInteractor: ObservableObject, ProfileInteractor {
     private let appState: AppState
-    private let profileAuthRepository = RealProfileRepository()
+    private let profileRepository = RealProfileRepository()
     
     init(appState: AppState) {
         self.appState = appState
@@ -15,14 +15,18 @@ class RealProfileInteractor: ObservableObject, ProfileInteractor {
     
     func requestMyProfile(completed: @escaping (ProfileUser?) -> Void) {
         if let accessToken = appState.user.accessToken {
-            profileAuthRepository.requestMyProfile(accessToken: accessToken, completed: completed)
+            profileRepository.requestMyProfile(accessToken: accessToken, completed: completed)
         }
     }
     
-    
     func requestProfile(username: String, completed: @escaping (ProfileUser?) -> Void) {
         if let accessToken = appState.user.accessToken {
-            profileAuthRepository.requestProfile(username: username, accessToken: accessToken, completed: completed)
+            if username == appState.user.username {
+                profileRepository.requestMyProfile(accessToken: accessToken, completed: completed)
+            } else {
+                profileRepository.requestProfile(username: username, accessToken: accessToken, completed: completed)
+
+            }
         }
     }
     

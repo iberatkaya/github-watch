@@ -1,34 +1,32 @@
 import SwiftUI
 import WatchConnectivity
 
-class ConnectivityController: NSObject,  WCSessionDelegate, ObservableObject {
+class ConnectivityController: NSObject, WCSessionDelegate, ObservableObject {
     var session: WCSession?
     var appState: AppState
     var profileRepository = RealProfileRepository()
     
-    init(appState: AppState){
+    init(appState: AppState) {
         self.appState = appState
         super.init()
-        if(WCSession.isSupported()){
+        if WCSession.isSupported() {
             self.session = WCSession.default
-            self.session?.delegate = self
+            session?.delegate = self
             session?.activate()
         }
     }
     
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-    }
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {}
     
     func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
-        print(message)
         guard let type = message["type"] as? String else {
             return
         }
-        if(type == "sendOAuthToken"){
+        if type == "sendOAuthToken" {
             guard let token = message["oAuthToken"] as? String
-                else {
-                    return
-                }
+            else {
+                return
+            }
             DispatchQueue.main.async {
                 self.appState.user.accessToken = token
             }
@@ -39,7 +37,6 @@ class ConnectivityController: NSObject,  WCSessionDelegate, ObservableObject {
                     }
                 }
             })
-            
         }
     }
 }

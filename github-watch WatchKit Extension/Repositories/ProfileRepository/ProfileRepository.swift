@@ -15,18 +15,22 @@ struct RealProfileRepository: ProfileRepository {
         request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
         request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
         let session = URLSession.shared
-        session.dataTask(with: request)  { (data, response, error)  in
+        session.dataTask(with: request) { data, _, error in
             if error != nil {
                 print("error \(error)")
                 return
             }
-        
-            guard let data = data,
-                  let dict = JSON(data).dictionaryObject
-            else {
+            let jsonData = JSON(data)
+            if jsonData["message"].string == "Not Found" {
                 completed(nil)
                 return
             }
+            
+            guard let dict = jsonData.dictionaryObject else {
+                completed(nil)
+                return
+            }
+            
             let profileUser = ProfileUser(dict: dict)
             completed(profileUser)
         }.resume()
@@ -34,7 +38,6 @@ struct RealProfileRepository: ProfileRepository {
     
     func requestProfile(username: String, accessToken: String, completed: @escaping (ProfileUser?) -> Void) {
         let url = URL(string: "https://api.github.com/users/\(username)")!
-        print(url)
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -42,19 +45,23 @@ struct RealProfileRepository: ProfileRepository {
         request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
         
         let session = URLSession.shared
-        session.dataTask(with: request)  { (data, response, error)  in
+        session.dataTask(with: request) { data, _, error in
             if error != nil {
                 print("error \(error)")
                 return
             }
-            print(JSON(data))
-        
-            guard let data = data,
-                  let dict = JSON(data).dictionaryObject
-            else {
+            let jsonData = JSON(data)
+            
+            if jsonData["message"].string == "Not Found" {
                 completed(nil)
                 return
             }
+            
+            guard let dict = jsonData.dictionaryObject else {
+                completed(nil)
+                return
+            }
+            
             let profileUser = ProfileUser(dict: dict)
             completed(profileUser)
         }.resume()

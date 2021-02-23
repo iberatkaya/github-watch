@@ -6,29 +6,26 @@ struct UserProfile: View {
     @State var profileUser: ProfileUser?
     @State var loading = true
     let username: String
-    
+
     init(username: String) {
         self.username = username
     }
-    
+
     var body: some View {
         ScrollView {
-            if(loading){
+            if loading {
                 ProgressView()
             }
             if let profileUser = profileUser {
                 UserView(profileUser: profileUser)
-                NavigationLink(destination: UserRepos(username: username)){
-                    Text("View Repos")
-                }
-            } else if(!loading){
+            } else if !loading {
                 Text("User \(username) cound not be found!")
             }
         }
+        .padding(.horizontal, 2)
         .onAppear(perform: {
             profileInteractor.requestProfile(username: username, completed: { pUser in
                 if let pUser = pUser {
-                    print(pUser)
                     profileUser = pUser
                 }
                 loading = false

@@ -1,31 +1,24 @@
-//
-//  RepoView.swift
-//  github-watch WatchKit Extension
-//
-//  Created by Ibrahim Berat Kaya on 23.02.2021.
-//
-
 import SwiftUI
 
 struct RepoView: View {
-    let repo: Repo 
+    let repo: Repo
     
-    var body: some View { 
+    var body: some View {
         ScrollView {
             Text(repo.name)
                 .bold()
-                .font(.system(size: 20))
-                .padding(.bottom, 4)
+                .font(.system(size: 18))
+                .padding(.bottom, 6)
             if let description = repo.description {
                 HStack {
                     Text(description)
                         .foregroundColor(.gray)
                         .font(.system(size: 14))
                     Spacer()
-                }.padding(.bottom, 2)
+                }.padding(.bottom, 4)
             }
             
-            Divider().padding(.vertical, 6)
+            Divider().padding(.vertical, 2)
             
             VStack {
                 Text("Info")
@@ -41,7 +34,7 @@ struct RepoView: View {
                         .bold()
                         .font(.system(size: 12))
                     Spacer()
-                }
+                }.padding(.bottom, 1)
                 
                 if let language = repo.language {
                     HStack {
@@ -52,7 +45,7 @@ struct RepoView: View {
                             .bold()
                             .font(.system(size: 12))
                         Spacer()
-                    }
+                    }.padding(.bottom, 1)
                 }
                 
                 if let licenseName = repo.licenseName {
@@ -64,57 +57,62 @@ struct RepoView: View {
                             .bold()
                             .font(.system(size: 12))
                         Spacer()
-                    }
+                    }.padding(.bottom, 1)
                 }
                 
                 HStack {
                     Text("Stars:")
                         .foregroundColor(.gray)
                         .font(.system(size: 12))
-                    Text("\(repo.starCount)")
+                    Text("\(repo.starCount.roundedWithAbbreviations)")
                         .bold()
                         .font(.system(size: 12))
                     Spacer()
-                }
+                }.padding(.bottom, 1)
                 
                 HStack {
                     Text("Forks:")
                         .foregroundColor(.gray)
                         .font(.system(size: 12))
-                    Text("\(repo.forks)")
+                    Text("\(repo.forks.roundedWithAbbreviations)")
                         .bold()
                         .font(.system(size: 12))
                     Spacer()
-                }
+                }.padding(.bottom, 1)
                 
                 HStack {
                     Text("Issues:")
                         .foregroundColor(.gray)
                         .font(.system(size: 12))
-                    Text("\(repo.issueCount)")
+                    Text("\(repo.issueCount.roundedWithAbbreviations)")
                         .bold()
                         .font(.system(size: 12))
                     Spacer()
-                }
+                }.padding(.bottom, 1)
                 
                 HStack {
                     Text("Watchers:")
                         .foregroundColor(.gray)
                         .font(.system(size: 12))
-                    Text("\(repo.watcherCount)")
+                    Text("\(repo.watcherCount.roundedWithAbbreviations)")
                         .bold()
                         .font(.system(size: 12))
                     Spacer()
                 }
             }
             
-            Divider().padding(.vertical, 6)
+            Divider().padding(.vertical, 4)
             
             NavigationLink(
-                destination: Markdown(username: repo.ownerName, repoName: repo.name)){
-                Text("View Readme")
+                destination: Markdown(username: repo.ownerName, repoName: repo.name)) {
+                    Text("View Readme")
+            }.padding(.bottom, 4)
+            
+            NavigationLink(
+                destination: UserProfile(username: repo.ownerName)) {
+                    Text("View Author")
             }
-        }.padding(.horizontal, 4)
+        }.padding(.horizontal, 6)
     }
 }
 

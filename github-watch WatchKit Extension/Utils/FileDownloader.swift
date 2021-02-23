@@ -1,16 +1,15 @@
 import Foundation
 
-
-///Taken from https://stackoverflow.com/a/56580009
-///Authors: https://stackoverflow.com/users/10422074/endless and https://stackoverflow.com/users/6479704/bijender-singh-shekhawat
-class FileDownloader {
-
+/// Taken from https://stackoverflow.com/a/56580009
+/// Authors: https://stackoverflow.com/users/10422074/endless and https://stackoverflow.com/users/6479704/bijender-singh-shekhawat
+class FileDownloader
+{
     static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void)
     {
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
+        
         let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
-
+        
         if FileManager().fileExists(atPath: destinationUrl.path)
         {
             print("File already exists [\(destinationUrl.path)]")
@@ -26,23 +25,23 @@ class FileDownloader {
             else
             {
                 print("error saving file")
-                let error = NSError(domain:"Error saving file", code:1001, userInfo:nil)
+                let error = NSError(domain: "Error saving file", code: 1001, userInfo: nil)
                 completion(destinationUrl.path, error)
             }
         }
         else
         {
-            let error = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
+            let error = NSError(domain: "Error downloading file", code: 1002, userInfo: nil)
             completion(destinationUrl.path, error)
         }
     }
-
+    
     static func loadFileAsync(url: URL, completion: @escaping (String?, Error?) -> Void)
     {
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
-        let destinationUrl = documentsUrl.appendingPathComponent("\(Int.random(in: 0...99999999))_" + url.lastPathComponent)
-
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let destinationUrl = documentsUrl.appendingPathComponent("\(Int.random(in: 0 ... 99999999))_" + url.lastPathComponent)
+        
         if FileManager().fileExists(atPath: destinationUrl.path)
         {
             print("File already exists [\(destinationUrl.path)]")
@@ -54,19 +53,24 @@ class FileDownloader {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             let task = session.dataTask(with: request, completionHandler:
-            {
-                data, response, error in
-                if error == nil
                 {
-                    if let response = response as? HTTPURLResponse
+                    data, response, error in
+                    if error == nil
                     {
-                        if response.statusCode == 200
+                        if let response = response as? HTTPURLResponse
                         {
-                            if let data = data
+                            if response.statusCode == 200
                             {
-                                if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
+                                if let data = data
                                 {
-                                    completion(destinationUrl.path, error)
+                                    if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
+                                    {
+                                        completion(destinationUrl.path, error)
+                                    }
+                                    else
+                                    {
+                                        completion(destinationUrl.path, error)
+                                    }
                                 }
                                 else
                                 {
@@ -75,20 +79,15 @@ class FileDownloader {
                             }
                             else
                             {
-                                completion(destinationUrl.path, error)
+                                completion(destinationUrl.path, "\(response.statusCode)")
                             }
                         }
-                        else
-                        {
-                            completion(destinationUrl.path, "\(response.statusCode)")
-                        }
                     }
-                }
-                else
-                {
-                    completion(destinationUrl.path, error)
-                }
-            })
+                    else
+                    {
+                        completion(destinationUrl.path, error)
+                    }
+                })
             task.resume()
         }
     }

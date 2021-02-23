@@ -1,9 +1,9 @@
-import SwiftyJSON
 import Foundation
+import SwiftyJSON
 
 struct Repo: Identifiable {
     var id = UUID()
-    
+
     internal init(name: String, ownerName: String, issueCount: Int, forks: Int, starCount: Int, watcherCount: Int, description: String? = nil, language: String? = nil, licenseName: String? = nil) {
         self.name = name
         self.ownerName = ownerName
@@ -15,7 +15,7 @@ struct Repo: Identifiable {
         self.language = language
         self.licenseName = licenseName
     }
-    
+
     init(dict: [String: Any]) {
         let jsonDict = JSON(dict)
         self.name = jsonDict["name"].string ?? ""
@@ -28,7 +28,7 @@ struct Repo: Identifiable {
         self.language = jsonDict["language"].string
         self.licenseName = jsonDict["license"]["name"].string
     }
-    
+
     var name: String
     var ownerName: String
     var issueCount: Int
@@ -39,7 +39,6 @@ struct Repo: Identifiable {
     var language: String?
     var licenseName: String?
 }
-
 
 /**
  * Example Repo:

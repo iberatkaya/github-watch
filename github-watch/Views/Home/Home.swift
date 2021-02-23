@@ -7,15 +7,15 @@ struct Home: View {
     
     var body: some View {
         ScrollView {
-            Text("User has access token: " + (appState.user.accessToken ?? "false"))
-                .padding()
             if(appState.user.accessToken == nil){
                 NavigationLink(destination: GitHubAuth()
                                 .environmentObject(authInteractor)
                                 .environmentObject(connectivityController)){
-                    Text("Click me!")
+                    Text("Login To GitHub!").bold()
                 }
             } else {
+                Text("You are logged in")
+                    .padding()
                 Button("Sign Out", action: {
                     authInteractor.signOut()
                 })
@@ -26,6 +26,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Home().environmentObject(AppState())
     }
 }

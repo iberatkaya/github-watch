@@ -1,5 +1,5 @@
-import SwiftUI
 import Parma
+import SwiftUI
 
 struct Markdown: View {
     var username: String
@@ -7,23 +7,23 @@ struct Markdown: View {
     @State var downloading = true
     @State var markdown: String?
     @EnvironmentObject var markdownInteractor: RealMarkdownInteractor
-    
+
     init(username: String, repoName: String) {
         self.username = username
         self.repoName = repoName
     }
-    
+
     var body: some View {
         ScrollView {
             if downloading {
                 VStack {
-                    ProgressView()
+                    ProgressView().padding(.bottom, 4)
                     Text("Loading...")
                 }
             }
             if let markdown = markdown {
                 Parma(markdown)
-            } else if (!downloading) {
+            } else if !downloading {
                 Text("README not found!")
             }
         }
@@ -41,15 +41,6 @@ struct Markdown: View {
 
 struct Markdown_Previews: PreviewProvider {
     static var previews: some View {
-        Parma("""
-## Author
-
-👤 **Ibrahim Berat Kaya**
-
-- Github: [@iberatkaya](https://github.com/iberatkaya)
-- LinkedIn: [@ibrahim-berat-kaya](https://linkedin.com/in/ibrahim-berat-kaya)
-
-## 🤝 Contributing
-""")
+        Markdown(username: "iberatkaya", repoName: "playify")
     }
 }

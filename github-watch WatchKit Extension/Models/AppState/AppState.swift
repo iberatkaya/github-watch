@@ -6,9 +6,9 @@ class AppState: ObservableObject, Equatable, Encodable, Decodable {
     }
     
     init() {
-        if let userData = UserDefaults.standard.object(forKey:  "user") {
+        if let userData = UserDefaults.standard.object(forKey: "user") {
             if let myData = try? JSONDecoder().decode(AuthUser.self, from: userData as! Data) {
-                self.user = myData
+                user = myData
             }
         }
     }
@@ -20,7 +20,6 @@ class AppState: ObservableObject, Equatable, Encodable, Decodable {
             }
         }
     }
-    
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
