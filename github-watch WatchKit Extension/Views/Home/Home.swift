@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct Home: View {
-    @EnvironmentObject var profileInteractor: RealProfileInteractor
     @EnvironmentObject var authInteractor: RealAuthInteractor
     @EnvironmentObject var appState: AppState
     
@@ -15,9 +14,10 @@ struct Home: View {
             }
             else {
                 Text(appState.user.username ?? "User").padding()
-                NavigationLink(destination: ViewUsers().environmentObject(appState).environmentObject(profileInteractor)){
+                NavigationLink(destination: ViewUsers()){
                     Text("View Users")
                 }
+                Divider().padding(.vertical, 4)
                 Button("Sign Out", action: {
                     authInteractor.signOut()
                 })
@@ -30,6 +30,6 @@ struct Home_Previews: PreviewProvider {
     static var appState = AppState()
     
     static var previews: some View {
-        Home().environmentObject(appState)
+        Home().environmentObject(appState).environmentObject(RealAuthInteractor(appState: appState))
     }
 }

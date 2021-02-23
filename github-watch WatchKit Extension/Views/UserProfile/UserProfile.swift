@@ -5,7 +5,7 @@ struct UserProfile: View {
     @EnvironmentObject var appState: AppState
     @State var profileUser: ProfileUser?
     @State var loading = true
-    var username: String = ""
+    let username: String
     
     init(username: String) {
         self.username = username
@@ -18,6 +18,9 @@ struct UserProfile: View {
             }
             if let profileUser = profileUser {
                 UserView(profileUser: profileUser)
+                NavigationLink(destination: UserRepos(username: username)){
+                    Text("View Repos")
+                }
             } else if(!loading){
                 Text("User \(username) cound not be found!")
             }

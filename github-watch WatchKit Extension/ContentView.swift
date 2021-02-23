@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var profileInteractor: RealProfileInteractor
-    @ObservedObject var connectivityController: ConnectivityController
-    @ObservedObject var authInteractor: RealAuthInteractor
+    @EnvironmentObject var profileInteractor: RealProfileInteractor
+    @EnvironmentObject var connectivityController: ConnectivityController
+    @EnvironmentObject var authInteractor: RealAuthInteractor
+    @EnvironmentObject var repoInteractor: RealRepoInteractor
     @EnvironmentObject var appState: AppState
     
-    init(appState: AppState) {
-        profileInteractor = RealProfileInteractor(appState: appState)
-        connectivityController = ConnectivityController(appState: appState)
-        authInteractor = RealAuthInteractor(appState: appState)
-    }
     
     var body: some View {
-        Home().environmentObject(profileInteractor).environmentObject(connectivityController).environmentObject(authInteractor)
+        Home().environmentObject(profileInteractor).environmentObject(connectivityController).environmentObject(authInteractor).environmentObject(repoInteractor)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(appState: AppState())
+        ContentView()
     }
 }

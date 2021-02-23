@@ -14,7 +14,6 @@ class RealProfileInteractor: ObservableObject, ProfileInteractor {
     }
     
     func requestMyProfile(completed: @escaping (ProfileUser?) -> Void) {
-        print(appState.user)
         if let accessToken = appState.user.accessToken {
             profileAuthRepository.requestMyProfile(accessToken: accessToken, completed: completed)
         }
