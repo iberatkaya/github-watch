@@ -78,6 +78,10 @@ class FileDownloader {
                                 completion(destinationUrl.path, error)
                             }
                         }
+                        else
+                        {
+                            completion(destinationUrl.path, "\(response.statusCode)")
+                        }
                     }
                 }
                 else

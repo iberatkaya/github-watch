@@ -2,11 +2,11 @@ import Foundation
 import SwiftyJSON
 
 protocol RepoRepository {
-    func requestReposOfUser(username: String, accessToken: String, completed: @escaping (String?) -> Void) -> Void
+    func requestReposOfUser(username: String, accessToken: String, completed: @escaping ([Repo]?) -> Void) -> Void
 }
 
 struct RealRepoRepository: RepoRepository {
-    func requestReposOfUser(username: String, accessToken: String, completed: @escaping (String?) -> Void) {
+    func requestReposOfUser(username: String, accessToken: String, completed: @escaping ([Repo]?) -> Void) {
         let url = URL(string: "https://api.github.com/users/\(username)/repos")!
         print("request \(url)")
         var request = URLRequest(url: url)
@@ -28,12 +28,15 @@ struct RealRepoRepository: RepoRepository {
                 }
                 let myDict = JSON(data)
                 print(myDict)
+                var repos: [Repo] = []
                 
-                guard let accessToken = myDict["access_token"].string else {
-                    print("Access token does not exist")
-                    return
+                for item in myDict {
+                    if let dict = item.1.dictionaryObject {
+                        repos.append(Repo(dict: dict))
+                    }
                 }
-                completed(accessToken)
+                
+                completed(repos)
             }.resume()
         } catch {
             print(error.localizedDescription)

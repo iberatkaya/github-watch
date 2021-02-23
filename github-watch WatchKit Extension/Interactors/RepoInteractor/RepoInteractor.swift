@@ -1,7 +1,7 @@
 import SwiftUI
 
 protocol RepoInteractor {
-    func requestReposOfUser(username: String, completed: @escaping (String?) -> Void) -> Void
+    func requestReposOfUser(username: String, completed: @escaping ([Repo]?) -> Void) -> Void
 }
 
 class RealRepoInteractor: ObservableObject, RepoInteractor {
@@ -13,8 +13,7 @@ class RealRepoInteractor: ObservableObject, RepoInteractor {
         self.appState = appState
     }
     
-    func requestReposOfUser(username: String, completed: @escaping (String?) -> Void){
-        print(appState.user.accessToken)
+    func requestReposOfUser(username: String, completed: @escaping ([Repo]?) -> Void){
         if let accessToken = appState.user.accessToken {
             repoRepository.requestReposOfUser(username: username, accessToken: accessToken, completed: completed)
         }

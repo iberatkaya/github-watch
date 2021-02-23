@@ -10,6 +10,7 @@ import SwiftUI
 struct UserRepos: View {
     @EnvironmentObject var repoInteractor: RealRepoInteractor
     let username: String
+    @State var repos: [Repo] = []
 
     init(username: String) {
         self.username = username
@@ -17,24 +18,22 @@ struct UserRepos: View {
 
     var body: some View {
         ScrollView {
-            Text("\(username)")
-            Button("readme test", action: {
-                let url = URL(string: "https://raw.githubusercontent.com/iberatkaya/adearnings/main/README.md")
-                FileDownloader.loadFileAsync(url: url!) { (path, error) in
-                    print("error: \(error)")
-                    print("PDF File downloaded to : \(path!)")
-                    do {
-                    let text = try String(contentsOf: URL(string: "file://\(path!)")!, encoding: .utf8)
-                    print(text)
-                    } catch {
-                        print(error.localizedDescription)
+            Text("\(username)").bold()
+            Divider().padding(.vertical, 4)
+            ForEach(repos, id: \.id) { repo in
+                NavigationLink(destination: RepoView(repo: repo)) {
+                    Text(repo.name)
+                }
+            }
+        }.onAppear(perform: {
+            repoInteractor.requestReposOfUser(username: username, completed: { myRepos in
+                if let myRepos = myRepos {
+                    DispatchQueue.main.async {
+                        repos = myRepos
+                        print(myRepos)
                     }
-                    
-
                 }
             })
-        }.onAppear(perform: {
-            repoInteractor.requestReposOfUser(username: username, completed: {_ in})
         })
     }
 }

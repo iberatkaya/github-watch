@@ -54,6 +54,11 @@
 		F49A65B225E4F48300F7893C /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65B125E4F48300F7893C /* Repo.swift */; };
 		F49A65BA25E4F71200F7893C /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65B925E4F71200F7893C /* FileDownloader.swift */; };
 		F49A65DC25E50CE500F7893C /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65DB25E50CE500F7893C /* Markdown.swift */; };
+		F49A66A525E525C800F7893C /* Parma in Frameworks */ = {isa = PBXBuildFile; productRef = F49A66A425E525C800F7893C /* Parma */; };
+		F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66AC25E52EC900F7893C /* RepoView.swift */; };
+		F49A66C925E5397100F7893C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66C825E5397100F7893C /* String.swift */; };
+		F49A66D625E53B0800F7893C /* MarkdownInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */; };
+		F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66E225E53B6000F7893C /* MarkdownRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +169,10 @@
 		F49A65B125E4F48300F7893C /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		F49A65B925E4F71200F7893C /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		F49A65DB25E50CE500F7893C /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
+		F49A66AC25E52EC900F7893C /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		F49A66C825E5397100F7893C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownInteractor.swift; sourceTree = "<group>"; };
+		F49A66E225E53B6000F7893C /* MarkdownRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49A66A525E525C800F7893C /* Parma in Frameworks */,
 				F48F4CC125E43DC6003E6C2A /* URLImage in Frameworks */,
 				F48F4C6E25E40EE3003E6C2A /* SwiftyJSON in Frameworks */,
 			);
@@ -290,6 +300,7 @@
 				F48F4B5325E3BD70003E6C2A /* github_watchApp.swift */,
 				F48F4B5725E3BD70003E6C2A /* NotificationController.swift */,
 				F48F4B5925E3BD70003E6C2A /* NotificationView.swift */,
+				F49A66C725E5396400F7893C /* Extensions */,
 				F49A65B825E4F70700F7893C /* Utils */,
 				F48F4B5D25E3BD71003E6C2A /* Assets.xcassets */,
 				F48F4C3725E407CA003E6C2A /* Interactors */,
@@ -419,6 +430,7 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F49A66AB25E52EBE00F7893C /* RepoView */,
 				F49A65DA25E50CCE00F7893C /* Markdown */,
 				F49A658E25E4E6CE00F7893C /* UserRepos */,
 				F48F4CA525E43510003E6C2A /* UserProfile */,
@@ -439,6 +451,7 @@
 		F48F4C3725E407CA003E6C2A /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				F49A66D425E53AF400F7893C /* MarkdownInteractor */,
 				F49A65A725E4E8BD00F7893C /* RepoInteractor */,
 				F48F4C7925E420F2003E6C2A /* AuthInteractor */,
 				F48F4C5725E408B6003E6C2A /* ConnectivityController */,
@@ -450,6 +463,7 @@
 		F48F4C3825E407D1003E6C2A /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				F49A66E125E53B5500F7893C /* MarkdownRepository */,
 				F49A657C25E4E61F00F7893C /* RepoRepository */,
 				F48F4C5F25E40DB8003E6C2A /* ProfileRepository */,
 			);
@@ -603,6 +617,38 @@
 			path = Markdown;
 			sourceTree = "<group>";
 		};
+		F49A66AB25E52EBE00F7893C /* RepoView */ = {
+			isa = PBXGroup;
+			children = (
+				F49A66AC25E52EC900F7893C /* RepoView.swift */,
+			);
+			path = RepoView;
+			sourceTree = "<group>";
+		};
+		F49A66C725E5396400F7893C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F49A66C825E5397100F7893C /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F49A66D425E53AF400F7893C /* MarkdownInteractor */ = {
+			isa = PBXGroup;
+			children = (
+				F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */,
+			);
+			path = MarkdownInteractor;
+			sourceTree = "<group>";
+		};
+		F49A66E125E53B5500F7893C /* MarkdownRepository */ = {
+			isa = PBXGroup;
+			children = (
+				F49A66E225E53B6000F7893C /* MarkdownRepository.swift */,
+			);
+			path = MarkdownRepository;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -698,6 +744,7 @@
 			packageProductDependencies = (
 				F48F4C6D25E40EE3003E6C2A /* SwiftyJSON */,
 				F48F4CC025E43DC6003E6C2A /* URLImage */,
+				F49A66A425E525C800F7893C /* Parma */,
 			);
 			productName = "github-watch WatchKit Extension";
 			productReference = F48F4B4E25E3BD70003E6C2A /* github-watch WatchKit Extension.appex */;
@@ -744,6 +791,7 @@
 				F48F4BDA25E3C37D003E6C2A /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 				F48F4BE225E3C3A5003E6C2A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				F48F4CBF25E43DC6003E6C2A /* XCRemoteSwiftPackageReference "url-image" */,
+				F49A66A325E525C800F7893C /* XCRemoteSwiftPackageReference "Parma" */,
 			);
 			productRefGroup = F48F4B1E25E3BD6B003E6C2A /* Products */;
 			projectDirPath = "";
@@ -850,12 +898,16 @@
 				F48F4C4C25E4088E003E6C2A /* ProfileInteractor.swift in Sources */,
 				F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */,
 				F49A657E25E4E62B00F7893C /* RepoRepository.swift in Sources */,
+				F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */,
 				F48F4B5C25E3BD70003E6C2A /* ComplicationController.swift in Sources */,
 				F48F4C3C25E40837003E6C2A /* AppState.swift in Sources */,
 				F48F4C1825E40781003E6C2A /* keys.swift in Sources */,
 				F48F4C9A25E432C8003E6C2A /* ViewUsers.swift in Sources */,
+				F49A66D625E53B0800F7893C /* MarkdownInteractor.swift in Sources */,
+				F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */,
 				F48F4C4425E40862003E6C2A /* AuthUser.swift in Sources */,
 				F49A65A125E4E6E600F7893C /* UserRepos.swift in Sources */,
+				F49A66C925E5397100F7893C /* String.swift in Sources */,
 				F48F4CA725E43519003E6C2A /* UserProfile.swift in Sources */,
 				F49A65DC25E50CE500F7893C /* Markdown.swift in Sources */,
 				F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */,
@@ -1316,6 +1368,14 @@
 				minimumVersion = 2.2.3;
 			};
 		};
+		F49A66A325E525C800F7893C /* XCRemoteSwiftPackageReference "Parma" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iberatkaya/Parma";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1338,6 +1398,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F48F4CBF25E43DC6003E6C2A /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		F49A66A425E525C800F7893C /* Parma */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F49A66A325E525C800F7893C /* XCRemoteSwiftPackageReference "Parma" */;
+			productName = Parma;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
