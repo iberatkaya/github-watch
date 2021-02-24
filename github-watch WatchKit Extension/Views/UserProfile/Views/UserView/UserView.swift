@@ -12,7 +12,7 @@ struct UserView: View {
                     URLImage(url: url,
                              inProgress: { progress -> Text in // Display progress
                                  if let progress = progress {
-                                     return Text(String(format: "%.0f", progress) + "%")
+                                     return Text(String(format: "%.0f", progress * 100) + "%")
                                  }
                                  else {
                                      return Text("Loading...")

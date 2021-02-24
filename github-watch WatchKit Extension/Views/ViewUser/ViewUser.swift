@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ViewUser: View {
-    @State private var username: String = "kaplanbar"
+    @State private var username: String = ""
 
     var body: some View {
         ScrollView {

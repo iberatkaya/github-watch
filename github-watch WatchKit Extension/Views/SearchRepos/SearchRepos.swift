@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SearchRepos: View {
-    @State private var name: String = "Flutter"
+    @State private var name: String = ""
 
     var body: some View {
         ScrollView {
