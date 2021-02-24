@@ -8,22 +8,6 @@ struct GitHubAuth: View {
     @EnvironmentObject var authInteractor: RealAuthInteractor
     @EnvironmentObject var connectivityController: ConnectivityController
 
-    init() {
-        print("clear cache")
-        URLCache.shared.removeAllCachedResponses()
-
-        if let cookies = HTTPCookieStorage.shared.cookies {
-            for cookie in cookies {
-                print("\(cookie)")
-            }
-        }
-
-        let storage = HTTPCookieStorage.shared
-        for cookie in storage.cookies! {
-            storage.deleteCookie(cookie)
-        }
-    }
-
     var body: some View {
         WebView(webView: webViewStore.webView)
             .navigationBarTitle(Text(verbatim: webViewStore.url?.absoluteString ?? ""), displayMode: .inline)
