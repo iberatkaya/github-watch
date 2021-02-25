@@ -1,6 +1,6 @@
 # Git Watch
 
-Git Watch is a GitHub client app for watchOS. It uses GitHub's [REST API](https://docs.github.com/en/rest) and [OAuth authentication](https://docs.github.com/en/rest/guides/basics-of-authentication).
+Git Watch is a GitHub client app for watchOS. It is a SwiftUI app that uses GitHub's [REST API](https://docs.github.com/en/rest) and [OAuth authentication](https://docs.github.com/en/rest/guides/basics-of-authentication).
 
 ## Table of contents
 
@@ -29,10 +29,11 @@ You may find more detailed information at [GitHub's documentation](https://docs.
 
 - [x] View user and organization profiles.
 - [x] View user and organization repositories.
-- [x] View user and organization stats (repo count/followers/following etc.)
+- [x] View user and organization stats (repo count/followers/following etc.).
 - [x] Search for repositories.
 - [x] View repository description, stats (stars/forks/issues etc.), and README.
 - [ ] Search for users.
+- [ ] View a user's organizations.
 - [ ] View commits.
 - [ ] View issues.
 - [ ] View pull requests.
