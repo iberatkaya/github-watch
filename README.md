@@ -32,8 +32,8 @@ You may find more detailed information at [GitHub's documentation](https://docs.
 - [x] View user and organization stats (repo count/followers/following etc.).
 - [x] Search for repositories.
 - [x] View repository description, stats (stars/forks/issues etc.), and README.
+- [x] View a user's organizations.
 - [ ] Search for users.
-- [ ] View a user's organizations.
 - [ ] View commits.
 - [ ] View issues.
 - [ ] View pull requests.
