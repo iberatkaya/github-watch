@@ -1,8 +1,9 @@
+import Foundation
 import SwiftyJSON
 
-struct ProfileUser {
-    init(login: String? = nil, name: String? = nil, bio: String? = nil, avatarUrl: String? = nil, email: String? = nil, followers: Int? = nil, following: Int? = nil, company: String? = nil, publicRepoCount: Int? = nil, privateRepoCount: Int? = nil, location: String? = nil, userType: String? = nil) {
-        self.login = login
+struct ProfileUser: Identifiable {
+    init(username: String? = nil, name: String? = nil, bio: String? = nil, avatarUrl: String? = nil, email: String? = nil, followers: Int? = nil, following: Int? = nil, company: String? = nil, publicRepoCount: Int? = nil, privateRepoCount: Int? = nil, location: String? = nil, userType: String? = nil) {
+        self.username = username
         self.name = name
         self.bio = bio
         self.avatarUrl = avatarUrl
@@ -18,7 +19,7 @@ struct ProfileUser {
 
     init(dict: [String: Any]) {
         let jsonDict = JSON(dict)
-        self.login = jsonDict["login"].string
+        self.username = jsonDict["login"].string
         self.name = jsonDict["name"].string
         self.bio = jsonDict["bio"].string
         self.avatarUrl = jsonDict["avatar_url"].string
@@ -31,8 +32,9 @@ struct ProfileUser {
         self.location = jsonDict["location"].string
         self.userType = jsonDict["type"].string
     }
-
-    var login: String?
+    
+    var id = UUID()
+    var username: String?
     var name: String?
     var bio: String?
     var avatarUrl: String?

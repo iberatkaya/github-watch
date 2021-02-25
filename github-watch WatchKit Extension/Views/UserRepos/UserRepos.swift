@@ -6,27 +6,28 @@ struct UserRepos: View {
     @State var loading = false
     @State var repos: [Repo] = []
     @State var canFetchMore = true
+    @State var error: String?
 
     init(username: String) {
         self.username = username
-        
     }
-    
-    func fetchUserRepos(){
+
+    func fetchUserRepos() {
         loading = true
         repoInteractor.requestReposOfUser(username: username, completed: { myRepos in
-            if let myRepos = myRepos {
-                DispatchQueue.main.async {
-                    repos += myRepos
-                    if myRepos.isEmpty {
-                        canFetchMore = false
-                    }
-                    loading = false
+            DispatchQueue.main.async {
+                repos += myRepos
+                if myRepos.isEmpty {
+                    canFetchMore = false
                 }
-            } else {
-                DispatchQueue.main.async {
-                    loading = false
-                }
+                loading = false
+                error = nil
+            }
+
+        }, onError: { err in
+            DispatchQueue.main.async {
+                loading = false
+                error = err
             }
         })
     }
@@ -40,13 +41,14 @@ struct UserRepos: View {
                     MiniRepoView(repo: repo)
                 }
             }
-            if repos.count > 0 && canFetchMore{
+            if repos.count > 0 && canFetchMore {
                 BottomNavRow(buttonClick: fetchUserRepos, loading: $loading)
             }
         }
+        .navigationTitle(username)
         .padding(.horizontal, 2)
         .onAppear(perform: {
-            repoInteractor.resetPage()
+            repoInteractor.resetRequestReposOfUserPage()
             fetchUserRepos()
         })
     }

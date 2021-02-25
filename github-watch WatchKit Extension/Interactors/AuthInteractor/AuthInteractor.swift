@@ -10,7 +10,8 @@ class RealAuthInteractor: ObservableObject, AuthInteractor {
     init(appState: AppState) {
         self.appState = appState
     }
-
+    
+    ///Sign the user out.
     func signOut() {
         appState.user.accessToken = nil
     }

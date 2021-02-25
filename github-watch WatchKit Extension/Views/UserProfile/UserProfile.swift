@@ -5,6 +5,7 @@ struct UserProfile: View {
     @EnvironmentObject var appState: AppState
     @State var profileUser: ProfileUser?
     @State var loading = true
+    @State var error: String?
     let username: String
 
     init(username: String) {
@@ -21,14 +22,22 @@ struct UserProfile: View {
             } else if !loading {
                 Text("User \(username) cound not be found!")
             }
+            if let error = error {
+                Text(error).padding(.horizontal, 4)
+            }
         }
+        .navigationTitle(username)
         .padding(.horizontal, 2)
         .onAppear(perform: {
             profileInteractor.requestProfile(username: username, completed: { pUser in
-                if let pUser = pUser {
-                    profileUser = pUser
-                }
+                profileUser = pUser
                 loading = false
+                error = nil
+            }, onError: { err in
+                DispatchQueue.main.async {
+                    loading = false
+                    error = err
+                }
             })
         })
     }

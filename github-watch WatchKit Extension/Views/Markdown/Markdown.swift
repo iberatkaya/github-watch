@@ -27,6 +27,7 @@ struct Markdown: View {
                 Text("README not found!")
             }
         }
+        .navigationTitle(repoName)
         .padding(.horizontal, 8)
         .onAppear(perform: {
             markdownInteractor.requestREADME(username: username, repo: repoName, completed: { markdownText in

@@ -2,85 +2,79 @@ import Foundation
 import SwiftyJSON
 
 protocol RepoRepository {
-    func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]?) -> Void) -> Void
-    
-    func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]?) -> Void) -> Void
+    func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) -> Void
+
+    func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) -> Void
 }
 
 struct RealRepoRepository: RepoRepository {
-    func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]?) -> Void) {
+    ///Search for repositories.
+    ///
+    ///- Parameters:
+    ///     - name: The searched term.
+    ///     - accessToken: The GitHub user's OAuth accessToken.
+    ///     - page: The page of the request.
+    ///     - completed: The clouse to call when the repositories are fetched.
+    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
-        let url = URL(string: "https://api.github.com/search/repositories?q=\(name)&page=\(page)&per_page=\(itemsPerPage)")!
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
-        request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
-        do {
-            let session = URLSession.shared
-            session.dataTask(with: request) { data, _, error in
-                if error != nil {
-                    print("error \(error)")
-                    return
-                }
-                guard let data = data else {
-                    completed(nil)
-                    return
-                }
-                let myDict = JSON(data)
-                
-                var repos: [Repo] = []
+        let request = urlRequest(url: "https://api.github.com/search/repositories?q=\(name)&page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
 
-                for item in myDict["items"] {
-                    if let dict = item.1.dictionaryObject {
-                        repos.append(Repo(dict: dict))
-                    }
-                }
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+            guard let data = data else {
+                onError("Data could not be found")
+                return
+            }
+            let myDict = JSON(data)
 
-                completed(repos)
-            }.resume()
-        } catch {
-            print(error.localizedDescription)
-            completed(nil)
-        }
+            var repos: [Repo] = []
+
+            for item in myDict["items"] {
+                if let dict = item.1.dictionaryObject {
+                    repos.append(Repo(dict: dict))
+                }
+            }
+            completed(repos)
+        }.resume()
     }
-    
-    func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]?) -> Void) {
+
+    ///Request a user's repositories using the user's username.
+    ///
+    ///- Parameters:
+    ///     - username: The GitHub username of the user.
+    ///     - accessToken: The GitHub user's OAuth accessToken.
+    ///     - page: The page of the request.
+    ///     - completed: The clouse to call when the repositories are fetched.
+    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
-        let url = URL(string: "https://api.github.com/users/\(username)/repos?page=\(page)&per_page=\(itemsPerPage)")!
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
-        request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
-        do {
-            let session = URLSession.shared
-            session.dataTask(with: request) { data, _, error in
-                if error != nil {
-                    print("error \(error)")
-                    return
-                }
-                guard let data = data else {
-                    completed(nil)
-                    return
-                }
-                let myDict = JSON(data)
-                
-                var repos: [Repo] = []
+        let request = urlRequest(url: "https://api.github.com/users/\(username)/repos?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
 
-                for item in myDict {
-                    if let dict = item.1.dictionaryObject {
-                        repos.append(Repo(dict: dict))
-                    }
-                }
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+            
+            let myDict = JSON(data)
 
-                completed(repos)
-            }.resume()
-        } catch {
-            print(error.localizedDescription)
-            completed(nil)
-        }
+            var repos: [Repo] = []
+
+            for item in myDict {
+                if let dict = item.1.dictionaryObject {
+                    repos.append(Repo(dict: dict))
+                }
+            }
+
+            completed(repos)
+        }.resume()
     }
 }

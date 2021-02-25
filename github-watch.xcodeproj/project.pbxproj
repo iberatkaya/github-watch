@@ -65,6 +65,10 @@
 		F4EA957B25E5B2C000F702ED /* MiniRepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA957A25E5B2C000F702ED /* MiniRepoView.swift */; };
 		F4EA958225E5B3D000F702ED /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA958125E5B3D000F702ED /* Int.swift */; };
 		F4EA958A25E5BBCF00F702ED /* FollowStatViwe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA958925E5BBCF00F702ED /* FollowStatViwe.swift */; };
+		F4F2A40D25E7ABFC00C8B943 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F2A40C25E7ABFC00C8B943 /* Utils.swift */; };
+		F4F2A41A25E7AF5400C8B943 /* OrganizationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F2A41925E7AF5400C8B943 /* OrganizationsList.swift */; };
+		F4F2A43125E7B83100C8B943 /* MiniUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F2A43025E7B83100C8B943 /* MiniUserView.swift */; };
+		F4F2A43925E7B96E00C8B943 /* UserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F2A43825E7B96E00C8B943 /* UserImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +189,10 @@
 		F4EA957A25E5B2C000F702ED /* MiniRepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniRepoView.swift; sourceTree = "<group>"; };
 		F4EA958125E5B3D000F702ED /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		F4EA958925E5BBCF00F702ED /* FollowStatViwe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowStatViwe.swift; sourceTree = "<group>"; };
+		F4F2A40C25E7ABFC00C8B943 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F4F2A41925E7AF5400C8B943 /* OrganizationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsList.swift; sourceTree = "<group>"; };
+		F4F2A43025E7B83100C8B943 /* MiniUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniUserView.swift; sourceTree = "<group>"; };
+		F4F2A43825E7B96E00C8B943 /* UserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +450,7 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4F2A41825E7AF4200C8B943 /* OrganizationsList */,
 				F4EA957325E5B01E00F702ED /* UtilityViews */,
 				F4EA956B25E5AFFA00F702ED /* SearchReposList */,
 				F4EA955E25E5AF9700F702ED /* SearchRepos */,
@@ -478,6 +487,7 @@
 		F48F4C3825E407D1003E6C2A /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				F4F2A40B25E7ABF400C8B943 /* Utils */,
 				F49A66E125E53B5500F7893C /* MarkdownRepository */,
 				F49A657C25E4E61F00F7893C /* RepoRepository */,
 				F48F4C5F25E40DB8003E6C2A /* ProfileRepository */,
@@ -701,6 +711,8 @@
 		F4EA957325E5B01E00F702ED /* UtilityViews */ = {
 			isa = PBXGroup;
 			children = (
+				F4F2A43725E7B96300C8B943 /* UserImage */,
+				F4F2A42F25E7B81E00C8B943 /* MiniUserView */,
 				F4EA957925E5B2B300F702ED /* MiniRepoView */,
 				F4EA954C25E5A42700F702ED /* BottomNavRow */,
 			);
@@ -721,6 +733,38 @@
 				F4EA958925E5BBCF00F702ED /* FollowStatViwe.swift */,
 			);
 			path = FollowStatView;
+			sourceTree = "<group>";
+		};
+		F4F2A40B25E7ABF400C8B943 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F4F2A40C25E7ABFC00C8B943 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F4F2A41825E7AF4200C8B943 /* OrganizationsList */ = {
+			isa = PBXGroup;
+			children = (
+				F4F2A41925E7AF5400C8B943 /* OrganizationsList.swift */,
+			);
+			path = OrganizationsList;
+			sourceTree = "<group>";
+		};
+		F4F2A42F25E7B81E00C8B943 /* MiniUserView */ = {
+			isa = PBXGroup;
+			children = (
+				F4F2A43025E7B83100C8B943 /* MiniUserView.swift */,
+			);
+			path = MiniUserView;
+			sourceTree = "<group>";
+		};
+		F4F2A43725E7B96300C8B943 /* UserImage */ = {
+			isa = PBXGroup;
+			children = (
+				F4F2A43825E7B96E00C8B943 /* UserImage.swift */,
+			);
+			path = UserImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -971,15 +1015,19 @@
 				F48F4C9225E42DAD003E6C2A /* ProfileUser.swift in Sources */,
 				F48F4C4C25E4088E003E6C2A /* ProfileInteractor.swift in Sources */,
 				F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */,
+				F4F2A41A25E7AF5400C8B943 /* OrganizationsList.swift in Sources */,
+				F4F2A40D25E7ABFC00C8B943 /* Utils.swift in Sources */,
 				F4EA956D25E5B00D00F702ED /* SearchReposList.swift in Sources */,
 				F49A657E25E4E62B00F7893C /* RepoRepository.swift in Sources */,
 				F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */,
 				F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */,
 				F48F4B5C25E3BD70003E6C2A /* ComplicationController.swift in Sources */,
+				F4F2A43125E7B83100C8B943 /* MiniUserView.swift in Sources */,
 				F48F4C3C25E40837003E6C2A /* AppState.swift in Sources */,
 				F4EA958225E5B3D000F702ED /* Int.swift in Sources */,
 				F48F4C1825E40781003E6C2A /* keys.swift in Sources */,
 				F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */,
+				F4F2A43925E7B96E00C8B943 /* UserImage.swift in Sources */,
 				F48F4C9A25E432C8003E6C2A /* ViewUser.swift in Sources */,
 				F49A66D625E53B0800F7893C /* MarkdownInteractor.swift in Sources */,
 				F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */,

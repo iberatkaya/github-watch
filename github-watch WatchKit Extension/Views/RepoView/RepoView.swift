@@ -112,7 +112,9 @@ struct RepoView: View {
                 destination: UserProfile(username: repo.ownerName)) {
                     Text("View Author")
             }
-        }.padding(.horizontal, 6)
+        }
+        .navigationTitle(repo.name)
+        .padding(.horizontal, 6)
     }
 }
 

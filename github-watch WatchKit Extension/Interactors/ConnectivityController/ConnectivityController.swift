@@ -32,11 +32,11 @@ class ConnectivityController: NSObject, WCSessionDelegate, ObservableObject {
             }
             profileRepository.requestMyProfile(accessToken: token, completed: { profileUser in
                 DispatchQueue.main.async {
-                    if let name = profileUser?.login {
+                    if let name = profileUser.username {
                         self.appState.user.username = name
                     }
                 }
-            })
+            }, onError: {_ in})
         }
     }
 }

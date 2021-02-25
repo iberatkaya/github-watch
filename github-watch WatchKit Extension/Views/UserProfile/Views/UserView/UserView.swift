@@ -8,30 +8,8 @@ struct UserView: View {
         VStack {
             // User info and profile image
             VStack {
-                if let urlStr = profileUser.avatarUrl, let url = URL(string: urlStr) {
-                    URLImage(url: url,
-                             inProgress: { progress -> Text in // Display progress
-                                 if let progress = progress {
-                                     return Text(String(format: "%.0f", progress * 100) + "%")
-                                 }
-                                 else {
-                                     return Text("Loading...")
-                                 }
-                             },
-                             failure: { error, retry in // Display error and retry button
-                                 VStack {
-                                     Text(error.localizedDescription)
-                                     Button("Retry", action: retry)
-                                 }
-                             },
-                             content: { image in
-                                 image
-                                     .resizable()
-                                     .scaledToFill()
-                                     .frame(width: 120.0, height: 120)
-                                     .clipShape(Circle())
-                             })
-                        .cornerRadius(12)
+                if let urlStr = profileUser.avatarUrl {
+                    UserImage(url: urlStr)
                         .padding(.bottom, 8)
                 }
                 if let name = profileUser.name {
@@ -41,7 +19,7 @@ struct UserView: View {
                         .padding(.bottom, 2)
                 }
                 
-                if let username = profileUser.login {
+                if let username = profileUser.username {
                     Text("@\(username)")
                         .foregroundColor(.gray)
                         .font(Font.system(size: 11))
@@ -98,6 +76,18 @@ struct UserView: View {
                         Spacer()
                     }.padding(.bottom, 2)
                 }
+                if let email = profileUser.email {
+                    HStack {
+                        Text("Email:")
+                            .font(Font.system(size: 11))
+                            .foregroundColor(.gray)
+                        
+                        Text("\(email)")
+                            .font(Font.system(size: 11))
+                            .bold()
+                        Spacer()
+                    }.padding(.bottom, 2)
+                }
                 if let company = profileUser.company {
                     HStack {
                         Text("Company:")
@@ -123,7 +113,12 @@ struct UserView: View {
                 }
             }.padding(.bottom, 6)
             
-            if let username = profileUser.login {
+            if let username = profileUser.username {
+                if profileUser.userType != "Organization" {
+                    NavigationLink(destination: OrganizationsList(username: username)) {
+                        Text("Organizations")
+                    }
+                }
                 NavigationLink(destination: UserRepos(username: username)) {
                     Text("View Repos")
                 }
@@ -133,9 +128,9 @@ struct UserView: View {
 }
 
 struct UserView_Previews: PreviewProvider {
-    static var profileUser1 = ProfileUser(login: "iberatkaya", name: "Ibrahim Berat Kaya", bio: "I\'m interested in Flutter, Node.js, React Native, React.js, Swift & SwiftUI, Express.js, and Rust.", avatarUrl: "https://avatars.githubusercontent.com/u/34488374?v=4", email: "beratkaya1998@gmail.com", followers: 23, following: 21, company: "ITU", publicRepoCount: 38, privateRepoCount: 24, location: "Istanbul", userType: "User")
+    static var profileUser1 = ProfileUser(username: "iberatkaya", name: "Ibrahim Berat Kaya", bio: "I\'m interested in Flutter, Node.js, React Native, React.js, Swift & SwiftUI, Express.js, and Rust.", avatarUrl: "https://avatars.githubusercontent.com/u/34488374?v=4", email: "beratkaya1998@gmail.com", followers: 23, following: 21, company: "ITU", publicRepoCount: 38, privateRepoCount: 24, location: "Istanbul", userType: "User")
     
-    static var profileUser2 = ProfileUser(login: "flutter", name: "Flutter", bio: nil, avatarUrl: "https://avatars.githubusercontent.com/u/14101776?v=4", email: nil, followers: 0, following: 0, company: nil, publicRepoCount: 34, location: nil, userType: "Organization")
+    static var profileUser2 = ProfileUser(username: "flutter", name: "Flutter", bio: nil, avatarUrl: "https://avatars.githubusercontent.com/u/14101776?v=4", email: nil, followers: 0, following: 0, company: nil, publicRepoCount: 34, location: nil, userType: "Organization")
     
     static var previews: some View {
         ScrollView {

@@ -1,23 +1,23 @@
 import SwiftUI
 
-struct SearchReposList: View {
-    @EnvironmentObject var repoInteractor: RealRepoInteractor
-    let name: String
+struct OrganizationsList: View {
+    @EnvironmentObject var profileInteractor: RealProfileInteractor
+    let username: String
     @State var loading = false
-    @State var repos: [Repo] = []
+    @State var organizations: [ProfileUser] = []
     @State var canFetchMore = true
     @State var error: String?
 
-    init(name: String) {
-        self.name = name
+    init(username: String) {
+        self.username = username
     }
 
     func fetchReposByName() {
         loading = true
-        repoInteractor.requestReposByName(name: name, completed: { myRepos in
+        profileInteractor.requestUserOrganizations(username: username, completed: { orgs in
             DispatchQueue.main.async {
-                repos += myRepos
-                if myRepos.isEmpty {
+                organizations += orgs
+                if orgs.isEmpty {
                     canFetchMore = false
                 }
                 error = nil
@@ -33,32 +33,33 @@ struct SearchReposList: View {
 
     var body: some View {
         ScrollView {
-            Text("\(name)").bold()
+            Text("\(username)").bold()
             Divider().padding(.vertical, 4)
-            ForEach(repos, id: \.id) { repo in
-                NavigationLink(destination: RepoView(repo: repo)) {
-                    VStack {
-                        MiniRepoView(repo: repo)
-                    }
+            ForEach(organizations, id: \.id) { org in
+                NavigationLink(destination: UserProfile(username: org.username!)) {
+                    MiniUserView(user: org)
                 }
             }
-            if repos.count > 0 && canFetchMore {
+            if organizations.count > 0 && canFetchMore {
                 BottomNavRow(buttonClick: fetchReposByName, loading: $loading)
             }
             if let error = error {
                 Text(error).padding(.horizontal, 4)
             }
+            if loading {
+                ProgressView()
+            }
         }
-        .navigationTitle(name)
+        .navigationTitle(username)
         .padding(.horizontal, 2)
         .onAppear(perform: {
-            repoInteractor.resetRequestReposByNamePage()
+            profileInteractor.resetRequestUserOrganizationsPage()
             fetchReposByName()
         })
     }
 }
 
-struct SearchReposList_Previews: PreviewProvider {
+struct OrganizationsListList_Previews: PreviewProvider {
     static var previews: some View {
         SearchReposList(name: "playify")
     }
