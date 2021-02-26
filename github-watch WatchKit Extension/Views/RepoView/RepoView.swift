@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RepoView: View {
     let repo: Repo
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
         ScrollView {
@@ -104,12 +105,12 @@ struct RepoView: View {
             Divider().padding(.vertical, 4)
             
             NavigationLink(
-                destination: Markdown(username: repo.ownerName, repoName: repo.name)) {
+                destination: Markdown(markdownViewModel: RealMarkdownViewModel(appState: appState), username: repo.ownerName, repoName: repo.name)) {
                     Text("View Readme")
             }.padding(.bottom, 4)
             
             NavigationLink(
-                destination: UserProfile(username: repo.ownerName)) {
+                destination: UserProfile(profileViewModel: RealProfileViewModel(appState: appState), username: repo.ownerName)) {
                     Text("View Author")
             }
         }

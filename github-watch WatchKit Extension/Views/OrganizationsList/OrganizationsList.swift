@@ -1,66 +1,48 @@
 import SwiftUI
 
 struct OrganizationsList: View {
-    @EnvironmentObject var profileInteractor: RealProfileInteractor
+    @ObservedObject var organizationViewModel: RealOrganizationViewModel
+    @EnvironmentObject var appState: AppState
     let username: String
-    @State var loading = false
-    @State var organizations: [ProfileUser] = []
-    @State var canFetchMore = true
-    @State var error: String?
 
-    init(username: String) {
+    init(organizationViewModel: RealOrganizationViewModel, username: String) {
         self.username = username
+        self.organizationViewModel = organizationViewModel
     }
 
-    func fetchReposByName() {
-        loading = true
-        profileInteractor.requestUserOrganizations(username: username, completed: { orgs in
-            DispatchQueue.main.async {
-                organizations += orgs
-                if orgs.isEmpty {
-                    canFetchMore = false
-                }
-                error = nil
-                loading = false
-            }
-        }, onError: { err in
-            DispatchQueue.main.async {
-                loading = false
-                error = err
-            }
-        })
+    func fetchOrganizations() {
+        organizationViewModel.requestUserOrganizations(username: username)
     }
 
     var body: some View {
         ScrollView {
             Text("\(username)").bold()
             Divider().padding(.vertical, 4)
-            ForEach(organizations, id: \.id) { org in
-                NavigationLink(destination: UserProfile(username: org.username!)) {
+            ForEach(organizationViewModel.organizations, id: \.id) { org in
+                NavigationLink(destination: UserProfile(profileViewModel: RealProfileViewModel(appState: appState), username: org.username!)) {
                     MiniUserView(user: org)
                 }
             }
-            if organizations.count > 0 && canFetchMore {
-                BottomNavRow(buttonClick: fetchReposByName, loading: $loading)
+            if organizationViewModel.organizations.count > 0 && organizationViewModel.canFetchMore {
+                BottomNavRow(buttonClick: fetchOrganizations, loading: $organizationViewModel.loading)
             }
-            if let error = error {
+            if let error = organizationViewModel.error {
                 Text(error).padding(.horizontal, 4)
             }
-            if loading {
+            if organizationViewModel.loading {
                 ProgressView()
             }
         }
         .navigationTitle(username)
         .padding(.horizontal, 2)
         .onAppear(perform: {
-            profileInteractor.resetRequestUserOrganizationsPage()
-            fetchReposByName()
+            fetchOrganizations()
         })
     }
 }
 
 struct OrganizationsListList_Previews: PreviewProvider {
     static var previews: some View {
-        SearchReposList(name: "playify")
+        OrganizationsList(organizationViewModel: RealOrganizationViewModel(appState: AppState()), username: "iberatkaya")
     }
 }

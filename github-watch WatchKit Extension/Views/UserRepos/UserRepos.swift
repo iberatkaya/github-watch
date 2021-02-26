@@ -1,54 +1,34 @@
 import SwiftUI
 
 struct UserRepos: View {
-    @EnvironmentObject var repoInteractor: RealRepoInteractor
+    @ObservedObject var repoViewModel: RealRepoViewModel
     let username: String
-    @State var loading = false
-    @State var repos: [Repo] = []
-    @State var canFetchMore = true
-    @State var error: String?
 
-    init(username: String) {
+    init(repoViewModel: RealRepoViewModel, username: String) {
         self.username = username
+        self.repoViewModel = repoViewModel
     }
 
     func fetchUserRepos() {
-        loading = true
-        repoInteractor.requestReposOfUser(username: username, completed: { myRepos in
-            DispatchQueue.main.async {
-                repos += myRepos
-                if myRepos.isEmpty {
-                    canFetchMore = false
-                }
-                loading = false
-                error = nil
-            }
-
-        }, onError: { err in
-            DispatchQueue.main.async {
-                loading = false
-                error = err
-            }
-        })
+        repoViewModel.requestReposOfUser(username: username)
     }
 
     var body: some View {
         ScrollView {
             Text("\(username)").bold()
             Divider().padding(.vertical, 4)
-            ForEach(repos, id: \.id) { repo in
+            ForEach(repoViewModel.repos, id: \.id) { repo in
                 NavigationLink(destination: RepoView(repo: repo)) {
                     MiniRepoView(repo: repo)
                 }
             }
-            if repos.count > 0 && canFetchMore {
-                BottomNavRow(buttonClick: fetchUserRepos, loading: $loading)
+            if repoViewModel.repos.count > 0 && repoViewModel.canFetchMore {
+                BottomNavRow(buttonClick: fetchUserRepos, loading: $repoViewModel.loading)
             }
         }
         .navigationTitle(username)
         .padding(.horizontal, 2)
         .onAppear(perform: {
-            repoInteractor.resetRequestReposOfUserPage()
             fetchUserRepos()
         })
     }
@@ -56,6 +36,6 @@ struct UserRepos: View {
 
 struct UserRepos_Previews: PreviewProvider {
     static var previews: some View {
-        UserRepos(username: "iberatkaya")
+        UserRepos(repoViewModel: RealRepoViewModel(appState: AppState()), username: "iberatkaya")
     }
 }

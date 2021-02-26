@@ -5,7 +5,7 @@ struct GitHubAuth: View {
     @StateObject var webViewStore = WebViewStore()
 
     @Environment(\.presentationMode) var presentation
-    @EnvironmentObject var authInteractor: RealAuthInteractor
+    @EnvironmentObject var authViewModel: RealAuthViewModel
     @EnvironmentObject var connectivityController: ConnectivityController
 
     var body: some View {
@@ -19,7 +19,7 @@ struct GitHubAuth: View {
                         return
                     }
 
-                    authInteractor.requestAccessToken(code: code, completed: { accessToken in
+                    authViewModel.requestAccessToken(code: code, completed: { accessToken in
                         if let accessToken = accessToken {
                             connectivityController.sendOAuthTokenToWatch(token: accessToken)
                         }

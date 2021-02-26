@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F47822D625E854E900CB2A67 /* OrganizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47822D525E854E900CB2A67 /* OrganizationViewModel.swift */; };
+		F47822E825E861F000CB2A67 /* ExtraUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47822E725E861F000CB2A67 /* ExtraUserInfo.swift */; };
 		F48F4B2125E3BD6B003E6C2A /* github_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4B2025E3BD6B003E6C2A /* github_watchApp.swift */; };
 		F48F4B2325E3BD6B003E6C2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4B2225E3BD6B003E6C2A /* ContentView.swift */; };
 		F48F4B2525E3BD6E003E6C2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48F4B2425E3BD6E003E6C2A /* Assets.xcassets */; };
@@ -27,7 +29,7 @@
 		F48F4B9625E3C261003E6C2A /* GitHubAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4B9525E3C261003E6C2A /* GitHubAuth.swift */; };
 		F48F4BA625E3C29F003E6C2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4BA525E3C29F003E6C2A /* AppState.swift */; };
 		F48F4BB425E3C2BC003E6C2A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4BB325E3C2BC003E6C2A /* User.swift */; };
-		F48F4BC225E3C2EA003E6C2A /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4BC125E3C2EA003E6C2A /* AuthInteractor.swift */; };
+		F48F4BC225E3C2EA003E6C2A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4BC125E3C2EA003E6C2A /* AuthViewModel.swift */; };
 		F48F4BCF25E3C301003E6C2A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4BCE25E3C301003E6C2A /* AuthRepository.swift */; };
 		F48F4BDC25E3C37D003E6C2A /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4BDB25E3C37D003E6C2A /* WebView */; };
 		F48F4BE425E3C3A5003E6C2A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4BE325E3C3A5003E6C2A /* SwiftyJSON */; };
@@ -38,11 +40,11 @@
 		F48F4C2C25E407C3003E6C2A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C2B25E407C3003E6C2A /* Home.swift */; };
 		F48F4C3C25E40837003E6C2A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C3B25E40837003E6C2A /* AppState.swift */; };
 		F48F4C4425E40862003E6C2A /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C4325E40862003E6C2A /* AuthUser.swift */; };
-		F48F4C4C25E4088E003E6C2A /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C4B25E4088E003E6C2A /* ProfileInteractor.swift */; };
+		F48F4C4C25E4088E003E6C2A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C4B25E4088E003E6C2A /* ProfileViewModel.swift */; };
 		F48F4C5925E408C1003E6C2A /* ConnectivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C5825E408C1003E6C2A /* ConnectivityController.swift */; };
 		F48F4C6125E40DC5003E6C2A /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C6025E40DC5003E6C2A /* ProfileRepository.swift */; };
 		F48F4C6E25E40EE3003E6C2A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4C6D25E40EE3003E6C2A /* SwiftyJSON */; };
-		F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */; };
+		F48F4C7B25E42101003E6C2A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C7A25E42101003E6C2A /* AuthViewModel.swift */; };
 		F48F4C9225E42DAD003E6C2A /* ProfileUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C9125E42DAD003E6C2A /* ProfileUser.swift */; };
 		F48F4C9A25E432C8003E6C2A /* ViewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4C9925E432C8003E6C2A /* ViewUser.swift */; };
 		F48F4CA725E43519003E6C2A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4CA625E43519003E6C2A /* UserProfile.swift */; };
@@ -50,15 +52,16 @@
 		F48F4CC125E43DC6003E6C2A /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F48F4CC025E43DC6003E6C2A /* URLImage */; };
 		F49A657E25E4E62B00F7893C /* RepoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A657D25E4E62B00F7893C /* RepoRepository.swift */; };
 		F49A65A125E4E6E600F7893C /* UserRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65A025E4E6E600F7893C /* UserRepos.swift */; };
-		F49A65A925E4E8C800F7893C /* RepoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65A825E4E8C800F7893C /* RepoInteractor.swift */; };
+		F49A65A925E4E8C800F7893C /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65A825E4E8C800F7893C /* RepoViewModel.swift */; };
 		F49A65B225E4F48300F7893C /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65B125E4F48300F7893C /* Repo.swift */; };
 		F49A65BA25E4F71200F7893C /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65B925E4F71200F7893C /* FileDownloader.swift */; };
 		F49A65DC25E50CE500F7893C /* Markdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A65DB25E50CE500F7893C /* Markdown.swift */; };
 		F49A66A525E525C800F7893C /* Parma in Frameworks */ = {isa = PBXBuildFile; productRef = F49A66A425E525C800F7893C /* Parma */; };
 		F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66AC25E52EC900F7893C /* RepoView.swift */; };
 		F49A66C925E5397100F7893C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66C825E5397100F7893C /* String.swift */; };
-		F49A66D625E53B0800F7893C /* MarkdownInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */; };
+		F49A66D625E53B0800F7893C /* MarkdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66D525E53B0800F7893C /* MarkdownViewModel.swift */; };
 		F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66E225E53B6000F7893C /* MarkdownRepository.swift */; };
+		F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1FF3225E9457200AD83F1 /* UserType.swift */; };
 		F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA954D25E5A43500F702ED /* BottomNavRow.swift */; };
 		F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA955F25E5AFA600F702ED /* SearchRepos.swift */; };
 		F4EA956D25E5B00D00F702ED /* SearchReposList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA956C25E5B00D00F702ED /* SearchReposList.swift */; };
@@ -128,6 +131,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F47822D525E854E900CB2A67 /* OrganizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationViewModel.swift; sourceTree = "<group>"; };
+		F47822E725E861F000CB2A67 /* ExtraUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraUserInfo.swift; sourceTree = "<group>"; };
 		F48F4B1D25E3BD6B003E6C2A /* github-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "github-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48F4B2025E3BD6B003E6C2A /* github_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = github_watchApp.swift; sourceTree = "<group>"; };
 		F48F4B2225E3BD6B003E6C2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,7 +162,7 @@
 		F48F4B9525E3C261003E6C2A /* GitHubAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAuth.swift; sourceTree = "<group>"; };
 		F48F4BA525E3C29F003E6C2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F48F4BB325E3C2BC003E6C2A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F48F4BC125E3C2EA003E6C2A /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		F48F4BC125E3C2EA003E6C2A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F48F4BCE25E3C301003E6C2A /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		F48F4BEB25E3C49C003E6C2A /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		F48F4BF825E4047B003E6C2A /* ConnectivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityController.swift; sourceTree = "<group>"; };
@@ -165,24 +170,25 @@
 		F48F4C2B25E407C3003E6C2A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F48F4C3B25E40837003E6C2A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F48F4C4325E40862003E6C2A /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
-		F48F4C4B25E4088E003E6C2A /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		F48F4C4B25E4088E003E6C2A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F48F4C5825E408C1003E6C2A /* ConnectivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityController.swift; sourceTree = "<group>"; };
 		F48F4C6025E40DC5003E6C2A /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
-		F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		F48F4C7A25E42101003E6C2A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F48F4C9125E42DAD003E6C2A /* ProfileUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUser.swift; sourceTree = "<group>"; };
 		F48F4C9925E432C8003E6C2A /* ViewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUser.swift; sourceTree = "<group>"; };
 		F48F4CA625E43519003E6C2A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		F48F4CB325E43AEE003E6C2A /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		F49A657D25E4E62B00F7893C /* RepoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoRepository.swift; sourceTree = "<group>"; };
 		F49A65A025E4E6E600F7893C /* UserRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepos.swift; sourceTree = "<group>"; };
-		F49A65A825E4E8C800F7893C /* RepoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoInteractor.swift; sourceTree = "<group>"; };
+		F49A65A825E4E8C800F7893C /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		F49A65B125E4F48300F7893C /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		F49A65B925E4F71200F7893C /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		F49A65DB25E50CE500F7893C /* Markdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Markdown.swift; sourceTree = "<group>"; };
 		F49A66AC25E52EC900F7893C /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
 		F49A66C825E5397100F7893C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownInteractor.swift; sourceTree = "<group>"; };
+		F49A66D525E53B0800F7893C /* MarkdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModel.swift; sourceTree = "<group>"; };
 		F49A66E225E53B6000F7893C /* MarkdownRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRepository.swift; sourceTree = "<group>"; };
+		F4B1FF3225E9457200AD83F1 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		F4EA954D25E5A43500F702ED /* BottomNavRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavRow.swift; sourceTree = "<group>"; };
 		F4EA955F25E5AFA600F702ED /* SearchRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepos.swift; sourceTree = "<group>"; };
 		F4EA956C25E5B00D00F702ED /* SearchReposList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReposList.swift; sourceTree = "<group>"; };
@@ -232,6 +238,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F47822D425E854D300CB2A67 /* OrganizationViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F47822D525E854E900CB2A67 /* OrganizationViewModel.swift */,
+			);
+			path = OrganizationViewModel;
+			sourceTree = "<group>";
+		};
+		F47822E625E861DB00CB2A67 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F47822E725E861F000CB2A67 /* ExtraUserInfo.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F48F4B1425E3BD6A003E6C2A = {
 			isa = PBXGroup;
 			children = (
@@ -266,7 +288,7 @@
 				F48F4B2425E3BD6E003E6C2A /* Assets.xcassets */,
 				F48F4B7C25E3C0F9003E6C2A /* Constants */,
 				F48F4BEA25E3C492003E6C2A /* Extensions */,
-				F48F4BA225E3C276003E6C2A /* Interactors */,
+				F48F4BA225E3C276003E6C2A /* ViewModels */,
 				F48F4BA125E3C26D003E6C2A /* Models */,
 				F48F4B2625E3BD6E003E6C2A /* Preview Content */,
 				F48F4BA325E3C27D003E6C2A /* Repositories */,
@@ -323,7 +345,7 @@
 				F49A66C725E5396400F7893C /* Extensions */,
 				F49A65B825E4F70700F7893C /* Utils */,
 				F48F4B5D25E3BD71003E6C2A /* Assets.xcassets */,
-				F48F4C3725E407CA003E6C2A /* Interactors */,
+				F48F4C3725E407CA003E6C2A /* ViewModels */,
 				F48F4C3925E407D8003E6C2A /* Models */,
 				F48F4B5F25E3BD71003E6C2A /* Preview Content */,
 				F48F4C3825E407D1003E6C2A /* Repositories */,
@@ -374,13 +396,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F48F4BA225E3C276003E6C2A /* Interactors */ = {
+		F48F4BA225E3C276003E6C2A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				F48F4BF725E4046B003E6C2A /* ConnectivityController */,
-				F48F4BBF25E3C2D8003E6C2A /* AuthInteractor */,
+				F48F4BBF25E3C2D8003E6C2A /* AuthViewModel */,
 			);
-			path = Interactors;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F48F4BA325E3C27D003E6C2A /* Repositories */ = {
@@ -407,12 +429,12 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		F48F4BBF25E3C2D8003E6C2A /* AuthInteractor */ = {
+		F48F4BBF25E3C2D8003E6C2A /* AuthViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F48F4BC125E3C2EA003E6C2A /* AuthInteractor.swift */,
+				F48F4BC125E3C2EA003E6C2A /* AuthViewModel.swift */,
 			);
-			path = AuthInteractor;
+			path = AuthViewModel;
 			sourceTree = "<group>";
 		};
 		F48F4BCD25E3C2F2003E6C2A /* AuthRepository */ = {
@@ -472,16 +494,17 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		F48F4C3725E407CA003E6C2A /* Interactors */ = {
+		F48F4C3725E407CA003E6C2A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F49A66D425E53AF400F7893C /* MarkdownInteractor */,
-				F49A65A725E4E8BD00F7893C /* RepoInteractor */,
-				F48F4C7925E420F2003E6C2A /* AuthInteractor */,
+				F47822D425E854D300CB2A67 /* OrganizationViewModel */,
+				F49A66D425E53AF400F7893C /* MarkdownViewModel */,
+				F49A65A725E4E8BD00F7893C /* RepoViewModel */,
+				F48F4C7925E420F2003E6C2A /* AuthViewModel */,
 				F48F4C5725E408B6003E6C2A /* ConnectivityController */,
-				F48F4C4A25E4087D003E6C2A /* ProfileInteractor */,
+				F48F4C4A25E4087D003E6C2A /* ProfileViewModel */,
 			);
-			path = Interactors;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F48F4C3825E407D1003E6C2A /* Repositories */ = {
@@ -498,6 +521,7 @@
 		F48F4C3925E407D8003E6C2A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F4B1FF3925E945E900AD83F1 /* UserType */,
 				F49A65AF25E4F47500F7893C /* Repo */,
 				F48F4C8625E42D86003E6C2A /* ProfileUser */,
 				F48F4C4225E40845003E6C2A /* AuthUser */,
@@ -522,12 +546,12 @@
 			path = AuthUser;
 			sourceTree = "<group>";
 		};
-		F48F4C4A25E4087D003E6C2A /* ProfileInteractor */ = {
+		F48F4C4A25E4087D003E6C2A /* ProfileViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F48F4C4B25E4088E003E6C2A /* ProfileInteractor.swift */,
+				F48F4C4B25E4088E003E6C2A /* ProfileViewModel.swift */,
 			);
-			path = ProfileInteractor;
+			path = ProfileViewModel;
 			sourceTree = "<group>";
 		};
 		F48F4C5725E408B6003E6C2A /* ConnectivityController */ = {
@@ -553,12 +577,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F48F4C7925E420F2003E6C2A /* AuthInteractor */ = {
+		F48F4C7925E420F2003E6C2A /* AuthViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F48F4C7A25E42101003E6C2A /* AuthInteractor.swift */,
+				F48F4C7A25E42101003E6C2A /* AuthViewModel.swift */,
 			);
-			path = AuthInteractor;
+			path = AuthViewModel;
 			sourceTree = "<group>";
 		};
 		F48F4C8625E42D86003E6C2A /* ProfileUser */ = {
@@ -589,6 +613,7 @@
 		F48F4CB225E43AE5003E6C2A /* UserView */ = {
 			isa = PBXGroup;
 			children = (
+				F47822E625E861DB00CB2A67 /* Views */,
 				F48F4CB325E43AEE003E6C2A /* UserView.swift */,
 			);
 			path = UserView;
@@ -610,12 +635,12 @@
 			path = UserRepos;
 			sourceTree = "<group>";
 		};
-		F49A65A725E4E8BD00F7893C /* RepoInteractor */ = {
+		F49A65A725E4E8BD00F7893C /* RepoViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F49A65A825E4E8C800F7893C /* RepoInteractor.swift */,
+				F49A65A825E4E8C800F7893C /* RepoViewModel.swift */,
 			);
-			path = RepoInteractor;
+			path = RepoViewModel;
 			sourceTree = "<group>";
 		};
 		F49A65AF25E4F47500F7893C /* Repo */ = {
@@ -659,12 +684,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		F49A66D425E53AF400F7893C /* MarkdownInteractor */ = {
+		F49A66D425E53AF400F7893C /* MarkdownViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F49A66D525E53B0800F7893C /* MarkdownInteractor.swift */,
+				F49A66D525E53B0800F7893C /* MarkdownViewModel.swift */,
 			);
-			path = MarkdownInteractor;
+			path = MarkdownViewModel;
 			sourceTree = "<group>";
 		};
 		F49A66E125E53B5500F7893C /* MarkdownRepository */ = {
@@ -673,6 +698,14 @@
 				F49A66E225E53B6000F7893C /* MarkdownRepository.swift */,
 			);
 			path = MarkdownRepository;
+			sourceTree = "<group>";
+		};
+		F4B1FF3925E945E900AD83F1 /* UserType */ = {
+			isa = PBXGroup;
+			children = (
+				F4B1FF3225E9457200AD83F1 /* UserType.swift */,
+			);
+			path = UserType;
 			sourceTree = "<group>";
 		};
 		F4EA954B25E5A41D00F702ED /* Views */ = {
@@ -977,7 +1010,7 @@
 				F48F4BEC25E3C49C003E6C2A /* URL.swift in Sources */,
 				F48F4C1225E4065A003E6C2A /* Home.swift in Sources */,
 				F48F4BA625E3C29F003E6C2A /* AppState.swift in Sources */,
-				F48F4BC225E3C2EA003E6C2A /* AuthInteractor.swift in Sources */,
+				F48F4BC225E3C2EA003E6C2A /* AuthViewModel.swift in Sources */,
 				F48F4BF925E4047B003E6C2A /* ConnectivityController.swift in Sources */,
 				F48F4BB425E3C2BC003E6C2A /* User.swift in Sources */,
 				F48F4B2325E3BD6B003E6C2A /* ContentView.swift in Sources */,
@@ -1011,10 +1044,10 @@
 				F48F4C5925E408C1003E6C2A /* ConnectivityController.swift in Sources */,
 				F48F4B5625E3BD70003E6C2A /* ContentView.swift in Sources */,
 				F48F4C6125E40DC5003E6C2A /* ProfileRepository.swift in Sources */,
-				F49A65A925E4E8C800F7893C /* RepoInteractor.swift in Sources */,
+				F49A65A925E4E8C800F7893C /* RepoViewModel.swift in Sources */,
 				F48F4C9225E42DAD003E6C2A /* ProfileUser.swift in Sources */,
-				F48F4C4C25E4088E003E6C2A /* ProfileInteractor.swift in Sources */,
-				F48F4C7B25E42101003E6C2A /* AuthInteractor.swift in Sources */,
+				F48F4C4C25E4088E003E6C2A /* ProfileViewModel.swift in Sources */,
+				F48F4C7B25E42101003E6C2A /* AuthViewModel.swift in Sources */,
 				F4F2A41A25E7AF5400C8B943 /* OrganizationsList.swift in Sources */,
 				F4F2A40D25E7ABFC00C8B943 /* Utils.swift in Sources */,
 				F4EA956D25E5B00D00F702ED /* SearchReposList.swift in Sources */,
@@ -1029,8 +1062,11 @@
 				F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */,
 				F4F2A43925E7B96E00C8B943 /* UserImage.swift in Sources */,
 				F48F4C9A25E432C8003E6C2A /* ViewUser.swift in Sources */,
-				F49A66D625E53B0800F7893C /* MarkdownInteractor.swift in Sources */,
+				F47822D625E854E900CB2A67 /* OrganizationViewModel.swift in Sources */,
+				F49A66D625E53B0800F7893C /* MarkdownViewModel.swift in Sources */,
 				F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */,
+				F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */,
+				F47822E825E861F000CB2A67 /* ExtraUserInfo.swift in Sources */,
 				F4EA958A25E5BBCF00F702ED /* FollowStatViwe.swift in Sources */,
 				F48F4C4425E40862003E6C2A /* AuthUser.swift in Sources */,
 				F49A65A125E4E6E600F7893C /* UserRepos.swift in Sources */,

@@ -3,6 +3,7 @@ import URLImage
 
 struct UserView: View {
     var profileUser: ProfileUser
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
         VStack {
@@ -53,73 +54,15 @@ struct UserView: View {
             }
             
             // Extra info
-            VStack {
-                if let publicRepoCount = profileUser.publicRepoCount {
-                    HStack {
-                        Text("Public repos:")
-                            .font(Font.system(size: 11))
-                            .foregroundColor(.gray)
-                        Text("\(publicRepoCount)")
-                            .font(Font.system(size: 11))
-                            .bold()
-                        Spacer()
-                    }.padding(.bottom, 2)
-                }
-                if let privateRepoCount = profileUser.privateRepoCount {
-                    HStack {
-                        Text("Private repos:")
-                            .font(Font.system(size: 11))
-                            .foregroundColor(.gray)
-                        Text("\(privateRepoCount)")
-                            .font(Font.system(size: 11))
-                            .bold()
-                        Spacer()
-                    }.padding(.bottom, 2)
-                }
-                if let email = profileUser.email {
-                    HStack {
-                        Text("Email:")
-                            .font(Font.system(size: 11))
-                            .foregroundColor(.gray)
-                        
-                        Text("\(email)")
-                            .font(Font.system(size: 11))
-                            .bold()
-                        Spacer()
-                    }.padding(.bottom, 2)
-                }
-                if let company = profileUser.company {
-                    HStack {
-                        Text("Company:")
-                            .font(Font.system(size: 11))
-                            .foregroundColor(.gray)
-                        
-                        Text("\(company)")
-                            .font(Font.system(size: 11))
-                            .bold()
-                        Spacer()
-                    }.padding(.bottom, 2)
-                }
-                if let location = profileUser.location {
-                    HStack {
-                        Text("Location:")
-                            .font(Font.system(size: 11))
-                            .foregroundColor(.gray)
-                        Text("\(location)")
-                            .font(Font.system(size: 11))
-                            .bold()
-                        Spacer()
-                    }.padding(.bottom, 2)
-                }
-            }.padding(.bottom, 6)
+            ExtraUserInfo(profileUser: profileUser).padding(.bottom, 6)
             
             if let username = profileUser.username {
                 if profileUser.userType != "Organization" {
-                    NavigationLink(destination: OrganizationsList(username: username)) {
+                    NavigationLink(destination: OrganizationsList(organizationViewModel: RealOrganizationViewModel(appState: appState), username: username)) {
                         Text("Organizations")
                     }
                 }
-                NavigationLink(destination: UserRepos(username: username)) {
+                NavigationLink(destination: UserRepos(repoViewModel: RealRepoViewModel(appState: appState), username: username)) {
                     Text("View Repos")
                 }
             }

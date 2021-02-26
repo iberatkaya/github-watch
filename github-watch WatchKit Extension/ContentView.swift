@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var profileInteractor: RealProfileInteractor
-    @EnvironmentObject var connectivityController: ConnectivityController
-    @EnvironmentObject var authInteractor: RealAuthInteractor
-    @EnvironmentObject var repoInteractor: RealRepoInteractor
     @EnvironmentObject var appState: AppState
     
-    
     var body: some View {
-        Home().environmentObject(profileInteractor).environmentObject(connectivityController).environmentObject(authInteractor).environmentObject(repoInteractor)
+        Home(authViewModel: RealAuthViewModel(appState: appState))
     }
 }
 

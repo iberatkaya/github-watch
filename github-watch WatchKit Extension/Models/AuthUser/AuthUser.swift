@@ -3,7 +3,10 @@ struct AuthUser: Encodable, Decodable {
         self.accessToken = accessToken
     }
     
+    ///The access token of the user.
     var accessToken: String?
+    
+    ///The username of the user.
     var username: String?
     
     init(from decoder: Decoder) throws {

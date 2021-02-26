@@ -1,11 +1,11 @@
 import SwiftUI
 
-protocol AuthInteractor {
+protocol AuthViewModel {
     func requestAccessToken(code: String, completed: @escaping (String?) -> Void) -> Void
     func signOut()
 }
 
-class RealAuthInteractor: ObservableObject, AuthInteractor {
+class RealAuthViewModel: ObservableObject, AuthViewModel {
     private let authRepository: AuthRepository = RealAuthRepository()
     private let appState: AppState
     

@@ -1,52 +1,39 @@
 import SwiftUI
 
 struct UserProfile: View {
-    @EnvironmentObject var profileInteractor: RealProfileInteractor
-    @EnvironmentObject var appState: AppState
-    @State var profileUser: ProfileUser?
-    @State var loading = true
-    @State var error: String?
+    @ObservedObject var profileViewModel: RealProfileViewModel
     let username: String
 
-    init(username: String) {
+    init(profileViewModel: RealProfileViewModel, username: String) {
         self.username = username
+        self.profileViewModel = profileViewModel
     }
 
     var body: some View {
         ScrollView {
-            if loading {
+            if profileViewModel.loading {
                 ProgressView()
             }
-            if let profileUser = profileUser {
+            if let profileUser = profileViewModel.profileUser {
                 UserView(profileUser: profileUser)
-            } else if !loading {
+            } else if !profileViewModel.loading {
                 Text("User \(username) cound not be found!")
             }
-            if let error = error {
+            if let error = profileViewModel.error {
                 Text(error).padding(.horizontal, 4)
             }
         }
         .navigationTitle(username)
         .padding(.horizontal, 2)
         .onAppear(perform: {
-            profileInteractor.requestProfile(username: username, completed: { pUser in
-                profileUser = pUser
-                loading = false
-                error = nil
-            }, onError: { err in
-                DispatchQueue.main.async {
-                    loading = false
-                    error = err
-                }
-            })
+            profileViewModel.requestProfile(username: username)
         })
     }
 }
 
 struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfile(username: "test")
+        UserProfile(profileViewModel: RealProfileViewModel(appState: AppState()), username: "test")
             .environmentObject(AppState())
-            .environmentObject(RealProfileInteractor(appState: AppState()))
     }
 }

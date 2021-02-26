@@ -6,11 +6,12 @@ struct Markdown: View {
     var repoName: String
     @State var downloading = true
     @State var markdown: String?
-    @EnvironmentObject var markdownInteractor: RealMarkdownInteractor
+    @ObservedObject var markdownViewModel: RealMarkdownViewModel
 
-    init(username: String, repoName: String) {
+    init(markdownViewModel: RealMarkdownViewModel, username: String, repoName: String) {
         self.username = username
         self.repoName = repoName
+        self.markdownViewModel = markdownViewModel
     }
 
     var body: some View {
@@ -30,18 +31,13 @@ struct Markdown: View {
         .navigationTitle(repoName)
         .padding(.horizontal, 8)
         .onAppear(perform: {
-            markdownInteractor.requestREADME(username: username, repo: repoName, completed: { markdownText in
-                DispatchQueue.main.async {
-                    downloading = false
-                    markdown = markdownText
-                }
-            })
+            markdownViewModel.requestREADME(username: username, repo: repoName)
         })
     }
 }
 
 struct Markdown_Previews: PreviewProvider {
     static var previews: some View {
-        Markdown(username: "iberatkaya", repoName: "playify")
+        Markdown(markdownViewModel: RealMarkdownViewModel(appState: AppState()), username: "iberatkaya", repoName: "playify")
     }
 }

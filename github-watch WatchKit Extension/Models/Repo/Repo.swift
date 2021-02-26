@@ -2,8 +2,6 @@ import Foundation
 import SwiftyJSON
 
 struct Repo: Identifiable {
-    var id = UUID()
-
     internal init(name: String, ownerName: String, issueCount: Int, forks: Int, starCount: Int, watcherCount: Int, description: String? = nil, language: String? = nil, licenseName: String? = nil) {
         self.name = name
         self.ownerName = ownerName
@@ -29,13 +27,33 @@ struct Repo: Identifiable {
         self.licenseName = jsonDict["license"]["name"].string
     }
 
+    ///The repository's created unique id. This is used for displaying the repository in a list.
+    var id = UUID()
+
+    ///The name of the repository.
     var name: String
+    
+    ///The repository owner's name.
     var ownerName: String
+    
+    ///The number of issues of the repository.
     var issueCount: Int
+    
+    ///The number of forks of the repository.
     var forks: Int
+    
+    ///The number of star of the repository.
     var starCount: Int
+    
+    ///The number of watchers of the repository.
     var watcherCount: Int
+    
+    ///The description of the repository.
     var description: String?
+    
+    ///The langauge of the repository.
     var language: String?
+    
+    ///The name of the license of the repository.
     var licenseName: String?
 }

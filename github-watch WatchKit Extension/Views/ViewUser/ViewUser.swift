@@ -2,11 +2,12 @@ import SwiftUI
 
 struct ViewUser: View {
     @State private var username: String = ""
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         ScrollView {
             TextField("View User Profile", text: $username)
-            NavigationLink(destination: UserProfile(username: username)) {
+            NavigationLink(destination: UserProfile(profileViewModel: RealProfileViewModel(appState: appState), username: username)) {
                 Text("Submit")
             }.disabled(username == "")
         }.padding(.horizontal, 2)

@@ -1,10 +1,10 @@
 import SwiftUI
 
-protocol AuthInteractor {
+protocol AuthViewModel {
     func signOut()
 }
 
-class RealAuthInteractor: ObservableObject, AuthInteractor {
+class RealAuthViewModel: ObservableObject, AuthViewModel {
     private let appState: AppState
 
     init(appState: AppState) {

@@ -97,10 +97,8 @@ struct RealProfileRepository: ProfileRepository {
             
             let jsonData = JSON(data)
             
-            print(jsonData)
             
             if let errorMessage = jsonData["message"].string {
-                print(errorMessage)
                 onError(errorMessage)
                 return
             }

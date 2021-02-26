@@ -1,10 +1,13 @@
 import SwiftUI
 
 struct Home: View {
-    @EnvironmentObject var authInteractor: RealAuthInteractor
     @EnvironmentObject var appState: AppState
-    @EnvironmentObject var connectivityController: ConnectivityController
-
+    @ObservedObject var authViewModel: RealAuthViewModel
+    
+    init(authViewModel: RealAuthViewModel) {
+        self.authViewModel = authViewModel
+    }
+    
     var body: some View {
         ScrollView {
             if appState.user.accessToken == nil {
@@ -14,9 +17,7 @@ struct Home: View {
                     .foregroundColor(.gray)
                     .bold()
                     .padding(.bottom, 16)
-                NavigationLink(destination: GitHubAuth()
-                    .environmentObject(authInteractor)
-                    .environmentObject(connectivityController)) {
+                NavigationLink(destination: GitHubAuth()) {
                     Text("Login To GitHub!")
                         .font(.system(size: 16))
                         .bold()
@@ -42,7 +43,7 @@ struct Home: View {
                         .frame(width: 16, height: 16)
                 }.padding(.bottom, 4)
                 Button(action: {
-                    authInteractor.signOut()
+                    authViewModel.signOut()
                 }) {
                     Text("Sign Out")
                     .font(.system(size: 16))
@@ -59,6 +60,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home().environmentObject(AppState()).environmentObject(RealAuthInteractor(appState: AppState())).environmentObject(ConnectivityController())
+        Home(authViewModel: RealAuthViewModel(appState: AppState())).environmentObject(AppState())
     }
 }
