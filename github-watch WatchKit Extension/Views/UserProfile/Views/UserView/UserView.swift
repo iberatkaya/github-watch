@@ -4,6 +4,7 @@ import URLImage
 struct UserView: View {
     var profileUser: ProfileUser
     @EnvironmentObject var appState: AppState
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         VStack {
@@ -27,8 +28,11 @@ struct UserView: View {
                         .padding(.bottom, 2)
                 }
                 
-                if profileUser.userType != "Organization" {
-                    FollowStatView(followers: profileUser.followers ?? 0, following: profileUser.following ?? 0).padding(.bottom, 4)
+                if let username = profileUser.username, profileUser.userType != UserType.organization {
+                    FollowStatView(
+                        followers: profileUser.followers ?? 0,
+                        following: profileUser.following ?? 0,
+                        username: username).padding(.bottom, 4)
                 }
                 else {
                     Text("Organization").foregroundColor(.gray)
@@ -57,7 +61,7 @@ struct UserView: View {
             ExtraUserInfo(profileUser: profileUser).padding(.bottom, 6)
             
             if let username = profileUser.username {
-                if profileUser.userType != "Organization" {
+                if profileUser.userType != UserType.organization {
                     NavigationLink(destination: OrganizationsList(organizationViewModel: RealOrganizationViewModel(appState: appState), username: username)) {
                         Text("Organizations")
                     }
@@ -77,7 +81,7 @@ struct UserView_Previews: PreviewProvider {
     
     static var previews: some View {
         ScrollView {
-            UserView(profileUser: profileUser2)
+            UserView(profileUser: profileUser2).environmentObject(AppState())
         }
     }
 }

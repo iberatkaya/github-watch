@@ -19,7 +19,7 @@ struct RealRepoRepository: RepoRepository {
     func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
-        let request = urlRequest(url: "https://api.github.com/search/repositories?q=\(name)&page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
+        let request = urlRequest(url: "https://api.github.com/search/repositories?q=\(name)&page=\(page)&per_page=\(itemsPerPage)&sort=pushed", accessToken: accessToken)
 
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
@@ -55,7 +55,7 @@ struct RealRepoRepository: RepoRepository {
     func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
-        let request = urlRequest(url: "https://api.github.com/users/\(username)/repos?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
+        let request = urlRequest(url: "https://api.github.com/users/\(username)/repos?page=\(page)&per_page=\(itemsPerPage)&sort=pushed", accessToken: accessToken)
 
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in

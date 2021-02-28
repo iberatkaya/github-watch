@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F445167625EB79DA0045B4E1 /* FollowUsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445167525EB79DA0045B4E1 /* FollowUsersList.swift */; };
+		F445167E25EB7A780045B4E1 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445167D25EB7A780045B4E1 /* UsersViewModel.swift */; };
 		F47822D625E854E900CB2A67 /* OrganizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47822D525E854E900CB2A67 /* OrganizationViewModel.swift */; };
 		F47822E825E861F000CB2A67 /* ExtraUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47822E725E861F000CB2A67 /* ExtraUserInfo.swift */; };
 		F48F4B2125E3BD6B003E6C2A /* github_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48F4B2025E3BD6B003E6C2A /* github_watchApp.swift */; };
@@ -131,6 +133,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F445167525EB79DA0045B4E1 /* FollowUsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUsersList.swift; sourceTree = "<group>"; };
+		F445167D25EB7A780045B4E1 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		F47822D525E854E900CB2A67 /* OrganizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationViewModel.swift; sourceTree = "<group>"; };
 		F47822E725E861F000CB2A67 /* ExtraUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraUserInfo.swift; sourceTree = "<group>"; };
 		F48F4B1D25E3BD6B003E6C2A /* github-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "github-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +242,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F445167425EB79CA0045B4E1 /* FollowUsersList */ = {
+			isa = PBXGroup;
+			children = (
+				F445167525EB79DA0045B4E1 /* FollowUsersList.swift */,
+			);
+			path = FollowUsersList;
+			sourceTree = "<group>";
+		};
+		F445167C25EB7A640045B4E1 /* UsersViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F445167D25EB7A780045B4E1 /* UsersViewModel.swift */,
+			);
+			path = UsersViewModel;
+			sourceTree = "<group>";
+		};
 		F47822D425E854D300CB2A67 /* OrganizationViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +492,7 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F445167425EB79CA0045B4E1 /* FollowUsersList */,
 				F4F2A41825E7AF4200C8B943 /* OrganizationsList */,
 				F4EA957325E5B01E00F702ED /* UtilityViews */,
 				F4EA956B25E5AFFA00F702ED /* SearchReposList */,
@@ -497,6 +518,7 @@
 		F48F4C3725E407CA003E6C2A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F445167C25EB7A640045B4E1 /* UsersViewModel */,
 				F47822D425E854D300CB2A67 /* OrganizationViewModel */,
 				F49A66D425E53AF400F7893C /* MarkdownViewModel */,
 				F49A65A725E4E8BD00F7893C /* RepoViewModel */,
@@ -1040,6 +1062,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F49A65B225E4F48300F7893C /* Repo.swift in Sources */,
+				F445167E25EB7A780045B4E1 /* UsersViewModel.swift in Sources */,
 				F48F4B5825E3BD70003E6C2A /* NotificationController.swift in Sources */,
 				F48F4C5925E408C1003E6C2A /* ConnectivityController.swift in Sources */,
 				F48F4B5625E3BD70003E6C2A /* ContentView.swift in Sources */,
@@ -1053,6 +1076,7 @@
 				F4EA956D25E5B00D00F702ED /* SearchReposList.swift in Sources */,
 				F49A657E25E4E62B00F7893C /* RepoRepository.swift in Sources */,
 				F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */,
+				F445167625EB79DA0045B4E1 /* FollowUsersList.swift in Sources */,
 				F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */,
 				F48F4B5C25E3BD70003E6C2A /* ComplicationController.swift in Sources */,
 				F4F2A43125E7B83100C8B943 /* MiniUserView.swift in Sources */,
