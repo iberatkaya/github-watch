@@ -40,7 +40,7 @@ class FileDownloader
     {
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        let destinationUrl = documentsUrl.appendingPathComponent("\(Int.random(in: 0 ... 99999999))_" + url.lastPathComponent)
+        let destinationUrl = documentsUrl.appendingPathComponent("\(Int.random(in: 0 ... Int.max))_" + url.lastPathComponent)
         
         if FileManager().fileExists(atPath: destinationUrl.path)
         {
