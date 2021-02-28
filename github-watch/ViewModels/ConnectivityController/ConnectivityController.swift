@@ -2,14 +2,14 @@
 import Foundation
 import WatchConnectivity
 
-class ConnectivityController: NSObject,  WCSessionDelegate, ObservableObject {
+class ConnectivityController: NSObject, WCSessionDelegate, ObservableObject {
     var session: WCSession?
     
-    override init(){
+    override init() {
         super.init()
-        if(WCSession.isSupported()){
+        if WCSession.isSupported() {
             self.session = WCSession.default
-            self.session?.delegate = self
+            session?.delegate = self
             session?.activate()
         }
     }
@@ -17,18 +17,14 @@ class ConnectivityController: NSObject,  WCSessionDelegate, ObservableObject {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
     
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
+    func sessionDidBecomeInactive(_ session: WCSession) {}
     
-    func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
+    func sessionDidDeactivate(_ session: WCSession) {}
     
-    func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
-    }
+    func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {}
     
-    func sendOAuthTokenToWatch(token: String){
+    
+    func sendOAuthTokenToWatch(token: String) {
         session?.sendMessage(["type": "sendOAuthToken", "oAuthToken": token], replyHandler: nil, errorHandler: nil)
     }
 }

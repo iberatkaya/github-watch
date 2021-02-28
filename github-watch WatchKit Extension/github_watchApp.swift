@@ -3,9 +3,12 @@ import SwiftUI
 @main
 struct github_watchApp: App {
     @ObservedObject var appState: AppState
+    @ObservedObject var connectivityController: ConnectivityController
 
     init() {
-        appState = AppState()
+        let myAppState = AppState()
+        appState = myAppState
+        connectivityController = ConnectivityController(appState: myAppState)
     }
 
     @SceneBuilder var body: some Scene {

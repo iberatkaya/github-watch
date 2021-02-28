@@ -8,7 +8,7 @@ class RealUsersViewModel: ObservableObject, UsersViewModel {
     private let appState: AppState
     private let profileRepository = RealProfileRepository()
     
-    ///The page counter for the `requestUserOrganizations` function. Used for pagination.
+    ///The page counter for the `requestUserFollowersOrFollowings` function. Used for pagination.
     private var requestUserFollowersOrFollowingsPage = 1
     
     ///The fetched users.

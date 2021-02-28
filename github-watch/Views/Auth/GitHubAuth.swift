@@ -3,10 +3,14 @@ import WebView
 
 struct GitHubAuth: View {
     @StateObject var webViewStore = WebViewStore()
-
+    @ObservedObject var connectivityController: ConnectivityController
+    @ObservedObject var authViewModel: RealAuthViewModel
     @Environment(\.presentationMode) var presentation
-    @EnvironmentObject var authViewModel: RealAuthViewModel
-    @EnvironmentObject var connectivityController: ConnectivityController
+
+    init(authViewModel: RealAuthViewModel) {
+        self.authViewModel = authViewModel
+        self.connectivityController = ConnectivityController()
+    }
 
     var body: some View {
         WebView(webView: webViewStore.webView)

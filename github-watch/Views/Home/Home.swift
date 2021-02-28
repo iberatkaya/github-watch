@@ -17,7 +17,7 @@ struct Home: View {
                     .foregroundColor(.gray)
                     .bold()
                     .padding(.bottom, 16)
-                NavigationLink(destination: GitHubAuth()) {
+                NavigationLink(destination: GitHubAuth(authViewModel: authViewModel)) {
                     Text("Login To GitHub!")
                         .font(.system(size: 16))
                         .bold()

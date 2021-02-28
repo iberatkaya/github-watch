@@ -40,6 +40,7 @@ struct RealRepoRepository: RepoRepository {
                     repos.append(Repo(dict: dict))
                 }
             }
+            
             completed(repos)
         }.resume()
     }
