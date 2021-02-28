@@ -39,6 +39,13 @@ struct Home: View {
                 
                 Divider().padding(.vertical, 2)
                 
+                
+                NavigationLink(destination: SearchUsers()) {
+                    Text("Search For Users")
+                }
+                
+                Divider().padding(.vertical, 2)
+                
                 Button("Sign Out", action: {
                     authViewModel.signOut()
                 })

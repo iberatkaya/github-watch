@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct OrganizationsList: View {
-    @ObservedObject var organizationViewModel: RealOrganizationViewModel
     @EnvironmentObject var appState: AppState
+    @ObservedObject var organizationViewModel: RealOrganizationViewModel
     let username: String
 
     init(organizationViewModel: RealOrganizationViewModel, username: String) {

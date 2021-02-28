@@ -6,7 +6,7 @@ struct github_watchApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(appState: appState).environmentObject(appState)
+            ContentView().environmentObject(appState)
         }
     }
 }

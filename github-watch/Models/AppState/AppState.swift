@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// This is the Application State for State Management. This stores the User Token.
 class AppState: ObservableObject, Equatable, Encodable, Decodable {
     static func == (lhs: AppState, rhs: AppState) -> Bool {
         return lhs.user.accessToken == rhs.user.accessToken

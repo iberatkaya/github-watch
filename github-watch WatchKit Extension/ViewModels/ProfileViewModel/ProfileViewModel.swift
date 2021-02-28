@@ -9,15 +9,15 @@ class RealProfileViewModel: ObservableObject, ProfileViewModel {
     private let appState: AppState
     private let profileRepository = RealProfileRepository()
     
-    ///The user's profile data. It is null initially and is set when the user is fetched.
+    /// The user's profile data. It is null initially and is set when the user is fetched.
     @Published var profileUser: ProfileUser?
     
-    ///Determines whether a request is being made.
+    /// Determines whether a request is being made.
     @Published var loading = true
     
-    ///Displays the error string. Is null if an error does not exist.
+    /// Displays the error string. Is null if an error does not exist.
     @Published var error: String?
-
+    
     init(appState: AppState) {
         self.appState = appState
     }
@@ -26,7 +26,7 @@ class RealProfileViewModel: ObservableObject, ProfileViewModel {
     func requestMyProfile() {
         if let accessToken = appState.user.accessToken {
             loading = true
-            profileRepository.requestMyProfile(accessToken: accessToken, completed: {pUser in
+            profileRepository.requestMyProfile(accessToken: accessToken, completed: { pUser in
                 DispatchQueue.main.async {
                     self.profileUser = pUser
                     self.loading = false
@@ -40,7 +40,7 @@ class RealProfileViewModel: ObservableObject, ProfileViewModel {
             })
         }
     }
-
+    
     /// Request a user's profile.
     ///
     /// - Parameters:

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42D4162325EBF3F900A39EE2 /* SearchUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D4162225EBF3F900A39EE2 /* SearchUsers.swift */; };
+		42D4163025EBF54800A39EE2 /* SearchUsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D4162F25EBF54800A39EE2 /* SearchUsersList.swift */; };
 		F445167625EB79DA0045B4E1 /* FollowUsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445167525EB79DA0045B4E1 /* FollowUsersList.swift */; };
 		F445167E25EB7A780045B4E1 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445167D25EB7A780045B4E1 /* UsersViewModel.swift */; };
 		F47822D625E854E900CB2A67 /* OrganizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47822D525E854E900CB2A67 /* OrganizationViewModel.swift */; };
@@ -133,6 +135,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42D4162225EBF3F900A39EE2 /* SearchUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsers.swift; sourceTree = "<group>"; };
+		42D4162F25EBF54800A39EE2 /* SearchUsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersList.swift; sourceTree = "<group>"; };
 		F445167525EB79DA0045B4E1 /* FollowUsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUsersList.swift; sourceTree = "<group>"; };
 		F445167D25EB7A780045B4E1 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		F47822D525E854E900CB2A67 /* OrganizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationViewModel.swift; sourceTree = "<group>"; };
@@ -242,6 +246,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42D4162125EBF3DB00A39EE2 /* SearchUsers */ = {
+			isa = PBXGroup;
+			children = (
+				42D4162225EBF3F900A39EE2 /* SearchUsers.swift */,
+			);
+			path = SearchUsers;
+			sourceTree = "<group>";
+		};
+		42D4162E25EBF51500A39EE2 /* SearchUsersList */ = {
+			isa = PBXGroup;
+			children = (
+				42D4162F25EBF54800A39EE2 /* SearchUsersList.swift */,
+			);
+			path = SearchUsersList;
+			sourceTree = "<group>";
+		};
 		F445167425EB79CA0045B4E1 /* FollowUsersList */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +512,8 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				42D4162E25EBF51500A39EE2 /* SearchUsersList */,
+				42D4162125EBF3DB00A39EE2 /* SearchUsers */,
 				F445167425EB79CA0045B4E1 /* FollowUsersList */,
 				F4F2A41825E7AF4200C8B943 /* OrganizationsList */,
 				F4EA957325E5B01E00F702ED /* UtilityViews */,
@@ -1077,6 +1099,7 @@
 				F49A657E25E4E62B00F7893C /* RepoRepository.swift in Sources */,
 				F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */,
 				F445167625EB79DA0045B4E1 /* FollowUsersList.swift in Sources */,
+				42D4162325EBF3F900A39EE2 /* SearchUsers.swift in Sources */,
 				F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */,
 				F48F4B5C25E3BD70003E6C2A /* ComplicationController.swift in Sources */,
 				F4F2A43125E7B83100C8B943 /* MiniUserView.swift in Sources */,
@@ -1100,6 +1123,7 @@
 				F4EA957B25E5B2C000F702ED /* MiniRepoView.swift in Sources */,
 				F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */,
 				F49A65BA25E4F71200F7893C /* FileDownloader.swift in Sources */,
+				42D4163025EBF54800A39EE2 /* SearchUsersList.swift in Sources */,
 				F48F4B5425E3BD70003E6C2A /* github_watchApp.swift in Sources */,
 				F48F4B5A25E3BD70003E6C2A /* NotificationView.swift in Sources */,
 				F48F4C2C25E407C3003E6C2A /* Home.swift in Sources */,

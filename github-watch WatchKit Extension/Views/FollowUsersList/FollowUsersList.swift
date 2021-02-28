@@ -1,10 +1,3 @@
-//
-//  UsersList.swift
-//  github-watch WatchKit Extension
-//
-//  Created by Ibrahim Berat Kaya on 28.02.2021.
-//
-
 import SwiftUI
 
 struct UsersList: View {

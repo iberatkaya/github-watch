@@ -15,8 +15,6 @@ struct BottomNavRow: View {
                         .scaledToFit()
                         .frame(width: 30, height: 30)
                 })
-            } else {
-                ProgressView()
             }
         }
     }

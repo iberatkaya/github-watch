@@ -2,31 +2,35 @@ import SwiftUI
 
 protocol UsersViewModel {
     func requestUserFollowersOrFollowings(username: String, userFollowType: UserFollowType) -> Void
+    func requestSearchUsersByName(username: String) -> Void
 }
 
 class RealUsersViewModel: ObservableObject, UsersViewModel {
     private let appState: AppState
     private let profileRepository = RealProfileRepository()
     
-    ///The page counter for the `requestUserFollowersOrFollowings` function. Used for pagination.
+    /// The page counter for the `requestUserFollowersOrFollowings` function. Used for pagination.
     private var requestUserFollowersOrFollowingsPage = 1
     
-    ///The fetched users.
+    /// The page counter for the `requestSearchUsersByName` function. Used for pagination.
+    private var requestSearchUsersByNamePage = 1
+    
+    /// The fetched users.
     @Published var users: [ProfileUser] = []
-
-    ///Determines whether more data can be fetched. Is false if the response contains no more data.
+    
+    /// Determines whether more data can be fetched. Is false if the response contains no more data.
     @Published var canFetchMore = true
-
-    ///Determines whether a request is being made.
+    
+    /// Determines whether a request is being made.
     @Published var loading = true
     
-    ///Displays the error string. Is null if an error does not exist.
+    /// Displays the error string. Is null if an error does not exist.
     @Published var error: String?
-
+    
     init(appState: AppState) {
         self.appState = appState
     }
-
+    
     /// Request a user's organizations.
     ///
     /// - Parameters:
@@ -51,6 +55,34 @@ class RealUsersViewModel: ObservableObject, UsersViewModel {
                 }
             })
             requestUserFollowersOrFollowingsPage += 1
+        }
+    }
+    
+    /// Request searching user by name.
+    ///
+    /// - Parameters:
+    ///     - username: The GitHub user's username.
+    func requestSearchUsersByName(username: String) {
+        if let accessToken = appState.user.accessToken {
+            loading = true
+            profileRepository.requestSearchUsersByName(username: username, accessToken: accessToken, page: requestSearchUsersByNamePage, completed: {
+                fetchedUsers in
+                DispatchQueue.main.async {
+                    self.users += fetchedUsers
+                    if fetchedUsers.isEmpty {
+                        self.canFetchMore = false
+                    }
+                    self.error = nil
+                    self.loading = false
+                }
+            }, onError: { err in
+                DispatchQueue.main.async {
+                    self.loading = false
+                    self.error = err
+                }
+            })
+            
+            requestSearchUsersByNamePage += 1
         }
     }
 }

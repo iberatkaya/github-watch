@@ -5,7 +5,7 @@ struct ContentView: View {
     @ObservedObject var connectivityController: ConnectivityController
     @EnvironmentObject var appState: AppState
     
-    init(appState: AppState) {
+    init() {
         connectivityController = ConnectivityController()
     }
     
@@ -18,6 +18,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(appState: AppState())
+        ContentView()
     }
 }

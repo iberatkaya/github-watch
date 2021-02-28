@@ -5,10 +5,10 @@ protocol ProfileRepository {
     func requestMyProfile(accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) -> Void
     func requestProfile(username: String, accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) -> Void
     func requestUserOrganizations(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) -> Void
+    func requestSearchUsersByName(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) -> Void
 }
 
 struct RealProfileRepository: ProfileRepository {
-    
     /// Request a the signed in user's profile using the access token.
     ///
     /// - Parameters:
@@ -98,6 +98,8 @@ struct RealProfileRepository: ProfileRepository {
             
             let jsonData = JSON(data)
             
+            print(jsonData)
+            
             if let errorMessage = jsonData["message"].string {
                 onError(errorMessage)
                 return
@@ -153,6 +155,43 @@ struct RealProfileRepository: ProfileRepository {
             }
             
             completed(organizations)
+            
+        }.resume()
+    }
+
+    func requestSearchUsersByName(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) {
+        let itemsPerPage = 8
+        
+        let request = urlRequest(url: "https://api.github.com/search/users?q=\(username)&page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
+            print(request)
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+
+            let jsonData = JSON(data)
+            
+            if let errorMessage = jsonData["message"].string {
+                onError(errorMessage)
+                return
+            }
+            
+            guard let items = jsonData["items"].array else {
+                onError("Users could not be found.")
+                return
+            }
+            
+            var users: [ProfileUser] = []
+
+            for item in items {
+                if let dict = item.dictionaryObject {
+                    users.append(ProfileUser(dict: dict))
+                }
+            }
+            
+            completed(users)
             
         }.resume()
     }
