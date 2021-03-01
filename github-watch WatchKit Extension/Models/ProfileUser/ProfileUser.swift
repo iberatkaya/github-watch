@@ -33,44 +33,43 @@ struct ProfileUser: Identifiable {
         self.userType = UserType(rawValue: jsonDict["type"].string ?? "") ?? UserType.other
     }
     
-    ///The user's created unique id. This is used for displaying the user in a list.
+    /// The user's created unique id. This is used for displaying the user in a list.
     var id = UUID()
     
-    ///The username of the user. Example: @johndoe
+    /// The username of the user. Example: @johndoe
     var username: String?
     
-    ///The display name of the user. Example: John Doe
+    /// The display name of the user. Example: John Doe
     var name: String?
     
-    ///The biography of the user.
+    /// The biography of the user.
     var bio: String?
     
-    ///The user's avatar url.
+    /// The user's avatar url.
     var avatarUrl: String?
     
-    ///The user's email.
+    /// The user's email.
     var email: String?
     
-    ///The user's follow count.
+    /// The user's follow count.
     var followers: Int?
     
-    ///The user's following count.
+    /// The user's following count.
     var following: Int?
     
-    ///The user's company.
+    /// The user's company.
     var company: String?
     
-    ///The user's public repository count.
+    /// The user's public repository count.
     var publicRepoCount: Int?
     
-    ///The user's private repository count. This is only displayed when the user has access to this information.
-    ///Example: When a user views its own profile.
+    /// The user's private repository count. This is only displayed when the user has access to this information.
+    /// Example: When a user views its own profile.
     var privateRepoCount: Int?
     
-    
-    ///The user's location.
+    /// The user's location.
     var location: String?
     
-    ///The user's user type.
+    /// The user's user type.
     var userType: UserType
 }

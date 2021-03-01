@@ -4,16 +4,16 @@ struct SearchUsersList: View {
     @ObservedObject var usersViewModel: RealUsersViewModel
     @EnvironmentObject var appState: AppState
     let name: String
-    
-    init(name: String, usersViewModel: RealUsersViewModel ) {
+
+    init(name: String, usersViewModel: RealUsersViewModel) {
         self.name = name
         self.usersViewModel = usersViewModel
     }
-    
-    func fetchUser(){
+
+    func fetchUser() {
         usersViewModel.requestSearchUsersByName(username: name)
     }
-    
+
     var body: some View {
         ScrollView {
             Text("\(name)").bold()
@@ -43,6 +43,6 @@ struct SearchUsersList: View {
 
 struct SearchUsersList_Previews: PreviewProvider {
     static var previews: some View {
-        SearchUsersList(name: "Hello",usersViewModel: RealUsersViewModel(appState: AppState()))
+        SearchUsersList(name: "Hello", usersViewModel: RealUsersViewModel(appState: AppState()))
     }
 }

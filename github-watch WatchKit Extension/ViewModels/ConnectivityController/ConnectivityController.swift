@@ -36,7 +36,7 @@ class ConnectivityController: NSObject, WCSessionDelegate, ObservableObject {
                         self.appState.user.username = name
                     }
                 }
-            }, onError: {_ in})
+            }, onError: { _ in })
         }
     }
 }

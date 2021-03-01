@@ -6,9 +6,9 @@ protocol MarkdownRepository {
 }
 
 struct RealMarkdownRepository: MarkdownRepository {
-    ///Request a repository's README file.
+    /// Request a repository's README file.
     ///
-    ///- Parameters:
+    /// - Parameters:
     ///     - username: The GitHub username of the user.
     ///     - repo: The name of the repository.
     ///     - accessToken: The GitHub user's OAuth accessToken.

@@ -8,9 +8,9 @@ protocol RepoRepository {
 }
 
 struct RealRepoRepository: RepoRepository {
-    ///Search for repositories.
+    /// Search for repositories.
     ///
-    ///- Parameters:
+    /// - Parameters:
     ///     - name: The searched term.
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - page: The page of the request.
@@ -40,14 +40,14 @@ struct RealRepoRepository: RepoRepository {
                     repos.append(Repo(dict: dict))
                 }
             }
-            
+
             completed(repos)
         }.resume()
     }
 
-    ///Request a user's repositories using the user's username.
+    /// Request a user's repositories using the user's username.
     ///
-    ///- Parameters:
+    /// - Parameters:
     ///     - username: The GitHub username of the user.
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - page: The page of the request.
@@ -64,7 +64,7 @@ struct RealRepoRepository: RepoRepository {
                 onError(error.localizedDescription)
                 return
             }
-            
+
             let myDict = JSON(data)
 
             var repos: [Repo] = []

@@ -27,33 +27,33 @@ struct Repo: Identifiable {
         self.licenseName = jsonDict["license"]["name"].string
     }
 
-    ///The repository's created unique id. This is used for displaying the repository in a list.
+    /// The repository's created unique id. This is used for displaying the repository in a list.
     var id = UUID()
 
-    ///The name of the repository.
+    /// The name of the repository.
     var name: String
     
-    ///The repository owner's name.
+    /// The repository owner's name.
     var ownerName: String
     
-    ///The number of issues of the repository.
+    /// The number of issues of the repository.
     var issueCount: Int
     
-    ///The number of forks of the repository.
+    /// The number of forks of the repository.
     var forks: Int
     
-    ///The number of star of the repository.
+    /// The number of star of the repository.
     var starCount: Int
     
-    ///The number of watchers of the repository.
+    /// The number of watchers of the repository.
     var watcherCount: Int
     
-    ///The description of the repository.
+    /// The description of the repository.
     var description: String?
     
-    ///The langauge of the repository.
+    /// The langauge of the repository.
     var language: String?
     
-    ///The name of the license of the repository.
+    /// The name of the license of the repository.
     var licenseName: String?
 }

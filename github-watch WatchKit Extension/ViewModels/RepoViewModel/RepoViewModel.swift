@@ -9,22 +9,22 @@ class RealRepoViewModel: ObservableObject, RepoViewModel {
     private let repoRepository = RealRepoRepository()
     private let appState: AppState
 
-    ///The page counter for the `requestReposOfUser` function. Used for pagination.
+    /// The page counter for the `requestReposOfUser` function. Used for pagination.
     private var requestReposOfUserPage = 1
-    
-    ///The page counter for the `requestReposByName` function. Used for pagination.
+
+    /// The page counter for the `requestReposByName` function. Used for pagination.
     private var requestReposByNamePage = 1
-    
-    ///Determines whether a request is being made.
+
+    /// Determines whether a request is being made.
     @Published var loading = false
-    
-    ///The fetched repositories.
+
+    /// The fetched repositories.
     @Published var repos: [Repo] = []
-    
-    ///Determines whether more data can be fetched. Is false if the response contains no more data.
+
+    /// Determines whether more data can be fetched. Is false if the response contains no more data.
     @Published var canFetchMore = true
-    
-    ///Displays the error string. Is null if an error does not exist.
+
+    /// Displays the error string. Is null if an error does not exist.
     @Published var error: String?
 
     init(appState: AppState) {

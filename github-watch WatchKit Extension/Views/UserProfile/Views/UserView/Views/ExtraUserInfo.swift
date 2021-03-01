@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ExtraUserInfo: View {
     let profileUser: ProfileUser
-    
+
     init(profileUser: ProfileUser) {
         self.profileUser = profileUser
     }

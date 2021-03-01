@@ -163,7 +163,7 @@ struct RealProfileRepository: ProfileRepository {
         let itemsPerPage = 8
         
         let request = urlRequest(url: "https://api.github.com/search/users?q=\(username)&page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
-            print(request)
+        print(request)
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
             if let error = error {

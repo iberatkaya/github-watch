@@ -10,8 +10,8 @@ class RealAuthViewModel: ObservableObject, AuthViewModel {
     init(appState: AppState) {
         self.appState = appState
     }
-    
-    ///Sign the user out.
+
+    /// Sign the user out.
     func signOut() {
         appState.user.accessToken = nil
     }

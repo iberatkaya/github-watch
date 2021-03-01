@@ -13,7 +13,7 @@ class AppState: ObservableObject, Equatable, Encodable, Decodable {
         }
     }
     
-    ///The OAuth signed in user.
+    /// The OAuth signed in user.
     @Published var user = AuthUser() {
         didSet {
             if let encodedUser = try? JSONEncoder().encode(user) {

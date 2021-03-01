@@ -15,7 +15,7 @@ struct UsersList: View {
     func fetchUsers() {
         usersViewModel.requestUserFollowersOrFollowings(username: username, userFollowType: userFollowType)
     }
-    
+
     func mapFollowTypeToString() -> String {
         if userFollowType == UserFollowType.followers {
             return "Followers"
