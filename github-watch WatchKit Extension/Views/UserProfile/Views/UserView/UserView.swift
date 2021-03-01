@@ -4,7 +4,6 @@ import URLImage
 struct UserView: View {
     var profileUser: ProfileUser
     @EnvironmentObject var appState: AppState
-    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         VStack {
