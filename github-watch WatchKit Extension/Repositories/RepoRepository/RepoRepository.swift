@@ -7,7 +7,7 @@ protocol RepoRepository {
 
     func requestIssuesByRepoName(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) -> Void
 
-    func requestReposCommits(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void)
+    func requestReposCommits(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Commit]) -> Void, onError: @escaping (String) -> Void)
 }
 
 struct RealRepoRepository: RepoRepository {
@@ -150,7 +150,7 @@ struct RealRepoRepository: RepoRepository {
     ///     - page: The page of the request.
     ///     - completed: The clouse to call when the repositories are fetched.
     ///     - onError: The clouse to call when an error occurs. Returns the error string.
-    func requestReposCommits(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
+    func requestReposCommits(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Commit]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 12
 
         guard let request = urlRequest(url: "https://api.github.com/repos/\(username)/\(repoName)/commits?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken) else {

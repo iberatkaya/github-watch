@@ -115,6 +115,11 @@ struct RepoView: View {
             }.padding(.bottom, 4)
             
             NavigationLink(
+                destination: CommitsList(commitViewModel: RealCommitsViewModel(appState: appState), authorName: repo.ownerName, repoName: repo.name)) {
+                    Text("View Commits")
+            }.padding(.bottom, 4)
+            
+            NavigationLink(
                 destination: UserProfile(profileViewModel: RealProfileViewModel(appState: appState), username: repo.ownerName)) {
                     Text("View Author")
             }

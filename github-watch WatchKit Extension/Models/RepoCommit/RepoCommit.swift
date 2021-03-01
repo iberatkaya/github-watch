@@ -10,8 +10,12 @@ struct Commit: Identifiable {
     
     init(dict: [String: Any]) {
         let jsonDict = JSON(dict)
-        self.owner = ProfileUser(dict: jsonDict["author"])
-        self.date = jsonDict["commit"]["author"]["date"].date
+        if let owner = jsonDict["committer"].dictionaryObject {
+            self.owner = ProfileUser(dict: owner)
+        } else {
+            self.owner = nil
+        }
+        self.date = jsonDict["commit"]["committer"]["date"].date
         self.message = jsonDict["commit"]["message"].string
     }
 
