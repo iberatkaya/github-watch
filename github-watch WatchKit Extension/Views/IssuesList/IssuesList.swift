@@ -4,6 +4,7 @@ struct IssuesList: View {
     let repoName: String
     let authorName: String
     @ObservedObject var issueViewModel: RealIssuesViewModel
+    @EnvironmentObject var appState:  AppState
     
     init(issueViewModel: RealIssuesViewModel, repoName: String, authorName: String) {
         self.issueViewModel = issueViewModel
@@ -20,7 +21,7 @@ struct IssuesList: View {
             Text("\(repoName) Issues").bold()
             Divider().padding(.vertical, 4)
             ForEach(issueViewModel.issues, id: \.id) { issue in
-                NavigationLink(destination: IssueView(issue: issue)) {
+                NavigationLink(destination: IssueView(commentsViewModel: RealCommentsViewModel(appState: appState, issue: issue), username: authorName, repoName: repoName,  issue: issue)) {
                     MiniIssueView(issue: issue)
                 }
             }

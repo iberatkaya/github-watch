@@ -7,11 +7,11 @@ protocol MarkdownViewModel {
 class RealMarkdownViewModel: ObservableObject, MarkdownViewModel {
     private let markdownRepository = RealMarkdownRepository()
     private let appState: AppState
-    
-    ///Determines whether a file is being downloaded.
+
+    /// Determines whether a file is being downloaded.
     @Published var downloading = true
-    
-    ///Displays the markdown text. Is null initially.
+
+    /// Displays the markdown text. Is null initially.
     @Published var markdown: String?
 
     init(appState: AppState) {
@@ -27,7 +27,9 @@ class RealMarkdownViewModel: ObservableObject, MarkdownViewModel {
         markdownRepository.requestREADME(username: username, repo: repo, completed: { markdownText in
             DispatchQueue.main.async {
                 self.downloading = false
+                print(self.markdown)
                 self.markdown = markdownText
+                print(self.markdown)
             }
         }, onError: { _ in })
     }

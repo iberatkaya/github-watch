@@ -4,8 +4,6 @@ import SwiftUI
 struct Markdown: View {
     var username: String
     var repoName: String
-    @State var downloading = true
-    @State var markdown: String?
     @ObservedObject var markdownViewModel: RealMarkdownViewModel
 
     init(markdownViewModel: RealMarkdownViewModel, username: String, repoName: String) {
@@ -16,15 +14,15 @@ struct Markdown: View {
 
     var body: some View {
         ScrollView {
-            if downloading {
+            if markdownViewModel.downloading {
                 VStack {
                     ProgressView().padding(.bottom, 4)
                     Text("Loading...")
                 }
             }
-            if let markdown = markdown {
+            if let markdown = markdownViewModel.markdown {
                 Parma(markdown)
-            } else if !downloading {
+            } else if !markdownViewModel.downloading {
                 Text("README not found!")
             }
         }

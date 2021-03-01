@@ -1,7 +1,7 @@
 import Foundation
 import SwiftyJSON
 
-func urlRequest(url: String , accessToken: String) -> URLRequest? {
+func urlRequest(url: String, accessToken: String) -> URLRequest? {
     guard let urlStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
           let url = URL(string: urlStr)
     else {

@@ -13,8 +13,8 @@ struct RealProfileRepository: ProfileRepository {
     ///
     /// - Parameters:
     ///     - accessToken: The GitHub user's OAuth accessToken.
-    ///     - completed: The clouse to call when the user profile is fetched.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the user profile is fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestMyProfile(accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) {
         guard let request = urlRequest(url: "https://api.github.com/user", accessToken: accessToken) else {
             onError("Incorrect Request")
@@ -50,8 +50,8 @@ struct RealProfileRepository: ProfileRepository {
     /// - Parameters:
     ///     - username: The GitHub user's username.
     ///     - accessToken: The GitHub user's OAuth accessToken.
-    ///     - completed: The clouse to call when the user profile is fetched.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the user profile is fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestProfile(username: String, accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) {
         guard let request = urlRequest(url: "https://api.github.com/users/\(username)", accessToken: accessToken) else {
             onError("Incorrect Request")
@@ -88,8 +88,8 @@ struct RealProfileRepository: ProfileRepository {
     ///     - username: The GitHub user's username.
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - page: The page of the request.
-    ///     - completed: The clouse to call when the user's organizations are fetched.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the user's organizations are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestUserOrganizations(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
         
@@ -132,8 +132,8 @@ struct RealProfileRepository: ProfileRepository {
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - userFollowType: Determines to get the user's followings or followers.
     ///     - page: The page of the request.
-    ///     - completed: The clouse to call when the user's followers or following are fetched.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the user's followers or following are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestUserFollowersOrFollowings(username: String, accessToken: String, userFollowType: UserFollowType, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
         

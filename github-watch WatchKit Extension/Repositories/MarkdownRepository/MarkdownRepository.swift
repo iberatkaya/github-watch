@@ -12,8 +12,8 @@ struct RealMarkdownRepository: MarkdownRepository {
     ///     - username: The GitHub username of the user.
     ///     - repo: The name of the repository.
     ///     - accessToken: The GitHub user's OAuth accessToken.
-    ///     - completed: The clouse to call when the README is fetched. Returns nil if an error occurs.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the README is fetched. Returns nil if an error occurs.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestREADME(username: String, repo: String, completed: @escaping (String) -> Void, onError: @escaping (String) -> Void) {
         // Try to fetch the README from the main branch.
         let mainUrl = URL(string: "https://raw.githubusercontent.com/\(username)/\(repo)/main/README.md")

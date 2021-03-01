@@ -72,6 +72,9 @@
 		F49A66C925E5397100F7893C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66C825E5397100F7893C /* String.swift */; };
 		F49A66D625E53B0800F7893C /* MarkdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66D525E53B0800F7893C /* MarkdownViewModel.swift */; };
 		F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49A66E225E53B6000F7893C /* MarkdownRepository.swift */; };
+		F4B0B3ED25ED8134001F533D /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B3EC25ED8133001F533D /* CommentsViewModel.swift */; };
+		F4B0B3FA25ED87D9001F533D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B3F925ED87D9001F533D /* Comment.swift */; };
+		F4B0B40725ED92A5001F533D /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B40625ED92A5001F533D /* CommentView.swift */; };
 		F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1FF3225E9457200AD83F1 /* UserType.swift */; };
 		F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA954D25E5A43500F702ED /* BottomNavRow.swift */; };
 		F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA955F25E5AFA600F702ED /* SearchRepos.swift */; };
@@ -209,6 +212,9 @@
 		F49A66C825E5397100F7893C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F49A66D525E53B0800F7893C /* MarkdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewModel.swift; sourceTree = "<group>"; };
 		F49A66E225E53B6000F7893C /* MarkdownRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRepository.swift; sourceTree = "<group>"; };
+		F4B0B3EC25ED8133001F533D /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		F4B0B3F925ED87D9001F533D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		F4B0B40625ED92A5001F533D /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		F4B1FF3225E9457200AD83F1 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		F4EA954D25E5A43500F702ED /* BottomNavRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavRow.swift; sourceTree = "<group>"; };
 		F4EA955F25E5AFA600F702ED /* SearchRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepos.swift; sourceTree = "<group>"; };
@@ -327,6 +333,7 @@
 		F47617CE25ED30B30041544F /* IssueView */ = {
 			isa = PBXGroup;
 			children = (
+				F4B0B40525ED9297001F533D /* CommentView */,
 				F47617D025ED30C10041544F /* IssueView.swift */,
 			);
 			path = IssueView;
@@ -596,6 +603,7 @@
 		F48F4C3725E407CA003E6C2A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F4B0B3EB25ED8120001F533D /* CommentsViewModel */,
 				F476173F25ED148B0041544F /* IssuesViewModel */,
 				F445167C25EB7A640045B4E1 /* UsersViewModel */,
 				F47822D425E854D300CB2A67 /* OrganizationViewModel */,
@@ -622,6 +630,7 @@
 		F48F4C3925E407D8003E6C2A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F4B0B3F825ED8745001F533D /* Comment */,
 				F476172B25ED0F1F0041544F /* Issue */,
 				F4B1FF3925E945E900AD83F1 /* UserType */,
 				F49A65AF25E4F47500F7893C /* Repo */,
@@ -801,6 +810,30 @@
 				F49A66E225E53B6000F7893C /* MarkdownRepository.swift */,
 			);
 			path = MarkdownRepository;
+			sourceTree = "<group>";
+		};
+		F4B0B3EB25ED8120001F533D /* CommentsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4B0B3EC25ED8133001F533D /* CommentsViewModel.swift */,
+			);
+			path = CommentsViewModel;
+			sourceTree = "<group>";
+		};
+		F4B0B3F825ED8745001F533D /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				F4B0B3F925ED87D9001F533D /* Comment.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		F4B0B40525ED9297001F533D /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				F4B0B40625ED92A5001F533D /* CommentView.swift */,
+			);
+			path = CommentView;
 			sourceTree = "<group>";
 		};
 		F4B1FF3925E945E900AD83F1 /* UserType */ = {
@@ -1165,6 +1198,7 @@
 				F49A66AD25E52EC900F7893C /* RepoView.swift in Sources */,
 				F445167625EB79DA0045B4E1 /* FollowUsersList.swift in Sources */,
 				42D4162325EBF3F900A39EE2 /* SearchUsers.swift in Sources */,
+				F4B0B40725ED92A5001F533D /* CommentView.swift in Sources */,
 				F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */,
 				F48F4B5C25E3BD70003E6C2A /* ComplicationController.swift in Sources */,
 				F4F2A43125E7B83100C8B943 /* MiniUserView.swift in Sources */,
@@ -1178,6 +1212,7 @@
 				F49A66D625E53B0800F7893C /* MarkdownViewModel.swift in Sources */,
 				F49A66E325E53B6000F7893C /* MarkdownRepository.swift in Sources */,
 				F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */,
+				F4B0B3ED25ED8134001F533D /* CommentsViewModel.swift in Sources */,
 				F47822E825E861F000CB2A67 /* ExtraUserInfo.swift in Sources */,
 				F476174125ED149C0041544F /* IssuesViewModel.swift in Sources */,
 				F4EA958A25E5BBCF00F702ED /* FollowStatViwe.swift in Sources */,
@@ -1191,6 +1226,7 @@
 				F4EA957B25E5B2C000F702ED /* MiniRepoView.swift in Sources */,
 				F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */,
 				F49A65BA25E4F71200F7893C /* FileDownloader.swift in Sources */,
+				F4B0B3FA25ED87D9001F533D /* Comment.swift in Sources */,
 				42D4163025EBF54800A39EE2 /* SearchUsersList.swift in Sources */,
 				F48F4B5425E3BD70003E6C2A /* github_watchApp.swift in Sources */,
 				F48F4B5A25E3BD70003E6C2A /* NotificationView.swift in Sources */,

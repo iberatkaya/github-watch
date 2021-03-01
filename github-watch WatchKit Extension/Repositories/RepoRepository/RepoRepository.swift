@@ -7,6 +7,8 @@ protocol RepoRepository {
     func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) -> Void
 
     func requestIssuesByRepoName(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) -> Void
+    
+    func requestCommentsOfIssue(username: String, repoName: String, issueID: String, accessToken: String, page: Int, completed: @escaping ([Comment]) -> Void, onError: @escaping (String) -> Void) -> Void
 }
 
 struct RealRepoRepository: RepoRepository {
@@ -16,8 +18,8 @@ struct RealRepoRepository: RepoRepository {
     ///     - name: The searched term.
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - page: The page of the request.
-    ///     - completed: The clouse to call when the repositories are fetched.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the repositories are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
@@ -62,8 +64,8 @@ struct RealRepoRepository: RepoRepository {
     ///     - username: The GitHub username of the user.
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - page: The page of the request.
-    ///     - completed: The clouse to call when the repositories are fetched.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the repositories are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
@@ -102,10 +104,11 @@ struct RealRepoRepository: RepoRepository {
     ///
     /// - Parameters:
     ///     - username: The GitHub username of the user.
+    ///     - repoName: The name of the repository.
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - page: The page of the request.
-    ///     - completed: The clouse to call when the repositories are fetched.
-    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    ///     - completed: The closure to call when the repositories are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
     func requestIssuesByRepoName(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 12
 
@@ -137,6 +140,49 @@ struct RealRepoRepository: RepoRepository {
             }
 
             completed(issues)
+        }.resume()
+    }
+    
+    /// Request a repository issue's comments.
+    ///
+    /// - Parameters:
+    ///     - username: The GitHub username of the user.
+    ///     - repoName: The name of the repository.
+    ///     - issueID: The name of the repository.
+    ///     - accessToken: The GitHub user's OAuth accessToken.
+    ///     - page: The page of the request.
+    ///     - completed: The closure to call when the repositories are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
+    func requestCommentsOfIssue(username: String, repoName: String, issueID: String, accessToken: String, page: Int, completed: @escaping ([Comment]) -> Void, onError: @escaping (String) -> Void) {
+        let itemsPerPage = 12
+        guard let request = urlRequest(url: "https://api.github.com/repos/\(username)/\(repoName)/issues/\(issueID)/comments?page=\(page)&per_page=\(itemsPerPage)&sort=created&direction=desc&state=all", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
+
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+
+            let myDict = JSON(data)
+
+            if let errorMessage = myDict["message"].string {
+                onError(errorMessage)
+                return
+            }
+
+            var comments: [Comment] = []
+
+            for item in myDict {
+                if let dict = item.1.dictionaryObject {
+                    comments.append(Comment(dict: dict))
+                }
+            }
+
+            completed(comments)
         }.resume()
     }
 }
