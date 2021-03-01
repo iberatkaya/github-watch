@@ -1,0 +1,61 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DateHelper",
+        "repositoryURL": "https://github.com/iberatkaya/DateHelper.git",
+        "state": {
+          "branch": "master",
+          "revision": "4b67ab4d3178626ef7a4006bdfdb4641c5591806",
+          "version": null
+        }
+      },
+      {
+        "package": "Down",
+        "repositoryURL": "https://github.com/iwasrobbed/Down",
+        "state": {
+          "branch": null,
+          "revision": "0bcd20dc56ad7fd47bbb99a1d2302a8bfa43b6d0",
+          "version": "0.10.0"
+        }
+      },
+      {
+        "package": "Parma",
+        "repositoryURL": "https://github.com/iberatkaya/Parma",
+        "state": {
+          "branch": "main",
+          "revision": "11b0fdd9c443c04b4fc2ec623ab5a6a0b58f56d6",
+          "version": null
+        }
+      },
+      {
+        "package": "WebView",
+        "repositoryURL": "https://github.com/kylehickinson/SwiftUI-WebView.git",
+        "state": {
+          "branch": null,
+          "revision": "a67dcaff2377573a51f75761bb6e768b78931909",
+          "version": "0.3.0"
+        }
+      },
+      {
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
+        "state": {
+          "branch": null,
+          "revision": "2b6054efa051565954e1d2b9da831680026cd768",
+          "version": "5.0.0"
+        }
+      },
+      {
+        "package": "URLImage",
+        "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
+        "state": {
+          "branch": null,
+          "revision": "c1a906515b0a440927b96204b778058871b22f23",
+          "version": "2.2.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
