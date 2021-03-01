@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 
 struct ProfileUser: Identifiable {
-    init(username: String? = nil, name: String? = nil, bio: String? = nil, avatarUrl: String? = nil, email: String? = nil, followers: Int? = nil, following: Int? = nil, company: String? = nil, publicRepoCount: Int? = nil, privateRepoCount: Int? = nil, location: String? = nil, userType: String? = nil) {
+    init(username: String? = nil, name: String? = nil, bio: String? = nil, avatarUrl: String? = nil, email: String? = nil, followers: Int? = nil, following: Int? = nil, company: String? = nil, publicRepoCount: Int? = nil, privateRepoCount: Int? = nil, location: String? = nil, userType: UserType? = nil) {
         self.username = username
         self.name = name
         self.bio = bio
@@ -14,7 +14,7 @@ struct ProfileUser: Identifiable {
         self.publicRepoCount = publicRepoCount
         self.privateRepoCount = privateRepoCount
         self.location = location
-        self.userType = UserType(rawValue: userType ?? "") ?? UserType.other
+        self.userType = userType ?? UserType.other
     }
 
     init(dict: [String: Any]) {

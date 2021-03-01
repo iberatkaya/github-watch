@@ -23,7 +23,7 @@ struct UserRepos: View {
                 }
             }
             if repoViewModel.repos.count > 0 && repoViewModel.canFetchMore {
-                BottomNavRow(buttonClick: fetchUserRepos, loading: $repoViewModel.loading)
+                BottomNavRow(buttonClick: fetchUserRepos, loading: repoViewModel.loading)
             }
         }
         .navigationTitle(username)

@@ -110,6 +110,11 @@ struct RepoView: View {
             }.padding(.bottom, 4)
             
             NavigationLink(
+                destination: IssuesList(issueViewModel: RealIssuesViewModel(appState: appState), repoName: repo.name, authorName: repo.ownerName)) {
+                    Text("View Issues")
+            }.padding(.bottom, 4)
+            
+            NavigationLink(
                 destination: UserProfile(profileViewModel: RealProfileViewModel(appState: appState), username: repo.ownerName)) {
                     Text("View Author")
             }

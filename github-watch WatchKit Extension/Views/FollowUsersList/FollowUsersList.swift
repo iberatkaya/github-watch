@@ -36,7 +36,7 @@ struct UsersList: View {
                 }
             }
             if usersViewModel.users.count > 0 && usersViewModel.canFetchMore {
-                BottomNavRow(buttonClick: fetchUsers, loading: $usersViewModel.loading)
+                BottomNavRow(buttonClick: fetchUsers, loading: usersViewModel.loading)
             }
             if let error = usersViewModel.error {
                 Text(error).padding(.horizontal, 4)

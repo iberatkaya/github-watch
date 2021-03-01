@@ -1,8 +1,12 @@
 import Foundation
 import SwiftyJSON
 
-func urlRequest(url: String, accessToken: String) -> URLRequest {
-    let url = URL(string: url)!
+func urlRequest(url: String , accessToken: String) -> URLRequest? {
+    guard let urlStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+          let url = URL(string: urlStr)
+    else {
+        return nil
+    }
 
     var request = URLRequest(url: url)
     request.httpMethod = "GET"

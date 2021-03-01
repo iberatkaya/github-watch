@@ -74,9 +74,9 @@ struct UserView: View {
 }
 
 struct UserView_Previews: PreviewProvider {
-    static var profileUser1 = ProfileUser(username: "iberatkaya", name: "Ibrahim Berat Kaya", bio: "I\'m interested in Flutter, Node.js, React Native, React.js, Swift & SwiftUI, Express.js, and Rust.", avatarUrl: "https://avatars.githubusercontent.com/u/34488374?v=4", email: "beratkaya1998@gmail.com", followers: 23, following: 21, company: "ITU", publicRepoCount: 38, privateRepoCount: 24, location: "Istanbul", userType: "User")
+    static var profileUser1 = ProfileUser(username: "iberatkaya", name: "Ibrahim Berat Kaya", bio: "I\'m interested in Flutter, Node.js, React Native, React.js, Swift & SwiftUI, Express.js, and Rust.", avatarUrl: "https://avatars.githubusercontent.com/u/34488374?v=4", email: "beratkaya1998@gmail.com", followers: 23, following: 21, company: "ITU", publicRepoCount: 38, privateRepoCount: 24, location: "Istanbul", userType: UserType.user)
     
-    static var profileUser2 = ProfileUser(username: "flutter", name: "Flutter", bio: nil, avatarUrl: "https://avatars.githubusercontent.com/u/14101776?v=4", email: nil, followers: 0, following: 0, company: nil, publicRepoCount: 34, location: nil, userType: "Organization")
+    static var profileUser2 = ProfileUser(username: "flutter", name: "Flutter", bio: nil, avatarUrl: "https://avatars.githubusercontent.com/u/14101776?v=4", email: nil, followers: 0, following: 0, company: nil, publicRepoCount: 34, location: nil, userType: UserType.organization)
     
     static var previews: some View {
         ScrollView {

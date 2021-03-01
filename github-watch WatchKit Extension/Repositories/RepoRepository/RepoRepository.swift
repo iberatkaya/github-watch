@@ -5,6 +5,8 @@ protocol RepoRepository {
     func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) -> Void
 
     func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) -> Void
+
+    func requestIssuesByRepoName(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) -> Void
 }
 
 struct RealRepoRepository: RepoRepository {
@@ -19,7 +21,10 @@ struct RealRepoRepository: RepoRepository {
     func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
-        let request = urlRequest(url: "https://api.github.com/search/repositories?q=\(name)&page=\(page)&per_page=\(itemsPerPage)&sort=pushed", accessToken: accessToken)
+        guard let request = urlRequest(url: "https://api.github.com/search/repositories?q=\(name)&page=\(page)&per_page=\(itemsPerPage)&sort=pushed", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
 
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
@@ -31,7 +36,13 @@ struct RealRepoRepository: RepoRepository {
                 onError("Data could not be found")
                 return
             }
+
             let myDict = JSON(data)
+
+            if let errorMessage = myDict["message"].string {
+                onError(errorMessage)
+                return
+            }
 
             var repos: [Repo] = []
 
@@ -56,7 +67,10 @@ struct RealRepoRepository: RepoRepository {
     func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
 
-        let request = urlRequest(url: "https://api.github.com/users/\(username)/repos?page=\(page)&per_page=\(itemsPerPage)&sort=pushed", accessToken: accessToken)
+        guard let request = urlRequest(url: "https://api.github.com/users/\(username)/repos?page=\(page)&per_page=\(itemsPerPage)&sort=pushed", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
 
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
@@ -67,6 +81,11 @@ struct RealRepoRepository: RepoRepository {
 
             let myDict = JSON(data)
 
+            if let errorMessage = myDict["message"].string {
+                onError(errorMessage)
+                return
+            }
+
             var repos: [Repo] = []
 
             for item in myDict {
@@ -76,6 +95,48 @@ struct RealRepoRepository: RepoRepository {
             }
 
             completed(repos)
+        }.resume()
+    }
+
+    /// Request a repository's issues.
+    ///
+    /// - Parameters:
+    ///     - username: The GitHub username of the user.
+    ///     - accessToken: The GitHub user's OAuth accessToken.
+    ///     - page: The page of the request.
+    ///     - completed: The clouse to call when the repositories are fetched.
+    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    func requestIssuesByRepoName(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) {
+        let itemsPerPage = 12
+
+        guard let request = urlRequest(url: "https://api.github.com/repos/\(username)/\(repoName)/issues?page=\(page)&per_page=\(itemsPerPage)&sort=created&direction=desc&state=all", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
+
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+
+            let myDict = JSON(data)
+
+            if let errorMessage = myDict["message"].string {
+                onError(errorMessage)
+                return
+            }
+
+            var issues: [Issue] = []
+
+            for item in myDict {
+                if let dict = item.1.dictionaryObject {
+                    issues.append(Issue(dict: dict))
+                }
+            }
+
+            completed(issues)
         }.resume()
     }
 }

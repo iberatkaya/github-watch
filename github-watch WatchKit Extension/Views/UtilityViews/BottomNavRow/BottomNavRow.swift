@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BottomNavRow: View {
     var buttonClick: (() -> Void)?
-    @Binding var loading: Bool
+    var loading: Bool
 
     var body: some View {
         HStack {
@@ -24,6 +24,6 @@ struct BottomNavRow_Previews: PreviewProvider {
     @State static var loading = false
 
     static var previews: some View {
-        BottomNavRow(loading: $loading)
+        BottomNavRow(loading: loading)
     }
 }

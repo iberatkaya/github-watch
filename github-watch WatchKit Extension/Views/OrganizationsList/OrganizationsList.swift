@@ -24,7 +24,7 @@ struct OrganizationsList: View {
                 }
             }
             if organizationViewModel.organizations.count > 0 && organizationViewModel.canFetchMore {
-                BottomNavRow(buttonClick: fetchOrganizations, loading: $organizationViewModel.loading)
+                BottomNavRow(buttonClick: fetchOrganizations, loading: organizationViewModel.loading)
             }
             if let error = organizationViewModel.error {
                 Text(error).padding(.horizontal, 4)

@@ -26,7 +26,7 @@ struct SearchReposList: View {
                 }
             }
             if repoViewModel.repos.count > 0 && repoViewModel.canFetchMore {
-                BottomNavRow(buttonClick: fetchReposByName, loading: $repoViewModel.loading)
+                BottomNavRow(buttonClick: fetchReposByName, loading: repoViewModel.loading)
             }
             if let error = repoViewModel.error {
                 Text(error).padding(.horizontal, 4)

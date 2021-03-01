@@ -16,8 +16,11 @@ struct RealProfileRepository: ProfileRepository {
     ///     - completed: The clouse to call when the user profile is fetched.
     ///     - onError: The clouse to call when an error occurs. Returns the error string.
     func requestMyProfile(accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) {
-        let request = urlRequest(url: "https://api.github.com/user", accessToken: accessToken)
-
+        guard let request = urlRequest(url: "https://api.github.com/user", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
+        
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
             if let error = error {
@@ -50,7 +53,10 @@ struct RealProfileRepository: ProfileRepository {
     ///     - completed: The clouse to call when the user profile is fetched.
     ///     - onError: The clouse to call when an error occurs. Returns the error string.
     func requestProfile(username: String, accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) {
-        let request = urlRequest(url: "https://api.github.com/users/\(username)", accessToken: accessToken)
+        guard let request = urlRequest(url: "https://api.github.com/users/\(username)", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
         
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
@@ -87,7 +93,10 @@ struct RealProfileRepository: ProfileRepository {
     func requestUserOrganizations(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
         
-        let request = urlRequest(url: "https://api.github.com/users/\(username)/orgs?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
+        guard let request = urlRequest(url: "https://api.github.com/users/\(username)/orgs?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
         
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
@@ -97,8 +106,6 @@ struct RealProfileRepository: ProfileRepository {
             }
             
             let jsonData = JSON(data)
-            
-            print(jsonData)
             
             if let errorMessage = jsonData["message"].string {
                 onError(errorMessage)
@@ -130,7 +137,10 @@ struct RealProfileRepository: ProfileRepository {
     func requestUserFollowersOrFollowings(username: String, accessToken: String, userFollowType: UserFollowType, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
         
-        let request = urlRequest(url: "https://api.github.com/users/\(username)/\(userFollowType.rawValue)?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
+        guard let request = urlRequest(url: "https://api.github.com/users/\(username)/\(userFollowType.rawValue)?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
         
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
@@ -162,8 +172,11 @@ struct RealProfileRepository: ProfileRepository {
     func requestSearchUsersByName(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) {
         let itemsPerPage = 8
         
-        let request = urlRequest(url: "https://api.github.com/search/users?q=\(username)&page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken)
-        print(request)
+        guard let request = urlRequest(url: "https://api.github.com/search/users?q=\(username)&page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
+
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
             if let error = error {
