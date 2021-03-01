@@ -1,6 +1,9 @@
 import Foundation
 import SwiftyJSON
 
+
+/// Taken from: https://stackoverflow.com/a/36805702.
+/// Author: https://stackoverflow.com/users/23649/jtbandes
 public extension JSON {
     var date: Date? {
         if let str = string {
