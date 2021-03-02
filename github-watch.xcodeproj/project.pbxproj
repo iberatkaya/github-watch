@@ -79,6 +79,7 @@
 		F4B0B3ED25ED8134001F533D /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B3EC25ED8133001F533D /* CommentsViewModel.swift */; };
 		F4B0B3FA25ED87D9001F533D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B3F925ED87D9001F533D /* Comment.swift */; };
 		F4B0B40725ED92A5001F533D /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B40625ED92A5001F533D /* CommentView.swift */; };
+		F4B0B41525EE1FCB001F533D /* UserIssues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B41425EE1FCB001F533D /* UserIssues.swift */; };
 		F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1FF3225E9457200AD83F1 /* UserType.swift */; };
 		F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA954D25E5A43500F702ED /* BottomNavRow.swift */; };
 		F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA955F25E5AFA600F702ED /* SearchRepos.swift */; };
@@ -223,6 +224,7 @@
 		F4B0B3EC25ED8133001F533D /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		F4B0B3F925ED87D9001F533D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F4B0B40625ED92A5001F533D /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		F4B0B41425EE1FCB001F533D /* UserIssues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIssues.swift; sourceTree = "<group>"; };
 		F4B1FF3225E9457200AD83F1 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		F4EA954D25E5A43500F702ED /* BottomNavRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavRow.swift; sourceTree = "<group>"; };
 		F4EA955F25E5AFA600F702ED /* SearchRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepos.swift; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4B0B41225EE1FB6001F533D /* UserIssues */,
 				426D4B9525ED89FD005BE690 /* CommitsList */,
 				F47617CE25ED30B30041544F /* IssueView */,
 				F476174C25ED16860041544F /* IssuesList */,
@@ -878,6 +881,14 @@
 				F4B0B40625ED92A5001F533D /* CommentView.swift */,
 			);
 			path = CommentView;
+			sourceTree = "<group>";
+		};
+		F4B0B41225EE1FB6001F533D /* UserIssues */ = {
+			isa = PBXGroup;
+			children = (
+				F4B0B41425EE1FCB001F533D /* UserIssues.swift */,
+			);
+			path = UserIssues;
 			sourceTree = "<group>";
 		};
 		F4B1FF3925E945E900AD83F1 /* UserType */ = {
@@ -1258,6 +1269,7 @@
 				F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */,
 				F4B0B3ED25ED8134001F533D /* CommentsViewModel.swift in Sources */,
 				F47822E825E861F000CB2A67 /* ExtraUserInfo.swift in Sources */,
+				F4B0B41525EE1FCB001F533D /* UserIssues.swift in Sources */,
 				426D4B9725ED8A1C005BE690 /* CommitsList.swift in Sources */,
 				F476174125ED149C0041544F /* IssuesViewModel.swift in Sources */,
 				F4EA958A25E5BBCF00F702ED /* FollowStatViwe.swift in Sources */,

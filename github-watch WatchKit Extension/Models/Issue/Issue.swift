@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 
 struct Issue: Identifiable {
-    init(title: String? = nil, body: String? = nil, owner: ProfileUser? = nil, creationDate: Date? = nil, closedDate: Date? = nil, commentsCount: Int? = nil, issueNumber: Int? = nil) {
+    init(title: String? = nil, body: String? = nil, owner: ProfileUser? = nil, creationDate: Date? = nil, closedDate: Date? = nil, commentsCount: Int? = nil, issueNumber: Int? = nil, repoName: String? = nil) {
         self.title = title
         self.body = body
         self.owner = owner
@@ -10,6 +10,7 @@ struct Issue: Identifiable {
         self.closedDate = closedDate
         self.commentsCount = commentsCount
         self.issueNumber = issueNumber
+        self.repoName = repoName
     }
     
     init(dict: [String: Any]) {
@@ -26,6 +27,7 @@ struct Issue: Identifiable {
         self.closedDate = jsonDict["closed_at"].date
         self.commentsCount = jsonDict["comments"].int ?? 0
         self.issueNumber = jsonDict["number"].int ?? 0
+        self.repoName = jsonDict["repository"]["name"].string
     }
     
     /// The issues's created unique id. This is used for displaying the issue in a list.
@@ -51,4 +53,7 @@ struct Issue: Identifiable {
     
     ///The number (ID) of the issue on GitHub.
     let issueNumber: Int?
+    
+    ///The repository name of the issue.
+    let repoName: String?
 }

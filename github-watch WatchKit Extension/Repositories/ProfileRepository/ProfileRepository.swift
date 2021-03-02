@@ -6,6 +6,7 @@ protocol ProfileRepository {
     func requestProfile(username: String, accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) -> Void
     func requestUserOrganizations(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) -> Void
     func requestSearchUsersByName(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) -> Void
+    func requestUserIssues(accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) 
 }
 
 struct RealProfileRepository: ProfileRepository {
@@ -206,6 +207,48 @@ struct RealProfileRepository: ProfileRepository {
             
             completed(users)
             
+        }.resume()
+    }
+    
+    /// Request a user's assigned issues.
+    ///
+    /// - Parameters:
+    ///     - accessToken: The GitHub user's OAuth accessToken.
+    ///     - page: The page of the request.
+    ///     - completed: The closure to call when the repositories are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
+    func requestUserIssues(accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) {
+        let itemsPerPage = 12
+
+        guard let request = urlRequest(url: "https://api.github.com/issues?page=\(page)&per_page=\(itemsPerPage)&sort=created&direction=desc&state=all", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
+
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+
+            let myDict = JSON(data)
+            
+            print(myDict)
+
+            if let errorMessage = myDict["message"].string {
+                onError(errorMessage)
+                return
+            }
+
+            var issues: [Issue] = []
+
+            for item in myDict {
+                if let dict = item.1.dictionaryObject {
+                    issues.append(Issue(dict: dict))
+                }
+            }
+            completed(issues)
         }.resume()
     }
 }

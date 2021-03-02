@@ -60,6 +60,11 @@ struct UserView: View {
             ExtraUserInfo(profileUser: profileUser).padding(.bottom, 6)
             
             if let username = profileUser.username {
+                if appState.user.username == username {
+                    NavigationLink(destination: UserIssues(issueViewModel: RealIssuesViewModel(appState: appState))) {
+                        Text("My Issues")
+                    }
+                }
                 if profileUser.userType != UserType.organization {
                     NavigationLink(destination: OrganizationsList(organizationViewModel: RealOrganizationViewModel(appState: appState), username: username)) {
                         Text("Organizations")

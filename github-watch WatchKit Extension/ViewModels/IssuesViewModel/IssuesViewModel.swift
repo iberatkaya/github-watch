@@ -2,15 +2,21 @@ import SwiftUI
 
 protocol IssuesViewModel {
     func requestIssuesByRepoName(username: String, repoName: String) -> Void
+    func requestUserIssues()
 }
 
 class RealIssuesViewModel: ObservableObject, IssuesViewModel {
     private let issueRepository = RealRepoRepository()
+    private let profileRepository = RealProfileRepository()
+    
     private let appState: AppState
 
     /// The page counter for the `requestIssuesByRepoName` function. Used for pagination.
     private var requestIssuesByRepoNamePage = 1
-    
+
+    /// The page counter for the `requestUserIssues` function. Used for pagination.
+    private var requestUserIssuesPage = 1
+
     /// The fetched issues.
     @Published var issues: [Issue] = []
     
@@ -52,5 +58,29 @@ class RealIssuesViewModel: ObservableObject, IssuesViewModel {
             })
             requestIssuesByRepoNamePage += 1
         }
+    }
+
+    /// Request the authenticated user's issues.
+    func requestUserIssues() {
+        if let accessToken = appState.user.accessToken {
+            loading = true
+            profileRepository.requestUserIssues(accessToken: accessToken, page: requestUserIssuesPage, completed: { fetchedIssues in
+                DispatchQueue.main.async {
+                    self.issues += fetchedIssues
+                    if fetchedIssues.isEmpty {
+                        self.canFetchMore = false
+                    }
+                    self.error = nil
+                    self.loading = false
+                }
+            }, onError: { err in
+                DispatchQueue.main.async {
+                    self.loading = false
+                    self.error = err
+                }
+            })
+            requestUserIssuesPage += 1
+        }
+        
     }
 }
