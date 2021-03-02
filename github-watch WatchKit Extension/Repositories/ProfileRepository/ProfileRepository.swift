@@ -6,7 +6,8 @@ protocol ProfileRepository {
     func requestProfile(username: String, accessToken: String, completed: @escaping (ProfileUser) -> Void, onError: @escaping (String) -> Void) -> Void
     func requestUserOrganizations(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) -> Void
     func requestSearchUsersByName(username: String, accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) -> Void
-    func requestUserIssues(accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) 
+    func requestUserIssues(accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void)
+    func requestMyUserOrganizations(accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void)
 }
 
 struct RealProfileRepository: ProfileRepository {
@@ -80,6 +81,47 @@ struct RealProfileRepository: ProfileRepository {
             
             let profileUser = ProfileUser(dict: dict)
             completed(profileUser)
+        }.resume()
+    }
+    /// Request the authenticaed user's organizations.
+    ///
+    /// - Parameters:
+    ///     - accessToken: The GitHub user's OAuth accessToken.
+    ///     - page: The page of the request.
+    ///     - completed: The closure to call when the user's organizations are fetched.
+    ///     - onError: The closure to call when an error occurs. Returns the error string.
+    func requestMyUserOrganizations(accessToken: String, page: Int, completed: @escaping ([ProfileUser]) -> Void, onError: @escaping (String) -> Void) {
+        let itemsPerPage = 8
+        
+        guard let request = urlRequest(url: "https://api.github.com/user/orgs?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+            
+            let jsonData = JSON(data)
+
+            if let errorMessage = jsonData["message"].string {
+                onError(errorMessage)
+                return
+            }
+            
+            var organizations: [ProfileUser] = []
+
+            for item in jsonData {
+                if let dict = item.1.dictionaryObject {
+                    organizations.append(ProfileUser(dict: dict))
+                }
+            }
+            
+            completed(organizations)
+            
         }.resume()
     }
     

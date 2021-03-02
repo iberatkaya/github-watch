@@ -34,21 +34,40 @@ class RealOrganizationViewModel: ObservableObject, OrganizationViewModel {
     func requestUserOrganizations(username: String) {
         if let accessToken = appState.user.accessToken {
             loading = true
-            profileRepository.requestUserOrganizations(username: username, accessToken: accessToken, page: requestUserOrganizationsPage, completed: { orgs in
-                DispatchQueue.main.async {
-                    self.organizations += orgs
-                    if orgs.isEmpty {
-                        self.canFetchMore = false
+            if username == appState.user.username {
+                profileRepository.requestMyUserOrganizations(accessToken: accessToken, page: requestUserOrganizationsPage, completed: { orgs in
+                    DispatchQueue.main.async {
+                        self.organizations += orgs
+                        if orgs.isEmpty {
+                            self.canFetchMore = false
+                        }
+                        self.error = nil
+                        self.loading = false
                     }
-                    self.error = nil
-                    self.loading = false
-                }
-            }, onError: { err in
-                DispatchQueue.main.async {
-                    self.loading = false
-                    self.error = err
-                }
-            })
+                }, onError: { err in
+                    DispatchQueue.main.async {
+                        self.loading = false
+                        self.error = err
+                    }
+                })
+            }
+            else {
+                profileRepository.requestUserOrganizations(username: username, accessToken: accessToken, page: requestUserOrganizationsPage, completed: { orgs in
+                    DispatchQueue.main.async {
+                        self.organizations += orgs
+                        if orgs.isEmpty {
+                            self.canFetchMore = false
+                        }
+                        self.error = nil
+                        self.loading = false
+                    }
+                }, onError: { err in
+                    DispatchQueue.main.async {
+                        self.loading = false
+                        self.error = err
+                    }
+                })
+            }
             requestUserOrganizationsPage += 1
         }
     }

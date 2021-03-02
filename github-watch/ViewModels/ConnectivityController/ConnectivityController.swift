@@ -23,8 +23,9 @@ class ConnectivityController: NSObject, WCSessionDelegate, ObservableObject {
     
     func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {}
     
-    
-    func sendOAuthTokenToWatch(token: String) {
-        session?.sendMessage(["type": "sendOAuthToken", "oAuthToken": token], replyHandler: nil, errorHandler: nil)
+    func sendOAuthTokenToWatch(token: String, onError: @escaping (String) -> Void) {
+        session?.sendMessage(["type": "sendOAuthToken", "oAuthToken": token], replyHandler: nil, errorHandler: { error in
+            onError(error.localizedDescription)
+        })
     }
 }
