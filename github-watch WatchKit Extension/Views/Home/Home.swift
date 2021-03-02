@@ -27,21 +27,20 @@ struct Home: View {
                 
                 Divider().padding(.vertical, 2)
                 
-                NavigationLink(destination: ViewUser()) {
-                    Text("View User")
-                }
-                
-                Divider().padding(.vertical, 2)
-                
                 NavigationLink(destination: SearchRepos()) {
                     Text("Search For Repos")
                 }
                 
                 Divider().padding(.vertical, 2)
                 
-                
                 NavigationLink(destination: SearchUsers()) {
                     Text("Search For Users")
+                }
+                
+                Divider().padding(.vertical, 2)
+                
+                NavigationLink(destination: SearchUsers()) {
+                    Text("About")
                 }
                 
                 Divider().padding(.vertical, 2)

@@ -29,7 +29,7 @@ struct IssueView: View {
                         .font(.system(size: 12))
                         .lineLimit(nil)
                         .fixedSize(horizontal: false, vertical: true)
-                    Divider().padding(.vertical, 4)
+                        .padding(.bottom, 6)
                 }
                 if let body = issue.body {
                     HStack {
@@ -68,7 +68,7 @@ struct IssueView: View {
 
                 ForEach(commentsViewModel.comments, id: \.id) { comment in
                     CommentView(comment: comment)
-                    Divider().padding(.vertical, 4)
+                    Divider().padding(.vertical, 6)
                 }
                 if commentsViewModel.comments.count > 0 && commentsViewModel.canFetchMore {
                     BottomNavRow(buttonClick: fetchComments, loading: commentsViewModel.loading)
