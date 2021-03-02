@@ -1,3 +1,4 @@
+import FASwiftUI
 import SwiftUI
 
 struct Home: View {
@@ -21,33 +22,60 @@ struct Home: View {
             else {
                 if let username = appState.user.username {
                     NavigationLink(destination: UserProfile(profileViewModel: RealProfileViewModel(appState: appState), username: username)) {
-                        Text("@\(username)")
+                        HStack {
+                            FAText(iconName: "user-circle", size: 13, style: FAStyle.solid)
+                                .padding(.trailing, 4)
+                            Text("@\(username)").font(.system(size: 13))
+                            Spacer()
+                        }
                     }
                 }
                 
                 Divider().padding(.vertical, 2)
                 
                 NavigationLink(destination: SearchRepos()) {
-                    Text("Search For Repos")
+                    HStack {
+                        FAText(iconName: "folder", size: 13, style: FAStyle.solid)
+                            .padding(.trailing, 4)
+                        Text("Search For Repos").font(.system(size: 13))
+                        Spacer()
+                    }
                 }
                 
                 Divider().padding(.vertical, 2)
                 
                 NavigationLink(destination: SearchUsers()) {
-                    Text("Search For Users")
+                    HStack {
+                        FAText(iconName: "user", size: 13, style: FAStyle.solid)
+                            .padding(.trailing, 4)
+                        Text("Search For Users").font(.system(size: 13))
+                        Spacer()
+                    }
                 }
                 
                 Divider().padding(.vertical, 2)
                 
-                NavigationLink(destination: SearchUsers()) {
-                    Text("About")
+                NavigationLink(destination: About()) {
+                    HStack {
+                        FAText(iconName: "question-circle", size: 13, style: FAStyle.solid)
+                            .padding(.trailing, 4)
+                        Text("About").font(.system(size: 13))
+                        Spacer()
+                    }
                 }
                 
                 Divider().padding(.vertical, 2)
                 
-                Button("Sign Out", action: {
+                Button(action: {
                     authViewModel.signOut()
-                })
+                }, label: {
+                    HStack {
+                        FAText(iconName: "sign-out-alt", size: 13, style: FAStyle.solid)
+                            .padding(.trailing, 4)
+                        Text("Sign Out")
+                        Spacer()
+                    }
+                }).font(.system(size: 13))
             }
         }.padding(.horizontal, 2)
     }

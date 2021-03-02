@@ -80,6 +80,11 @@
 		F4B0B40725ED92A5001F533D /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B40625ED92A5001F533D /* CommentView.swift */; };
 		F4B0B41525EE1FCB001F533D /* UserIssues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B41425EE1FCB001F533D /* UserIssues.swift */; };
 		F4B0B42725EE27E2001F533D /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B0B42625EE27E2001F533D /* About.swift */; };
+		F4B0B44425EE2FFE001F533D /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B0B44325EE2FDE001F533D /* icons.json */; };
+		F4B0B44A25EE3000001F533D /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4B0B44225EE2FD4001F533D /* Font Awesome 5 Brands-Regular-400.otf */; };
+		F4B0B44B25EE3003001F533D /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4B0B44125EE2FD4001F533D /* Font Awesome 5 Free-Regular-400.otf */; };
+		F4B0B45125EE3008001F533D /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4B0B44025EE2FD4001F533D /* Font Awesome 5 Free-Solid-900.otf */; };
+		F4B0B45E25EE3257001F533D /* FASwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F4B0B45D25EE3257001F533D /* FASwiftUI */; };
 		F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B1FF3225E9457200AD83F1 /* UserType.swift */; };
 		F4EA954E25E5A43500F702ED /* BottomNavRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA954D25E5A43500F702ED /* BottomNavRow.swift */; };
 		F4EA956025E5AFA600F702ED /* SearchRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA955F25E5AFA600F702ED /* SearchRepos.swift */; };
@@ -225,6 +230,10 @@
 		F4B0B40625ED92A5001F533D /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		F4B0B41425EE1FCB001F533D /* UserIssues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIssues.swift; sourceTree = "<group>"; };
 		F4B0B42625EE27E2001F533D /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
+		F4B0B44025EE2FD4001F533D /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Solid-900.otf"; path = "../../../../../Downloads/fontawesome-free-5.15.2-desktop/otfs/Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		F4B0B44125EE2FD4001F533D /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Regular-400.otf"; path = "../../../../../Downloads/fontawesome-free-5.15.2-desktop/otfs/Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		F4B0B44225EE2FD4001F533D /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Brands-Regular-400.otf"; path = "../../../../../Downloads/fontawesome-free-5.15.2-desktop/otfs/Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		F4B0B44325EE2FDE001F533D /* icons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = icons.json; path = "../../../../../Downloads/fontawesome-free-5.15.2-desktop/metadata/icons.json"; sourceTree = "<group>"; };
 		F4B1FF3225E9457200AD83F1 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		F4EA954D25E5A43500F702ED /* BottomNavRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavRow.swift; sourceTree = "<group>"; };
 		F4EA955F25E5AFA600F702ED /* SearchRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepos.swift; sourceTree = "<group>"; };
@@ -267,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F47617B225ED2BCB0041544F /* DateHelper in Frameworks */,
+				F4B0B45E25EE3257001F533D /* FASwiftUI in Frameworks */,
 				F47617AA25ED2AA50041544F /* SwiftyJSON in Frameworks */,
 				F49A66A525E525C800F7893C /* Parma in Frameworks */,
 				F48F4CC125E43DC6003E6C2A /* URLImage in Frameworks */,
@@ -479,6 +489,7 @@
 		F48F4B5225E3BD70003E6C2A /* github-watch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F4B0B43F25EE2FC0001F533D /* Icons */,
 				F48F4B6325E3BD71003E6C2A /* PushNotificationPayload.apns */,
 				F48F4B6225E3BD71003E6C2A /* Info.plist */,
 				F48F4B5B25E3BD70003E6C2A /* ComplicationController.swift */,
@@ -891,6 +902,17 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		F4B0B43F25EE2FC0001F533D /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				F4B0B44325EE2FDE001F533D /* icons.json */,
+				F4B0B44225EE2FD4001F533D /* Font Awesome 5 Brands-Regular-400.otf */,
+				F4B0B44125EE2FD4001F533D /* Font Awesome 5 Free-Regular-400.otf */,
+				F4B0B44025EE2FD4001F533D /* Font Awesome 5 Free-Solid-900.otf */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		F4B1FF3925E945E900AD83F1 /* UserType */ = {
 			isa = PBXGroup;
 			children = (
@@ -1089,6 +1111,7 @@
 				F49A66A425E525C800F7893C /* Parma */,
 				F47617A925ED2AA50041544F /* SwiftyJSON */,
 				F47617B125ED2BCB0041544F /* DateHelper */,
+				F4B0B45D25EE3257001F533D /* FASwiftUI */,
 			);
 			productName = "github-watch WatchKit Extension";
 			productReference = F48F4B4E25E3BD70003E6C2A /* github-watch WatchKit Extension.appex */;
@@ -1137,6 +1160,7 @@
 				F49A66A325E525C800F7893C /* XCRemoteSwiftPackageReference "Parma" */,
 				F47617A125ED2A9D0041544F /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				F47617B025ED2BCB0041544F /* XCRemoteSwiftPackageReference "DateHelper" */,
+				F4B0B45C25EE3257001F533D /* XCRemoteSwiftPackageReference "FASwiftUI" */,
 			);
 			productRefGroup = F48F4B1E25E3BD6B003E6C2A /* Products */;
 			projectDirPath = "";
@@ -1187,8 +1211,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B0B44425EE2FFE001F533D /* icons.json in Resources */,
 				F48F4B6125E3BD71003E6C2A /* Preview Assets.xcassets in Resources */,
 				F48F4B5E25E3BD71003E6C2A /* Assets.xcassets in Resources */,
+				F4B0B45125EE3008001F533D /* Font Awesome 5 Free-Solid-900.otf in Resources */,
+				F4B0B44A25EE3000001F533D /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
+				F4B0B44B25EE3003001F533D /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1774,6 +1802,14 @@
 				kind = branch;
 			};
 		};
+		F4B0B45C25EE3257001F533D /* XCRemoteSwiftPackageReference "FASwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iberatkaya/FASwiftUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1806,6 +1842,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F49A66A325E525C800F7893C /* XCRemoteSwiftPackageReference "Parma" */;
 			productName = Parma;
+		};
+		F4B0B45D25EE3257001F533D /* FASwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B0B45C25EE3257001F533D /* XCRemoteSwiftPackageReference "FASwiftUI" */;
+			productName = FASwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

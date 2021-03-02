@@ -20,11 +20,29 @@
         }
       },
       {
+        "package": "FASwiftUI",
+        "repositoryURL": "https://github.com/iberatkaya/FASwiftUI.git",
+        "state": {
+          "branch": "master",
+          "revision": "91dca7797552b99b2453492fd6d6fa011922483e",
+          "version": null
+        }
+      },
+      {
         "package": "Parma",
         "repositoryURL": "https://github.com/iberatkaya/Parma",
         "state": {
           "branch": "main",
           "revision": "11b0fdd9c443c04b4fc2ec623ab5a6a0b58f56d6",
+          "version": null
+        }
+      },
+      {
+        "package": "QGrid",
+        "repositoryURL": "https://github.com/iberatkaya/QGrid.git",
+        "state": {
+          "branch": "master",
+          "revision": "336f47af8c3ca77ce2d17c8537f725217006c183",
           "version": null
         }
       },
