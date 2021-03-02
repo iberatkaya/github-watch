@@ -3,12 +3,13 @@ import SwiftyJSON
 
 protocol RepoRepository {
     func requestReposOfUser(username: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) -> Void
-
     func requestReposByName(name: String, accessToken: String, page: Int, completed: @escaping ([Repo]) -> Void, onError: @escaping (String) -> Void) -> Void
 
     func requestIssuesByRepoName(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Issue]) -> Void, onError: @escaping (String) -> Void) -> Void
-    
+
     func requestCommentsOfIssue(username: String, repoName: String, issueID: String, accessToken: String, page: Int, completed: @escaping ([Comment]) -> Void, onError: @escaping (String) -> Void) -> Void
+
+    func requestReposCommits(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Commit]) -> Void, onError: @escaping (String) -> Void)
 }
 
 struct RealRepoRepository: RepoRepository {
@@ -104,7 +105,7 @@ struct RealRepoRepository: RepoRepository {
     ///
     /// - Parameters:
     ///     - username: The GitHub username of the user.
-    ///     - repoName: The name of the repository.
+    ///     - repoName: The GitHub repository's name.
     ///     - accessToken: The GitHub user's OAuth accessToken.
     ///     - page: The page of the request.
     ///     - completed: The closure to call when the repositories are fetched.
@@ -138,11 +139,10 @@ struct RealRepoRepository: RepoRepository {
                     issues.append(Issue(dict: dict))
                 }
             }
-
             completed(issues)
         }.resume()
     }
-    
+
     /// Request a repository issue's comments.
     ///
     /// - Parameters:
@@ -159,7 +159,6 @@ struct RealRepoRepository: RepoRepository {
             onError("Incorrect Request")
             return
         }
-
         let session = URLSession.shared
         session.dataTask(with: request) { data, _, error in
             if let error = error {
@@ -183,6 +182,49 @@ struct RealRepoRepository: RepoRepository {
             }
 
             completed(comments)
+        }.resume()
+    }
+
+    /// Request repository's commits using the user's username & user's repository name.
+    ///
+    /// - Parameters:
+    ///     - username: The GitHub username of the user.
+    ///     - repoName: The GitHub repository's name.
+    ///     - accessToken: The GitHub user's OAuth accessToken.
+    ///     - page: The page of the request.
+    ///     - completed: The clouse to call when the repositories are fetched.
+    ///     - onError: The clouse to call when an error occurs. Returns the error string.
+    func requestReposCommits(username: String, repoName: String, accessToken: String, page: Int, completed: @escaping ([Commit]) -> Void, onError: @escaping (String) -> Void) {
+        let itemsPerPage = 12
+
+        guard let request = urlRequest(url: "https://api.github.com/repos/\(username)/\(repoName)/commits?page=\(page)&per_page=\(itemsPerPage)", accessToken: accessToken) else {
+            onError("Incorrect Request")
+            return
+        }
+
+        let session = URLSession.shared
+        session.dataTask(with: request) { data, _, error in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+
+            let myDict = JSON(data)
+
+            if let errorMessage = myDict["message"].string {
+                onError(errorMessage)
+                return
+            }
+
+            var commits: [Commit] = []
+
+            for item in myDict {
+                if let dict = item.1.dictionaryObject {
+                    commits.append(Commit(dict: dict))
+                }
+            }
+
+            completed(commits)
         }.resume()
     }
 }

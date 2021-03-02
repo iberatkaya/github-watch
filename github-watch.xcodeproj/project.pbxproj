@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4242652E25ED8D3400DB9CBA /* RepoCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4242652D25ED8D3400DB9CBA /* RepoCommit.swift */; };
+		424BB29A25ED990F00AF93B1 /* MiniCommitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424BB29925ED990F00AF93B1 /* MiniCommitView.swift */; };
+		426D4B9725ED8A1C005BE690 /* CommitsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D4B9625ED8A1C005BE690 /* CommitsList.swift */; };
+		426D4BA525ED8AA7005BE690 /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D4BA425ED8AA7005BE690 /* CommitsViewModel.swift */; };
 		42D4162325EBF3F900A39EE2 /* SearchUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D4162225EBF3F900A39EE2 /* SearchUsers.swift */; };
 		42D4163025EBF54800A39EE2 /* SearchUsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D4162F25EBF54800A39EE2 /* SearchUsersList.swift */; };
 		F445167625EB79DA0045B4E1 /* FollowUsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445167525EB79DA0045B4E1 /* FollowUsersList.swift */; };
@@ -145,6 +149,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4242652D25ED8D3400DB9CBA /* RepoCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCommit.swift; sourceTree = "<group>"; };
+		424BB29925ED990F00AF93B1 /* MiniCommitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniCommitView.swift; sourceTree = "<group>"; };
+		426D4B9625ED8A1C005BE690 /* CommitsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsList.swift; sourceTree = "<group>"; };
+		426D4BA425ED8AA7005BE690 /* CommitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitsViewModel.swift; sourceTree = "<group>"; };
 		42D4162225EBF3F900A39EE2 /* SearchUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsers.swift; sourceTree = "<group>"; };
 		42D4162F25EBF54800A39EE2 /* SearchUsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersList.swift; sourceTree = "<group>"; };
 		F445167525EB79DA0045B4E1 /* FollowUsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUsersList.swift; sourceTree = "<group>"; };
@@ -266,6 +274,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4242652C25ED8D1E00DB9CBA /* RepoCommit */ = {
+			isa = PBXGroup;
+			children = (
+				4242652D25ED8D3400DB9CBA /* RepoCommit.swift */,
+			);
+			path = RepoCommit;
+			sourceTree = "<group>";
+		};
+		424BB29825ED98FA00AF93B1 /* MiniCommitView */ = {
+			isa = PBXGroup;
+			children = (
+				424BB29925ED990F00AF93B1 /* MiniCommitView.swift */,
+			);
+			path = MiniCommitView;
+			sourceTree = "<group>";
+		};
+		426D4B9525ED89FD005BE690 /* CommitsList */ = {
+			isa = PBXGroup;
+			children = (
+				424BB29825ED98FA00AF93B1 /* MiniCommitView */,
+				426D4B9625ED8A1C005BE690 /* CommitsList.swift */,
+			);
+			path = CommitsList;
+			sourceTree = "<group>";
+		};
+		426D4BA325ED8A89005BE690 /* CommitsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				426D4BA425ED8AA7005BE690 /* CommitsViewModel.swift */,
+			);
+			path = CommitsViewModel;
+			sourceTree = "<group>";
+		};
 		42D4162125EBF3DB00A39EE2 /* SearchUsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +614,7 @@
 		F48F4C2925E407B6003E6C2A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				426D4B9525ED89FD005BE690 /* CommitsList */,
 				F47617CE25ED30B30041544F /* IssueView */,
 				F476174C25ED16860041544F /* IssuesList */,
 				42D4162E25EBF51500A39EE2 /* SearchUsersList */,
@@ -604,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				F4B0B3EB25ED8120001F533D /* CommentsViewModel */,
+				426D4BA325ED8A89005BE690 /* CommitsViewModel */,
 				F476173F25ED148B0041544F /* IssuesViewModel */,
 				F445167C25EB7A640045B4E1 /* UsersViewModel */,
 				F47822D425E854D300CB2A67 /* OrganizationViewModel */,
@@ -631,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				F4B0B3F825ED8745001F533D /* Comment */,
+				4242652C25ED8D1E00DB9CBA /* RepoCommit */,
 				F476172B25ED0F1F0041544F /* Issue */,
 				F4B1FF3925E945E900AD83F1 /* UserType */,
 				F49A65AF25E4F47500F7893C /* Repo */,
@@ -1214,15 +1258,19 @@
 				F4B1FF3325E9457200AD83F1 /* UserType.swift in Sources */,
 				F4B0B3ED25ED8134001F533D /* CommentsViewModel.swift in Sources */,
 				F47822E825E861F000CB2A67 /* ExtraUserInfo.swift in Sources */,
+				426D4B9725ED8A1C005BE690 /* CommitsList.swift in Sources */,
 				F476174125ED149C0041544F /* IssuesViewModel.swift in Sources */,
 				F4EA958A25E5BBCF00F702ED /* FollowStatViwe.swift in Sources */,
 				F48F4C4425E40862003E6C2A /* AuthUser.swift in Sources */,
+				4242652E25ED8D3400DB9CBA /* RepoCommit.swift in Sources */,
 				F476174E25ED16930041544F /* IssuesList.swift in Sources */,
 				F49A65A125E4E6E600F7893C /* UserRepos.swift in Sources */,
 				F49A66C925E5397100F7893C /* String.swift in Sources */,
+				426D4BA525ED8AA7005BE690 /* CommitsViewModel.swift in Sources */,
 				F476172D25ED0F350041544F /* Issue.swift in Sources */,
 				F48F4CA725E43519003E6C2A /* UserProfile.swift in Sources */,
 				F49A65DC25E50CE500F7893C /* Markdown.swift in Sources */,
+				424BB29A25ED990F00AF93B1 /* MiniCommitView.swift in Sources */,
 				F4EA957B25E5B2C000F702ED /* MiniRepoView.swift in Sources */,
 				F48F4CB425E43AEE003E6C2A /* UserView.swift in Sources */,
 				F49A65BA25E4F71200F7893C /* FileDownloader.swift in Sources */,
