@@ -5,6 +5,7 @@ Git Watch is a GitHub client app for watchOS. It is a SwiftUI app that uses GitH
 ## Table of contents
 
 - [Installation](#installation)
+- [Setup](#setup)
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
