@@ -3,7 +3,7 @@ import WebView
 
 struct GitHubAuth: View {
     @StateObject var webViewStore = WebViewStore()
-    @ObservedObject var connectivityController: ConnectivityController
+    @EnvironmentObject var connectivityController: ConnectivityController
     @ObservedObject var authViewModel: RealAuthViewModel
     @Environment(\.presentationMode) var presentation
     @State var error: String?
@@ -11,7 +11,6 @@ struct GitHubAuth: View {
 
     init(authViewModel: RealAuthViewModel) {
         self.authViewModel = authViewModel
-        self.connectivityController = ConnectivityController()
     }
 
     var body: some View {

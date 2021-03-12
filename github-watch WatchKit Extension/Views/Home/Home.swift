@@ -13,9 +13,11 @@ struct Home: View {
         ScrollView {
             if appState.user.accessToken == nil {
                 VStack {
-                    Text("Please sign in to your GitHub account from your iPhone!")
+                    Text("Please sign in to GitHub from Git Watch's iPhone App! If an error occurred, please resend the OAuth Token.")
                         .fixedSize(horizontal: false, vertical: true)
-                        .padding(.bottom, 8)
+                        .font(.system(size: 11))
+                        .padding(.bottom, 12)
+                    
                     ProgressView()
                 }.padding(.horizontal, 8)
             }

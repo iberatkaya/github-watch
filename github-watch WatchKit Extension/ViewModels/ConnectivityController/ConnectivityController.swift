@@ -27,16 +27,18 @@ class ConnectivityController: NSObject, WCSessionDelegate, ObservableObject {
             else {
                 return
             }
-            DispatchQueue.main.async {
-                self.appState.user.accessToken = token
-            }
-            profileRepository.requestMyProfile(accessToken: token, completed: { profileUser in
+            if appState.user.accessToken != token {
                 DispatchQueue.main.async {
-                    if let name = profileUser.username {
-                        self.appState.user.username = name
-                    }
+                    self.appState.user.accessToken = token
                 }
-            }, onError: { _ in })
+                profileRepository.requestMyProfile(accessToken: token, completed: { profileUser in
+                    DispatchQueue.main.async {
+                        if let name = profileUser.username {
+                            self.appState.user.username = name
+                        }
+                    }
+                }, onError: { _ in })
+            }
         }
     }
 }
