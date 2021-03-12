@@ -22,8 +22,6 @@ struct Home: View {
                 .padding(.bottom, 2)
             
             if appState.user.accessToken == nil {
-                
-                
                 Text("Please login while Git Watch is open on your Apple Watch!")
                     .font(.system(size: 12))
                     .foregroundColor(.gray)
@@ -40,7 +38,6 @@ struct Home: View {
                         .foregroundColor(.blue)
                 }
             } else {
-                
                 HStack {
                     Text("You are logged in!")
                         .foregroundColor(.gray)
