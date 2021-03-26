@@ -36,7 +36,7 @@ struct Home: View {
                         .padding(.horizontal, 16)
                         .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color.blue.opacity(0.1)))
                         .foregroundColor(.blue)
-                }
+                }.accessibility(identifier: "loginButton")
             } else {
                 HStack {
                     Text("You are logged in!")
@@ -71,7 +71,7 @@ struct Home: View {
                         .padding(.horizontal, 16)
                         .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Color.blue.opacity(0.1)))
                         .foregroundColor(.blue)
-                }
+                }.accessibility(identifier: "signOutButton")
             }
         }.padding(.horizontal, 12)
     }
